@@ -1,0 +1,28 @@
+# PhpStorm etc
+/.idea
+/.DS_Store
+/cache.properties
+/coverage
+
+# Composer
+/composer.phar
+/composer.lock
+/vendor/
+/bin/*
+
+# Symfony directories
+/app/bootstrap.php.cache
+/app/config/parameters.yml
+/app/build
+/app/cache/*
+/app/logs/*
+/web/uploads/*
+/web/bundles/
+/web/css/
+/web/js/
+/web/style/
+/web/images/
+/web/media/
+
+# Vagrant
+/.vagrant/machines
