@@ -5,8 +5,7 @@
 /coverage
 
 # Composer
-/composer.phar
-/composer.lock
+
 /vendor/
 /bin/*
 
@@ -25,5 +24,4 @@
 /web/media/
 
 # Vagrant
-/.vagrant/*
-/Vagrantfile
+/.vagrant/machines
