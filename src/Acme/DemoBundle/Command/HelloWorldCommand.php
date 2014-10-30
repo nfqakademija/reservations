@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**t
+/**asd
  * Hello World command for demo purposes.
  *
  * You could also extend from Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand
