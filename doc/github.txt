@@ -1,0 +1,18 @@
+ - Prideti faila (su tasku prides visus failus), o git add FILENAME prides konrektu faila
+	git add . (arba failo pavadinimas)
+	git commit -m "komentaras"
+	git push -u origin master
+	
+ - Istrynti faila
+	git rm -r one-of-the-directories
+	git commit -m "Remove duplicated directory"
+	git push origin master
+	
+ - Gauti atnaujintus failus is repisotorijos
+	git pull origin ARBA git pull origin master
+	
+ - Trina daugiau nei viena faila, kai istrynti is local folderio
+	git rm $(git ls-files --deleted) 
+
+ - Prideda ir trina (ka istrynei ir pridejai is local istryns ir prides repositorijoj)
+	git add -A .
