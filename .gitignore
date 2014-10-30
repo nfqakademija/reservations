@@ -24,4 +24,5 @@
 /web/media/
 
 # Vagrant
-/.vagrant/machines
+/.vagrant/*
+/Vagrantfile
