@@ -1,0 +1,3 @@
+reservations_core_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ReservationsCoreBundle:Default:index }
