@@ -1,3 +1,7 @@
+reservations_frontend:
+    resource: "@ReservationsFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
 reservations_core:
     resource: "@ReservationsCoreBundle/Resources/config/routing.yml"
     prefix:   /

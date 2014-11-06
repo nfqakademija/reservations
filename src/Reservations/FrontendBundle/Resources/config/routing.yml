@@ -1,0 +1,3 @@
+reservations_frontend_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ReservationsFrontendBundle:Default:index }
