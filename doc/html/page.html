@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
     <!--<link href="http://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet">-->
 </head>
 <body>
@@ -26,12 +27,8 @@
 					Namai
 				</a>
 				<a href="barai.html" class="btn btn-default" role="button">
-					<span class="glyphicon glyphicon-th-list"></span><br />
-					Barai
-				</a>
-				<a href="barai.html" class="btn btn-default" role="button">
-					<span class="glyphicon glyphicon-thumbs-up"></span><br />
-					Top barai
+					<span class="glyphicon glyphicon-glass"></span><br />
+					Restoranai ir barai
 				</a>
 				<a href="main.html" class="btn btn-default" role="button">
 					<span class="glyphicon glyphicon-envelope"></span><br />
@@ -53,9 +50,9 @@
 				<div class="panel-body center-block">
 					<form class="form-horizontal" role="form">
 						<div class="input-group">
-							<input type="text" class="form-control input-lg" placeholder="Ieškokite barų ir vietovių" />
+							<input type="text" class="form-control input-lg" placeholder="Ieškokite restoranų, barų" />
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-primary btn-lg">Ieškoti</button>
+								<button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span> Ieškoti</button>
 							</span>
 						</div><!-- /input-group -->
 					</form>
@@ -172,16 +169,16 @@
 							</div>
 							<div class="form-group">
 								<label>Data</label>
-								<input type="email" class="form-control" />
+								<input type="text" class="form-control"  id="date"  />
 							</div>	
 							<div class="form-group">
 								<label>Laikas</label>
 								<select class="form-control">
+									<option>17:00</option>
+									<option>18:00</option>
 									<option>19:00</option>
-									<option>19:00</option>
-									<option>19:00</option>
-									<option>19:00</option>
-									<option>19:00</option>
+									<option>20:00</option>
+									<option>21:00</option>
 								</select>
 							</div>							
 							<button type="submit" class="btn btn-primary">Rezervuoti</button>
@@ -204,9 +201,18 @@
 
     </div><!--container-->
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#date').datepicker({
+		format: "yyyy-mm-dd",
+		weekStart: 1,
+		todayBtn: "linked",
+		autoclose: true
+    });
+});	
+</script>	
 </body>
 </html>
