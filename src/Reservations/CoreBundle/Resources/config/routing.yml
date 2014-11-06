@@ -1,3 +1,7 @@
 reservations_core_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: ReservationsCoreBundle:Default:index }
+    path:     /
+    defaults: { _controller: ReservationsFrontendBundle:Default:index }
+
+#reservations_core_login:
+#    path:     /verslui
+#    defaults: { _controller: ReservationsFrontendBundle:Default:login }
