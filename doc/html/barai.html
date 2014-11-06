@@ -15,46 +15,58 @@
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>Logotipas</h1>
+                <h1>Vietų rezervacija</h1>
             </div>
         </div>
 
         <div class="row">
 			<div class="btn-group btn-group-justified">
-				<a class="btn btn-default" role="button">Namai</a>
-				<a class="btn btn-default" role="button">Barai</a>
-				<a class="btn btn-default" role="button">Top barai</a>
-				<a class="btn btn-default" role="button">Kontaktai</a>
-				<a class="btn btn-default" role="button"><strong>Verslui</strong></a>
+				<a href="main.html" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-home"></span><br />
+					Namai
+				</a>
+				<a href="barai.html" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-th-list"></span><br />
+					Barai
+				</a>
+				<a href="barai.html" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-thumbs-up"></span><br />
+					Top barai
+				</a>
+				<a href="main.html" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-envelope"></span><br />
+					Kontaktai
+				</a>
+				<a href="savininkai/login.html" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-briefcase"></span><br />
+					<strong>Verslui</strong>
+				</a>
 			</div>
 			<br />
         </div>
 
         <div class="row">
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <div class="col-xs-10">
-                        <input type="text" class="form-control input-lg" placeholder="Įveskite baro pavadinimą">
-                    </div>
-                    <div class="col-xs-1">
-                        <button type="button" class="btn btn-primary btn-lg">Ieškoti</button>
-                    </div>
-                </div>
-            </form>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Paieška</h3>
+				</div>			
+				<div class="panel-body center-block">
+					<form class="form-horizontal" role="form">
+						<div class="input-group">
+							<input type="text" class="form-control input-lg" placeholder="Ieškokite barų ir vietovių" />
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary btn-lg">Ieškoti</button>
+							</span>
+						</div><!-- /input-group -->
+					</form>
+				</div>
+			</div>		
         </div>
 
         <div class="row">
-			<!--<ul class="list-group">
-				<li class="list-group-item">
-					<a href="">Baro pavadinimas</a>
-				</li>
-				<li class="list-group-item">Morbi leo risus</li>
-				<li class="list-group-item">Porta ac consectetur ac</li>
-				<li class="list-group-item">Vestibulum at eros</li>
-			</ul>-->
 			<div class="table-responsive">
 				<table class="table table-hover">
-					<tr>
+					<tr class="active">
 						<th>Pavadinimas</th>
 						<th>Adresas</th>
 						<th>Darbo laikas</th>
@@ -63,10 +75,10 @@
 					</tr>
 					<tr>
 						<td>
-							<strong><a href="">Baro pavadinimas</a></strong>
+							<strong><a href="">BO Baras</a></strong>
 						</td>
-						<td>Savanoriu pr. 55. Kaunas</td>
-						<td>8 - 22 val.</td>
+						<td>Muitinės g. 9. Kaunas</td>
+						<td>17:00 - 02:00 val.</td>
 						<td>
 							<span class="glyphicon glyphicon-star"></span>
 							<span class="glyphicon glyphicon-star"></span>
@@ -80,10 +92,10 @@
 					</tr>
 					<tr>
 						<td>
-							<strong><a href="">Baro ilgiausias pavadinimas</a></strong>
+							<strong><a href="">Džem'pub</a></strong>
 						</td>
-						<td>Laisves aleja 55. Kaunas</td>
-						<td>8 - 22 val.</td>
+						<td>Laisves aleja 59. Kaunas</td>
+						<td>16:00 - 03:00 val.</td>
 						<td>
 							<span class="glyphicon glyphicon-star"></span>
 							<span class="glyphicon glyphicon-star"></span>
@@ -97,8 +109,21 @@
 					</tr>
 				</table>	
 			</div>			
-        </div><!--row-->	
+        </div><!--row-->			
 
+		<div class="row">
+			<nav class="text-center">
+				<ul class="pagination">
+					<li><a href="#">&laquo;</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+			</nav>		
+		</div>
 
         <div class="row">
             <hr />

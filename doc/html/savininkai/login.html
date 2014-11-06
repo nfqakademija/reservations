@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Prototipas</title>
+    <title>Login</title>
 
     <!-- Bootstrap -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -15,41 +15,71 @@
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>Logotipas</h1>
+                <h1>Vietų rezervacija</h1>
             </div>
         </div>
 
         <div class="row">
 			<div class="btn-group btn-group-justified">
-				<a class="btn btn-default" role="button">Namai</a>
-				<a class="btn btn-default" role="button">Barai</a>
-				<a class="btn btn-default" role="button">Top barai</a>
-				<a class="btn btn-default" role="button">Kontaktai</a>
-				<a class="btn btn-default" role="button"><strong>Verslui</strong></a>
+				<a class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-home"></span><br />
+					Namai
+				</a>
+				<a class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-th-list"></span><br />
+					Barai
+				</a>
+				<a class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-thumbs-up"></span><br />
+					Top barai
+				</a>
+				<a class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-envelope"></span><br />
+					Kontaktai
+				</a>
+				<a class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-briefcase"></span><br />
+					<strong>Verslui</strong>
+				</a>
 			</div>
 			<br />
         </div>
 
         <div class="row">
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <div class="col-xs-10">
-                        <input type="text" class="form-control input-lg" placeholder="Įveskite baro pavadinimą">
-                    </div>
-                    <div class="col-xs-1">
-                        <button type="button" class="btn btn-primary btn-lg">Ieškoti</button>
-                    </div>
-                </div>
-            </form>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Paieška</h3>
+				</div>			
+				<div class="panel-body center-block">
+					<form class="form-horizontal" role="form">
+						<div class="input-group">
+							<input type="text" class="form-control input-lg" placeholder="Ieškokite barų ir vietovių" />
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary btn-lg">Ieškoti</button>
+							</span>
+						</div><!-- /input-group -->
+					</form>
+				</div>
+			</div>		
         </div>
 
-		<div class="row">
+        <div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<h2>Prisijungimas</h2>
 						<hr />
-						asas
+						<form role="form">
+							<div class="form-group">
+								<label>El. pastas</label>
+								<input type="email" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Slaptažodis</label>
+								<input type="password" class="form-control" />
+							</div>					
+							<button type="submit" class="btn btn-primary">Prisijungti</button>
+						</form>	
 					</div>
 				</div>			
 			</div><!--Left-->
@@ -59,12 +89,38 @@
 					<div class="panel-body">
 						<h2>Registracija</h2>
 						<hr />
-						asas
+						<form role="form">
+							<div class="form-group">
+								<label>Vardas</label>
+								<input type="email" class="form-control" />
+							</div>	
+							<div class="form-group">
+								<label>Pavardė</label>
+								<input type="email" class="form-control" />
+							</div>	
+							<div class="form-group">
+								<label>Telefono numeris</label>
+								<input type="email" class="form-control" />
+							</div>								
+							<div class="form-group">
+								<label>El. pastas</label>
+								<input type="email" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Slaptažodis</label>
+								<input type="password" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Pakartoti slaptažodį</label>
+								<input type="password" class="form-control" />
+							</div>							
+							<button type="submit" class="btn btn-primary">Registruotis</button>
+						</form>
 					</div>
 				</div>		
 			</div><!--Right-->
 		</div>		
-		
+
         <div class="row">
             <hr />
             <div class="text-center">
@@ -78,6 +134,6 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
