@@ -1,4 +1,4 @@
-HomeToGo.com
+Reservations
 ===
 
 ## Quick start
