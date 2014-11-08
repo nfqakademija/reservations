@@ -1,0 +1,58 @@
+# Users validation
+Reservations\CoreBundle\Entity\User:
+    properties:
+        email:
+            - NotBlank:
+                message: "Negali būti tuščias laukas"
+                groups: [ "reservations_registration", "my_profile" ]
+            - Length:
+                min: 2
+                minMessage: "Per trumpas el. paštas"
+                max: 255
+                maxMessage: "Per ilgas el. paštas"
+                groups: [ "reservations_registration", "ResetPassword" ]
+            - Email:
+                message: "Blogai nurodytas el. paštas"
+                groups: [ "reservations_registration", "my_profile" ]
+
+        plainPassword:
+            - NotBlank:
+                message: "Negali būti tuščias laukas"
+                groups: [ "reservations_registration", "ResetPassword", "ChangePassword" ]
+            - Length:
+                min: 2
+                minMessage: "Per trumpas slaptažodis"
+                groups: [ "reservations_registration", "my_profile", "ResetPassword", "ChangePassword" ]
+
+        firstName:
+            - NotBlank:
+                message: "Negali būti tuščias laukas"
+                groups: [ "reservations_registration", "my_profile" ]
+            - Length:
+                min: 2
+                minMessage: "Per trumpas vardas"
+                max: 255
+                maxMessage: "Per ilgas vardas"
+                groups: [ "reservations_registration", "ResetPassword" ]
+
+        lastName:
+            - NotBlank:
+                message: "Negali būti tuščias laukas"
+                groups: [ "reservations_registration", "my_profile" ]
+            - Length:
+                min: 2
+                minMessage: "Per trumpas vardas"
+                max: 255
+                maxMessage: "Per ilgas vardas"
+                groups: [ "reservations_registration", "ResetPassword" ]
+
+        phone:
+            - NotBlank:
+                message: "Negali būti tuščias laukas"
+                groups: [ "reservations_registration", "my_profile" ]
+            - Length:
+                min: 6
+                minMessage: "Per trumpas telefono numeris"
+                max: 255
+                maxMessage: "Per ilgas telefono numeris"
+                groups: [ "reservations_registration", "ResetPassword" ]

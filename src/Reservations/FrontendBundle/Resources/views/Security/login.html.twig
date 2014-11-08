@@ -1,29 +1,8 @@
 {% extends 'ReservationsFrontendBundle::layout.html.twig' %}
 
-{% block title %}login{% endblock %}
+{% block title %}Verslui{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <strong>Kas mes? Ir ką mes siūlom?</strong>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                       aloha
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -49,40 +28,15 @@
             </div>
         </div><!--Left-->
 
-        {#<div class="col-md-6">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h2>Registracija</h2>
+                    <h2>Kas mes? Ir ką mes siūlom?</h2>
                     <hr />
-                    <form role="form">
-                        <div class="form-group">
-                            <label>Vardas</label>
-                            <input type="email" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label>Pavardė</label>
-                            <input type="email" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label>Telefono numeris</label>
-                            <input type="email" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label>El. pastas</label>
-                            <input type="email" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label>Slaptažodis</label>
-                            <input type="password" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label>Pakartoti slaptažodį</label>
-                            <input type="password" class="form-control" />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Registruotis</button>
-                    </form>
+                    Some tetxts
+                    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-lg btn-block">Registracija</a>
                 </div>
             </div>
-        </div><!--Right-->#}
+        </div><!--Right-->
     </div>
 {% endblock %}

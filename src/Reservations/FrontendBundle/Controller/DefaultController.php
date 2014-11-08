@@ -13,6 +13,6 @@ class DefaultController extends Controller
 
     public function loginAction()
     {
-      return $this->render('ReservationsFrontendBundle:Security:login.html.twig');
+        return $this->render('ReservationsFrontendBundle:Security:login.html.twig');
     }
 }
