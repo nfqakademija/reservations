@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WorkTime
  *
- * @ORM\Table()
+ * @ORM\Table(name="work_time")
  * @ORM\Entity
  */
 class WorkTime
