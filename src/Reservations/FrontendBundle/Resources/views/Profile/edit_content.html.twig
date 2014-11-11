@@ -1,0 +1,39 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2>Redagavimas</h2>
+            <hr />
+            <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST">
+                <div class="form-group">
+                    <label>Vardas</label>
+                    {{ form_widget(form.firstName, { 'attr' : { 'class' : 'form-control' }}) }}
+                    {{ form_errors(form.firstName) }}
+                </div>
+                <div class="form-group">
+                    <label>Pavardė</label>
+                    {{ form_widget(form.lastName, { 'attr' : { 'class' : 'form-control' }}) }}
+                    {{ form_errors(form.lastName) }}
+                </div>
+                <div class="form-group">
+                    <label>Telefono numeris</label>
+                    {{ form_widget(form.phone, { 'attr' : { 'class' : 'form-control' }}) }}
+                    {{ form_errors(form.phone) }}
+                </div>
+                <div class="form-group">
+                    <label>El. paštas</label>
+                    {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control' }}) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="form-group">
+                    <label>Įveskite dabartinį slaptažodį</label>
+                    {{ form_widget(form.current_password, { 'attr' : { 'class' : 'form-control' }}) }}
+                    {{ form_errors(form.current_password) }}
+                </div>
+                {{ form_widget(form._token) }}
+                <input type="submit" value="Redaguoti" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>

@@ -81,3 +81,7 @@ fos_user:
         form:
             type: reservations_user_registration
             validation_groups: [ reservations_registration, Default ] # custom validation
+    profile:
+        form:
+            type: reservations_user_profile
+            validation_groups: [ reservations_profile, Default ] # custom validation

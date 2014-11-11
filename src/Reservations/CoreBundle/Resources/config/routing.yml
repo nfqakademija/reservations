@@ -3,5 +3,5 @@ reservations_core_homepage:
     path:     /
     defaults: { _controller: ReservationsFrontendBundle:Default:index }
 
-reservations_core_control_panel:
-    path:     /control-panel
+#reservations_core_control_panel:
+#    path:     /control-panel
