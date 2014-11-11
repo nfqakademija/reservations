@@ -1,3 +1,4 @@
+
 reservations_core_homepage:
     path:     /
     defaults: { _controller: ReservationsFrontendBundle:Default:index }
