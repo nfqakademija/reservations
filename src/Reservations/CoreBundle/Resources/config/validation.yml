@@ -4,7 +4,7 @@ Reservations\CoreBundle\Entity\User:
         email:
             - NotBlank:
                 message: "Negali būti tuščias laukas"
-                groups: [ "reservations_registration", "my_profile" ]
+                groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
                 minMessage: "Per trumpas el. paštas"
@@ -13,7 +13,7 @@ Reservations\CoreBundle\Entity\User:
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Email:
                 message: "Blogai nurodytas el. paštas"
-                groups: [ "reservations_registration", "my_profile" ]
+                groups: [ "reservations_registration", "reservations_profile" ]
 
         plainPassword:
             - NotBlank:
@@ -22,12 +22,12 @@ Reservations\CoreBundle\Entity\User:
             - Length:
                 min: 2
                 minMessage: "Per trumpas slaptažodis"
-                groups: [ "reservations_registration", "my_profile", "ResetPassword", "ChangePassword" ]
+                groups: [ "reservations_registration", "reservations_profile", "ResetPassword", "ChangePassword" ]
 
         firstName:
             - NotBlank:
                 message: "Negali būti tuščias laukas"
-                groups: [ "reservations_registration", "my_profile" ]
+                groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
                 minMessage: "Per trumpas vardas"
@@ -38,7 +38,7 @@ Reservations\CoreBundle\Entity\User:
         lastName:
             - NotBlank:
                 message: "Negali būti tuščias laukas"
-                groups: [ "reservations_registration", "my_profile" ]
+                groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
                 minMessage: "Per trumpas vardas"
@@ -49,10 +49,13 @@ Reservations\CoreBundle\Entity\User:
         phone:
             - NotBlank:
                 message: "Negali būti tuščias laukas"
-                groups: [ "reservations_registration", "my_profile" ]
+                groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 6
                 minMessage: "Per trumpas telefono numeris"
                 max: 255
                 maxMessage: "Per ilgas telefono numeris"
                 groups: [ "reservations_registration", "ResetPassword" ]
+            - Type:
+                type: integer
+                message: "Ne numeris"

@@ -12,7 +12,7 @@ class RegistrationFormType extends AbstractType
         parent::buildForm($builder, $options);
         $builder->add('firstName')
             ->add('lastName')
-            ->add('phone', 'text')
+            ->add('phone')
             ->remove('username');
     }
 

@@ -33,7 +33,7 @@
                 <span class="glyphicon glyphicon-envelope"></span><br />
                 Kontaktai
             </a>
-            <a href="{{ path('fos_user_security_login') }}" class="btn btn-default" role="button">
+            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default" role="button">
                 <span class="glyphicon glyphicon-briefcase"></span><br />
                 <strong>Verslui</strong>
             </a>
@@ -41,6 +41,11 @@
             <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
                 <span class="glyphicon glyphicon-off"></span><br />
                 Atsijungti
+            </a>
+            {% else %}
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-default" role="button">
+                <span class="glyphicon glyphicon-user"></span><br />
+                Prisijungti
             </a>
             {% endif %}
         </div>
