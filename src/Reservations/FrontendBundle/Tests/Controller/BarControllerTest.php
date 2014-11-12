@@ -4,7 +4,7 @@ namespace Reservations\FrontendBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class BarsControllerTest extends WebTestCase
+class BarControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class BarsControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/bars/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /bars/");
+        $crawler = $client->request('GET', '/bar/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /bar/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'reservations_corebundle_bars[field_name]'  => 'Test',
+            'reservations_corebundle_bar[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class BarsControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'reservations_corebundle_bars[field_name]'  => 'Foo',
+            'reservations_corebundle_bar[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

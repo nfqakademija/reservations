@@ -2,39 +2,39 @@
 
 namespace Reservations\FrontendBundle\Controller;
 
-use Reservations\FrontendBundle\Form\Type\BarsType;
+use Reservations\FrontendBundle\Form\Type\BarType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Reservations\CoreBundle\Entity\Bars;
+use Reservations\CoreBundle\Entity\Bar;
 
 /**
- * Bars controller.
+ * Bar controller.
  *
  */
-class BarsController extends Controller
+class BarController extends Controller
 {
 
     /**
-     * Lists all Bars entities.
+     * Lists all Bar entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ReservationsCoreBundle:Bars')->findAll();
+        $entities = $em->getRepository('ReservationsCoreBundle:Bar')->findAll();
 
-        return $this->render('ReservationsFrontendBundle:Bars:index.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Bars entity.
+     * Creates a new Bar entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Bars();
+        $entity = new Bar();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -43,26 +43,26 @@ class BarsController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bars_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('ReservationsFrontendBundle:Bars:new.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Bars entity.
+     * Creates a form to create a Bar entity.
      *
-     * @param Bars $entity The entity
+     * @param Bar $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Bars $entity)
+    private function createCreateForm(Bar $entity)
     {
-        $form = $this->createForm(new BarsType(), $entity, array(
-            'action' => $this->generateUrl('bars_create'),
+        $form = $this->createForm(new BarType(), $entity, array(
+            'action' => $this->generateUrl('bar_create'),
             'method' => 'POST',
         ));
 
@@ -72,60 +72,60 @@ class BarsController extends Controller
     }
 
     /**
-     * Displays a form to create a new Bars entity.
+     * Displays a form to create a new Bar entity.
      *
      */
     public function newAction()
     {
-        $entity = new Bars();
+        $entity = new Bar();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('ReservationsFrontendBundle:Bars:new.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Bars entity.
+     * Finds and displays a Bar entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ReservationsCoreBundle:Bars')->find($id);
+        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bars entity.');
+            throw $this->createNotFoundException('Unable to find Bar entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ReservationsFrontendBundle:Bars:show.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Bars entity.
+     * Displays a form to edit an existing Bar entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ReservationsCoreBundle:Bars')->find($id);
+        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bars entity.');
+            throw $this->createNotFoundException('Unable to find Bar entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ReservationsFrontendBundle:Bars:edit.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -133,16 +133,16 @@ class BarsController extends Controller
     }
 
     /**
-    * Creates a form to edit a Bars entity.
+    * Creates a form to edit a Bar entity.
     *
-    * @param Bars $entity The entity
+    * @param Bar $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Bars $entity)
+    private function createEditForm(Bar $entity)
     {
-        $form = $this->createForm(new BarsType(), $entity, array(
-            'action' => $this->generateUrl('bars_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new BarType(), $entity, array(
+            'action' => $this->generateUrl('bar_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -151,17 +151,17 @@ class BarsController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Bars entity.
+     * Edits an existing Bar entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ReservationsCoreBundle:Bars')->find($id);
+        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bars entity.');
+            throw $this->createNotFoundException('Unable to find Bar entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -171,17 +171,17 @@ class BarsController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bars_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('bar_edit', array('id' => $id)));
         }
 
-        return $this->render('ReservationsFrontendBundle:Bars:edit.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Bars entity.
+     * Deletes a Bar entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -191,21 +191,21 @@ class BarsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ReservationsCoreBundle:Bars')->find($id);
+            $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Bars entity.');
+                throw $this->createNotFoundException('Unable to find Bar entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('bars'));
+        return $this->redirect($this->generateUrl('bar'));
     }
 
     /**
-     * Creates a form to delete a Bars entity by id.
+     * Creates a form to delete a Bar entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -214,7 +214,7 @@ class BarsController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('bars_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('bar_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

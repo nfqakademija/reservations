@@ -1,5 +1,5 @@
-reservations_frontend_bars:
-    resource: "@ReservationsFrontendBundle/Resources/config/routing/bars.yml"
+reservations_frontend_bar:
+    resource: "@ReservationsFrontendBundle/Resources/config/routing/bar.yml"
     prefix:   /bars
 
 

@@ -1,0 +1,30 @@
+bar:
+    path:     /
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:index" }
+
+bar_show:
+    path:     /{id}/show
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:show" }
+
+bar_new:
+    path:     /new
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:new" }
+
+bar_create:
+    path:     /create
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:create" }
+    requirements: { _method: post }
+
+bar_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:edit" }
+
+bar_update:
+    path:     /{id}/update
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:update" }
+    requirements: { _method: post|put }
+
+bar_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ReservationsFrontendBundle:Bar:delete" }
+    requirements: { _method: post|delete }

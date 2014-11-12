@@ -5,12 +5,12 @@ namespace Reservations\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Bars
+ * Bar
  *
  * @ORM\Table(name="bars")
  * @ORM\Entity
  */
-class Bars
+class Bar
 {
     /**
      * @var integer
@@ -78,7 +78,7 @@ class Bars
      * Set name
      *
      * @param string $name
-     * @return Bars
+     * @return Bar
      */
     public function setName($name)
     {
@@ -101,7 +101,7 @@ class Bars
      * Set description
      *
      * @param string $description
-     * @return Bars
+     * @return Bar
      */
     public function setDescription($description)
     {
@@ -124,7 +124,7 @@ class Bars
      * Set photo
      *
      * @param string $photo
-     * @return Bars
+     * @return Bar
      */
     public function setPhoto($photo)
     {
@@ -147,7 +147,7 @@ class Bars
      * Set address
      *
      * @param string $address
-     * @return Bars
+     * @return Bar
      */
     public function setAddress($address)
     {
@@ -170,7 +170,7 @@ class Bars
      * Set city
      *
      * @param string $city
-     * @return Bars
+     * @return Bar
      */
     public function setCity($city)
     {
@@ -193,7 +193,7 @@ class Bars
      * Set seats
      *
      * @param integer $seats
-     * @return Bars
+     * @return Bar
      */
     public function setSeats($seats)
     {

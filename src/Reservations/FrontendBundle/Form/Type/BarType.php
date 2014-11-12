@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BarsType extends AbstractType
+class BarType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -30,7 +30,7 @@ class BarsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Reservations\CoreBundle\Entity\Bars'
+            'data_class' => 'Reservations\CoreBundle\Entity\Bar'
         ));
     }
 
@@ -39,6 +39,6 @@ class BarsType extends AbstractType
      */
     public function getName()
     {
-        return 'reservations_corebundle_bars';
+        return 'reservations_corebundle_bar';
     }
 }
