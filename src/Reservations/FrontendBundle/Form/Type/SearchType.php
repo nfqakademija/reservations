@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BarType extends AbstractType
+class SearchType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,24 +15,21 @@ class BarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('photo')
-            ->add('address')
-            ->add('city')
-            ->add('seats')
-            ->add('lat')
-            ->add('lng')
+            ->add('name', 'text', array(
+                    'attr' => array(
+                        'class' => 'form-control'
+                    )
+                ))
         ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Reservations\CoreBundle\Entity\Bar'
+            'data_class' => 'Reservations\CoreBundle\Entity\Bars'
         ));
     }
 
@@ -41,6 +38,6 @@ class BarType extends AbstractType
      */
     public function getName()
     {
-        return 'reservations_corebundle_bar';
+        return 'reservations_corebundle_search';
     }
 }

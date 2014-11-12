@@ -3,5 +3,35 @@
 {% block title %}Akcijos{% endblock %}
 
 {% block body %}
-    Akcijų page
+    <div id="map" style="height: 400px;"></div>
+
+    <form action="{{ path('reservations_core_homepage') }}" method="post">
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form._token) }}
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Paieska</button>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var map;
+        $(document).ready(function(){
+            map = new GMaps({
+                div: '#map',
+                lat: 54.9010005,
+                lng: 23.8988132
+            });
+            {% for bar in bars %}
+            map.addMarker({
+                lat: {{ bar.lat }},
+                lng: {{ bar.lng }},
+                title: '{{ bar.name }}',
+                infoWindow: {
+                    content: '<p>HTML Content</p>'
+                }
+            });
+            {% endfor %}
+        });
+    </script>
 {% endblock %}
