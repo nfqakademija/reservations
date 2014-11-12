@@ -1,10 +1,10 @@
 services:
-    reservations_user.registration.form.type:
+    reservations.frontend.form.type.registration:
         class: Reservations\FrontendBundle\Form\Type\RegistrationFormType
         tags:
             - { name: form.type, alias: reservations_user_registration }
 
-    reservations_user.profile.form.type:
+    reservations.frontend.form.type.profile:
         class: Reservations\FrontendBundle\Form\Type\ProfileFormType
         tags:
             - { name: form.type, alias: reservations_user_profile }
