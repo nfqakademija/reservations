@@ -29,7 +29,7 @@ class SearchType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Reservations\CoreBundle\Entity\Bars'
+            'data_class' => 'Reservations\CoreBundle\Entity\Bar'
         ));
     }
 
