@@ -4,7 +4,7 @@ parameters:
     database_port:     ~
     database_name:     reservations
     database_user:     root
-    database_password: 123
+    database_password:
 
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
@@ -14,7 +14,7 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
-    locale:            en
+    locale:            lt
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     debug_toolbar:          true
