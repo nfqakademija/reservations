@@ -3,14 +3,22 @@
 {% block title %}Akcijos{% endblock %}
 
 {% block body %}
-    <div id="map" style="height: 400px;"></div>
-
-    <form action="{{ path('reservations_core_homepage') }}" method="post">
-        {{ form_widget(form.name) }}
-        {{ form_errors(form.name) }}
-        {{ form_widget(form._token) }}
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Paieska</button>
-    </form>
+    <div id="container">
+        Menu placeholder
+        <div id="search">
+            <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
+                <div class="input-group">
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span> Ieškoti</button>
+                    </span>
+                </div><!-- /input-group -->
+                {{ form_widget(form._token) }}
+            </form>
+        </div>
+        <div id="map"></div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -28,7 +36,7 @@
                 lng: {{ bar.lng }},
                 title: '{{ bar.name }}',
                 infoWindow: {
-                    content: '<p>HTML Content</p>'
+                    content: '<p>{{ bar.name }}</p>'
                 }
             });
             {% endfor %}

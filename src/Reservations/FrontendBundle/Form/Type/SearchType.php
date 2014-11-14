@@ -17,7 +17,7 @@ class SearchType extends AbstractType
         $builder
             ->add('name', 'text', array(
                     'attr' => array(
-                        'class' => 'form-control'
+                        'class' => 'form-control input-lg'
                     )
                 ))
         ;
