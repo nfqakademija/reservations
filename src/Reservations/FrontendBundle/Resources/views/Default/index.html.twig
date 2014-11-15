@@ -4,7 +4,6 @@
 
 {% block body %}
     <div id="container">
-        Menu placeholder
         <div id="search">
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
@@ -16,6 +15,15 @@
                 </div><!-- /input-group -->
                 {{ form_widget(form._token) }}
             </form>
+            {% if bars is empty %}
+                <div class="alert alert-danger" role="alert" data-dismiss="alert">
+                    Nėra
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+            {% endif %}
         </div>
         <div id="map"></div>
     </div>
@@ -31,12 +39,9 @@
                 lng: 23.8988132
             });
             {% for bar in bars %}
-            map.addMarker({
-                lat: {{ bar.lat }},
-                lng: {{ bar.lng }},
-                title: '{{ bar.name }}',
+            map.addMarker({ lat: {{ bar.lat }}, lng: {{ bar.lng }}, title: '{{ bar.name }}',
                 infoWindow: {
-                    content: '<p>{{ bar.name }}</p>'
+                    content: '{{ bar.name }}'
                 }
             });
             {% endfor %}

@@ -11,23 +11,15 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $bar = new Bar();
         $em = $this->getDoctrine()->getManager();
         $bars = $em->getRepository('ReservationsCoreBundle:Bar')->findAll();
 
-        $form = $this->createForm(new SearchType(), $bar);
+        $form = $this->createForm(new SearchType(), new Bar());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $search = $form->get('name')->getData();
-
-            $repo = $em->getRepository('ReservationsCoreBundle:Bar');
-            $query = $repo->createQueryBuilder('b')
-                ->where('b.name LIKE :name')
-                ->setParameter('name', '%'.$search.'%')
-                ->getQuery();
-
-            $bars = $query->getResult();
+            $bars = $em->getRepository('ReservationsCoreBundle:Bar')->searchQuery($search);
         }
 
         return $this->render('ReservationsFrontendBundle:Default:index.html.twig', array(
