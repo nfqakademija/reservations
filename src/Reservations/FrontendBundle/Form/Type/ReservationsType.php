@@ -16,7 +16,7 @@ class ReservationsType extends AbstractType
     {
         $builder
             ->add('peopleAmount')
-            ->add('date', 'text')
+            ->add('date', 'date', array('widget' => 'single_text'))
             ->add('time')
             ->add('name')
             ->add('email')

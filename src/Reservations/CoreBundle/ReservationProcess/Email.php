@@ -1,8 +1,8 @@
 <?php
 
-namespace Reservations\FrontendBundle\Service;
+namespace Reservations\CoreBundle\ReservationProcess;
 
-class SendMailService
+class Email
 {
     protected $mailer;
 

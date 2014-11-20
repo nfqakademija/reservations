@@ -2,11 +2,11 @@
 
 namespace Reservations\FrontendBundle\Controller;
 
-use Reservations\CoreBundle\Entity\Reservations;
-use Reservations\FrontendBundle\Form\Type\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Reservations\CoreBundle\Entity\Bar;
+use Reservations\CoreBundle\Entity\Reservations;
+use Reservations\FrontendBundle\Form\Type\SearchType;
 use Reservations\FrontendBundle\Form\Type\ReservationsType;
 
 class DefaultController extends Controller
@@ -42,12 +42,12 @@ class DefaultController extends Controller
         $reservations = $em->getRepository('ReservationsCoreBundle:Reservations')->findByBarId($bar->getId());
 
         if (!$bar) {
-            throw $this->createNotFoundException('No advert');
+            throw $this->createNotFoundException('No bar');
         }
 
         $reservation = new Reservations();
         $reservation->setBarId($id);
-        $reservation->setCode(rand(1000, 9999));
+        $reservation->setCode(rand(10000, 99999));
 
         $form = $this->createForm(new ReservationsType(), $reservation);
         $form->handleRequest($request);
@@ -55,7 +55,7 @@ class DefaultController extends Controller
             $em->persist($reservation);
             $em->flush();
 
-            $this->get('reservations.frontend.mail.send')->sendMail(
+            $this->get('reservations.core.reservation.email')->sendMail(
                 $reservation->getEmail(),
                 $reservation->getCode()
             );

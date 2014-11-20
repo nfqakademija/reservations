@@ -1,4 +1,4 @@
 services:
-#    reservations_core.example:
-#        class: Reservations\CoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    reservations.core.reservation.email:
+        class: Reservations\CoreBundle\ReservationProcess\Email
+        arguments: [ @mailer ]

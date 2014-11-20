@@ -8,7 +8,3 @@ services:
         class: Reservations\FrontendBundle\Form\Type\ProfileFormType
         tags:
             - { name: form.type, alias: reservations_user_profile }
-
-    reservations.frontend.mail.send:
-        class: Reservations\FrontendBundle\Service\SendMailService
-        arguments: [ @mailer ]
