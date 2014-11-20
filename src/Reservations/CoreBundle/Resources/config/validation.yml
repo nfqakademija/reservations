@@ -3,59 +3,149 @@ Reservations\CoreBundle\Entity\User:
     properties:
         email:
             - NotBlank:
-                message: "Negali būti tuščias laukas"
+                message: "User.email.NotBlank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
-                minMessage: "Per trumpas el. paštas"
+                minMessage: "User.email.Length.minMessage"
                 max: 255
-                maxMessage: "Per ilgas el. paštas"
+                maxMessage: "User.email.Email.maxMessage"
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Email:
-                message: "Blogai nurodytas el. paštas"
+                message: "User.email.Email"
                 groups: [ "reservations_registration", "reservations_profile" ]
 
         plainPassword:
             - NotBlank:
-                message: "Negali būti tuščias laukas"
+                message: "User.plainPassword.NotBlank"
                 groups: [ "reservations_registration", "ResetPassword", "ChangePassword" ]
             - Length:
                 min: 2
-                minMessage: "Per trumpas slaptažodis"
+                minMessage: "User.plainPassword.Length.minMessage"
                 groups: [ "reservations_registration", "reservations_profile", "ResetPassword", "ChangePassword" ]
 
         firstName:
             - NotBlank:
-                message: "Negali būti tuščias laukas"
+                message: "User.firstName.NotBlank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
-                minMessage: "Per trumpas vardas"
+                minMessage: "User.firstName.Length.minMessage"
                 max: 255
-                maxMessage: "Per ilgas vardas"
+                maxMessage: "User.firstName.Length.maxMessage"
                 groups: [ "reservations_registration", "ResetPassword" ]
 
         lastName:
             - NotBlank:
-                message: "Negali būti tuščias laukas"
+                message: "User.laststName.NotBlank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
-                minMessage: "Per trumpas vardas"
+                minMessage: "User.laststName.Length.minMessage"
                 max: 255
-                maxMessage: "Per ilgas vardas"
+                maxMessage: "User.laststName.Length.maxMessage"
                 groups: [ "reservations_registration", "ResetPassword" ]
 
         phone:
             - NotBlank:
-                message: "Negali būti tuščias laukas"
+                message: "User.phone.NotBlank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 6
-                minMessage: "Per trumpas telefono numeris"
+                minMessage: "User.phone.Length.minMessage"
                 max: 255
-                maxMessage: "Per ilgas telefono numeris"
+                maxMessage: "User.phone.Length.maxMessage"
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Type:
                 type: integer
-                message: "Ne numeris"
+                message: "User.phone.Type"
+                
+# Bar validation
+Reservations\CoreBundle\Entity\Bar:
+    properties:
+       name:
+           - NotBlank:
+                message: "Bar.name.NotBlank"
+            - Length:
+                min: 6
+                minMessage: "Bar.name.Length.minMessage"
+                max: 255
+                maxMessage: "Bar.name.Length.maxMessage"
+            - Type:
+                type: string
+                message: "Bar.name.Type"
+       
+       
+       description:
+           - NotBlank:
+                message: "Bar.description.NotBlank"
+            - Length:
+                min: 6
+                minMessage: "Bar.description.Length.minMessage"
+            - Type:
+                type: string
+                message: "Bar.description.Type"
+       
+       
+       address:
+           - NotBlank:
+                message: "Bar.address.NotBlank"
+            - Length:
+                min: 6
+                minMessage: "Bar.address.Length.minMessage"
+                max: 255
+                maxMessage: "Bar.address.Length.maxMessage"
+            - Type:
+                type: string
+                message: "Bar.address.Type"
+       
+       
+       city:
+           - NotBlank:
+                message: "Bar.city.NotBlank"
+            - Length:
+                min: 6
+                minMessage: "Bar.city.Length.minMessage"
+                max: 255
+                maxMessage: "Bar.city.Length.maxMessage"
+            - Type:
+                type: string
+                message: "Bar.city.Type"
+              
+       seats:
+           - NotBlank:
+                message: "Bar.seats.NotBlank"
+            - Length:
+                min: 1
+                minMessage: "Bar.seats.Length"
+                max: 255
+                maxMessage: "Bar.seats.Length.maxMessage"
+            - Type:
+                type: integer
+                message: "Bar.seats.Type"       
+       
+       lat:
+           - NotBlank:
+                message: "Bar.lat.NotBlank"
+            - Length:
+                min: 1
+                minMessage: "Bar.lat.Length.minMessage"
+                max: 255
+                maxMessage: "Bar.lat.Length.maxMessage"
+            - Type:
+                type: string
+                message: "Bar.lat.Type"
+       
+       
+       lng:
+           - NotBlank:
+                message: "Bar.lng.NotBlank"
+            - Length:
+                min: 1
+                minMessage: "Bar.lng.Length.minMessage"
+                max: 255
+                maxMessage: "Bar.lng.Length.maxMessage"
+            - Type:
+                type: string
+                message: "Bar.lng.Type"
+       

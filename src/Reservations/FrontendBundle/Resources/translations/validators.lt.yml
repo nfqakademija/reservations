@@ -1,0 +1,55 @@
+User.email.NotBlank: Negali būti tuščias laukas.
+User.email.Length.minMessage: Per trumpas el. paštas.
+User.email.Email.maxMessage: Per ilgas el. paštas.
+User.email.Email: Blogai nurodytas el. paštas.
+
+User.plainPassword.NotBlank: Negali būti tuščias laukas.
+User.plainPassword.Length.minMessage: Per trumpas slaptažodis.
+
+User.firstName.NotBlank: Negali būti tuščias laukas.
+User.firstName.Length.minMessage: Per trumpas vardas.
+User.firstName.Length.maxMessage: Per ilgas vardas.
+
+User.laststName.NotBlank: Negali būti tuščias laukas.
+User.laststName.Length.minMessage: Per trumpas vardas.
+User.laststName.Length.maxMessage: Per ilgas vardas.
+
+User.phone.NotBlank: Negali būti tuščias laukas.
+User.phone.Length.minMessage: Per trumpas telefono numeris.
+User.phone.Length.maxMessage: Per ilgas telefono numeris.
+User.phone.Type: Ne numeris.
+
+Bar.name.NotBlank: Negali būti tuščias laukas.
+Bar.name.Length.minMessage: Per trumpas baro pavadinimas.
+Bar.name.Length.maxMessage: Per ilgas baro pavadinimas.
+Bar.name.Type: Ne simbolis.
+
+Bar.description.NotBlank: Negali būti tuščias laukas.
+Bar.description.Length.minMessage: Per trumpas aprašymas.
+Bar.description.Type: Ne simbolis.
+
+Bar.address.NotBlank: Negali būti tuščias laukas.
+Bar.address.Length.minMessage: Per trumpas adresas.
+Bar.address.Length.maxMessage: Per ilgas adresas.
+Bar.address.Type: Ne simbolis.
+
+Bar.city.NotBlank: Negali būti tuščias laukas.
+Bar.city.Length.minMessage: Per trumpas miestas.
+Bar.city.Length.maxMessage: Per ilgas miestas.
+Bar.city.Type: Ne simbolis.
+
+Bar.seats.NotBlank: Negali būti tuščias laukas.
+Bar.seats.Length.minMessage: Per trumpas.
+Bar.seats.Length.maxMessage: Per ilgas.
+Bar.seats.Type: Ne numeris.
+
+Bar.lat.NotBlank: Negali būti tuščias laukas.
+Bar.lat.Length.minMessage: Per trumpas.
+Bar.lat.Length.maxMessage: Per ilgas.
+Bar.lat.Type: Ne simbolis.
+
+Bar.lng.NotBlank: Negali būti tuščias laukas.
+Bar.lng.Length.minMessage: Per trumpas.
+Bar.lng.Length.maxMessage: Per ilgas.
+Bar.lng.Type: Ne simbolis.
+
