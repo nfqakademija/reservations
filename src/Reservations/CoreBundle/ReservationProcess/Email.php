@@ -2,27 +2,35 @@
 
 namespace Reservations\CoreBundle\ReservationProcess;
 
+use Reservations\CoreBundle\Entity\Reservations;
+
 class Email
 {
-    protected $mailer;
+    private $mailer;
+    private $twig;
 
-    public function __construct(\Swift_Mailer $mailer)
+    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig)
     {
         $this->mailer = $mailer;
+        $this->twig = $twig;
     }
 
     /**
-     * Send generated code to customer
-     * @param $to
-     * @param $code
+     * Send email
+     * @param Reservations $reservation
      */
-    public function sendMail($to, $code)
+    public function sendMail(Reservations $reservation)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject('Hello Email')
             ->setFrom('send@example.com')
-            ->setTo($to)
-            ->setBody('translate file: '.$code)
+            ->setTo($reservation->getEmail())
+            ->setBody(
+                $this->twig->render('ReservationsFrontendBundle:Mail:send.html.twig', array(
+                    'code' => $reservation->getCode(),
+                    'name' => $reservation->getName(),
+                ))
+            )
         ;
 
         $this->mailer->send($message);

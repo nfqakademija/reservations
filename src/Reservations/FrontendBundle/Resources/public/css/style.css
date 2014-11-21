@@ -23,4 +23,6 @@ body {
     height: 100%;
 }
 
-#ui-datepicker-div {z-index: 1000 !important}
+#ui-datepicker-div {
+    z-index: 9999;
+}

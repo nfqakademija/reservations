@@ -1,31 +1,40 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Akcijos{% endblock %}
+{% block title %}translate{% endblock %}
 
 {% block body %}
     <div id="container">
         <div id="search">
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
-                    {{ form_widget(form.name) }}
-                    {{ form_errors(form.name) }}
+                    <input type="text" name="name" class="form-control input-lg" placeholder="Įveskite pavadinimą ar adresą" />
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span> Ieškoti</button>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-search"></span>
+                            Ieškoti
+                        </button>
                     </span>
-                </div><!-- /input-group -->
-                {{ form_widget(form._token) }}
+                </div>
             </form>
             {% if bars is empty %}
                 <div class="alert alert-danger" role="alert" data-dismiss="alert">
                     Nėra
                     <button type="button" class="close" data-dismiss="alert">
                         <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
                     </button>
                 </div>
             {% endif %}
         </div>
         <div id="map"></div>
+    </div>
+
+    {# reservation window modal #}
+    <div class="modal fade" id="reservation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {{ "reservations.frontend.reservation.loading"|trans }}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -33,6 +42,11 @@
     <script type="text/javascript">
         var map;
         $(document).ready(function(){
+            $('body').on('hidden.bs.modal', '.modal', function () {
+                $(this).removeData('bs.modal')
+                        .find(".modal-content").empty()
+                        .html('{{ "reservations.frontend.reservation.loading"|trans }}');
+            });
             map = new GMaps({
                 div: '#map',
                 lat: 54.9010005,
@@ -41,7 +55,7 @@
             {% for bar in bars %}
             map.addMarker({ lat: {{ bar.lat }}, lng: {{ bar.lng }}, title: '{{ bar.name }}',
                 infoWindow: {
-                    content: '{{ bar.name }}'
+                    content: '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary" data-toggle="modal" data-target="#reservation">Rezervuoti</button>'
                 }
             });
             {% endfor %}

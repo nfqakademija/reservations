@@ -15,12 +15,19 @@ class ReservationsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('peopleAmount')
-            ->add('date', 'date', array('widget' => 'single_text'))
-            ->add('time')
+            ->add('peopleAmount', 'choice', array(
+                    'choices' => $this->getChoices(),
+                    'empty_value' => 'reservations.frontend.reservation.choice'
+                ))
+            ->add('date', 'date', array(
+                    'widget' => 'single_text'
+                ))
+            ->add('time', 'time', array(
+                    'with_minutes' => false,
+                    'empty_value' => 'reservations.frontend.reservation.choice'
+                ))
             ->add('name')
             ->add('email')
-            ->add('save', 'submit', array('label' => 'Create Task'))
         ;
     }
     
@@ -40,5 +47,18 @@ class ReservationsType extends AbstractType
     public function getName()
     {
         return 'reservations_corebundle_reservations';
+    }
+
+    /**
+     * Make array of integer choices
+     * @return array
+     */
+    private function getChoices()
+    {
+        $choices = array();
+        for ($i = 1; $i <= 15; $i++) {
+            $choices[$i] = $i;
+        }
+        return $choices;
     }
 }

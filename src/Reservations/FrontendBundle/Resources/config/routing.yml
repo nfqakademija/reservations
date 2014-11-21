@@ -5,5 +5,5 @@ reservations_frontend_bar:
 
 reservations_frontend_homepage:
     path:     /hello/{name}
-    defaults: { _controller: ReservationsFrontendBundle:Default:index }
+    defaults: { _controller: ReservationsFrontendBundle:Search:index }
 

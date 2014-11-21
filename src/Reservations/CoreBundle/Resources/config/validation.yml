@@ -61,91 +61,91 @@ Reservations\CoreBundle\Entity\User:
                 message: "User.phone.Type"
                 
 # Bar validation
-Reservations\CoreBundle\Entity\Bar:
-    properties:
-       name:
-           - NotBlank:
-                message: "Bar.name.NotBlank"
-            - Length:
-                min: 6
-                minMessage: "Bar.name.Length.minMessage"
-                max: 255
-                maxMessage: "Bar.name.Length.maxMessage"
-            - Type:
-                type: string
-                message: "Bar.name.Type"
-       
-       
-       description:
-           - NotBlank:
-                message: "Bar.description.NotBlank"
-            - Length:
-                min: 6
-                minMessage: "Bar.description.Length.minMessage"
-            - Type:
-                type: string
-                message: "Bar.description.Type"
-       
-       
-       address:
-           - NotBlank:
-                message: "Bar.address.NotBlank"
-            - Length:
-                min: 6
-                minMessage: "Bar.address.Length.minMessage"
-                max: 255
-                maxMessage: "Bar.address.Length.maxMessage"
-            - Type:
-                type: string
-                message: "Bar.address.Type"
-       
-       
-       city:
-           - NotBlank:
-                message: "Bar.city.NotBlank"
-            - Length:
-                min: 6
-                minMessage: "Bar.city.Length.minMessage"
-                max: 255
-                maxMessage: "Bar.city.Length.maxMessage"
-            - Type:
-                type: string
-                message: "Bar.city.Type"
-              
-       seats:
-           - NotBlank:
-                message: "Bar.seats.NotBlank"
-            - Length:
-                min: 1
-                minMessage: "Bar.seats.Length"
-                max: 255
-                maxMessage: "Bar.seats.Length.maxMessage"
-            - Type:
-                type: integer
-                message: "Bar.seats.Type"       
-       
-       lat:
-           - NotBlank:
-                message: "Bar.lat.NotBlank"
-            - Length:
-                min: 1
-                minMessage: "Bar.lat.Length.minMessage"
-                max: 255
-                maxMessage: "Bar.lat.Length.maxMessage"
-            - Type:
-                type: string
-                message: "Bar.lat.Type"
-       
-       
-       lng:
-           - NotBlank:
-                message: "Bar.lng.NotBlank"
-            - Length:
-                min: 1
-                minMessage: "Bar.lng.Length.minMessage"
-                max: 255
-                maxMessage: "Bar.lng.Length.maxMessage"
-            - Type:
-                type: string
-                message: "Bar.lng.Type"
-       
+#Reservations\CoreBundle\Entity\Bar:
+#    properties:
+#       name:
+#           - NotBlank:
+#                message: "Bar.name.NotBlank"
+#            - Length:
+#                min: 6
+#                minMessage: "Bar.name.Length.minMessage"
+#                max: 255
+#                maxMessage: "Bar.name.Length.maxMessage"
+#            - Type:
+#                type: string
+#                message: "Bar.name.Type"
+#
+#
+#       description:
+#           - NotBlank:
+#                message: "Bar.description.NotBlank"
+#            - Length:
+#                min: 6
+#                minMessage: "Bar.description.Length.minMessage"
+#            - Type:
+#                type: string
+#                message: "Bar.description.Type"
+#
+#
+#       address:
+#           - NotBlank:
+#                message: "Bar.address.NotBlank"
+#            - Length:
+#                min: 6
+#                minMessage: "Bar.address.Length.minMessage"
+#                max: 255
+#                maxMessage: "Bar.address.Length.maxMessage"
+#            - Type:
+#                type: string
+#                message: "Bar.address.Type"
+#
+#
+#       city:
+#           - NotBlank:
+#                message: "Bar.city.NotBlank"
+#            - Length:
+#                min: 6
+#                minMessage: "Bar.city.Length.minMessage"
+#                max: 255
+#                maxMessage: "Bar.city.Length.maxMessage"
+#            - Type:
+#                type: string
+#                message: "Bar.city.Type"
+#
+#       seats:
+#           - NotBlank:
+#                message: "Bar.seats.NotBlank"
+#            - Length:
+#                min: 1
+#                minMessage: "Bar.seats.Length"
+#                max: 255
+#                maxMessage: "Bar.seats.Length.maxMessage"
+#            - Type:
+#                type: integer
+#                message: "Bar.seats.Type"
+#
+#       lat:
+#           - NotBlank:
+#                message: "Bar.lat.NotBlank"
+#            - Length:
+#                min: 1
+#                minMessage: "Bar.lat.Length.minMessage"
+#                max: 255
+#                maxMessage: "Bar.lat.Length.maxMessage"
+#            - Type:
+#                type: string
+#                message: "Bar.lat.Type"
+#
+#
+#       lng:
+#           - NotBlank:
+#                message: "Bar.lng.NotBlank"
+#            - Length:
+#                min: 1
+#                minMessage: "Bar.lng.Length.minMessage"
+#                max: 255
+#                maxMessage: "Bar.lng.Length.maxMessage"
+#            - Type:
+#                type: string
+#                message: "Bar.lng.Type"
+#

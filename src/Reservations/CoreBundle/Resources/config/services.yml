@@ -1,4 +1,20 @@
+parameters:
+    reservations.core.search.bar.repository_name: ReservationsCoreBundle:Bar
+    reservations.core.reservation_process.repository_name: ReservationsCoreBundle:Reservations
+
 services:
-    reservations.core.reservation.email:
+    reservations.core.reservation_process.email:
         class: Reservations\CoreBundle\ReservationProcess\Email
-        arguments: [ @mailer ]
+        arguments: [ @mailer, @twig ]
+
+    reservations.core.reservation_process.reservation:
+        class: Reservations\CoreBundle\ReservationProcess\Reservation
+        arguments: [ @doctrine.orm.entity_manager, @reservations.core.reservation_process.email ]
+        calls:
+            - [setRepositoryName, [%reservations.core.reservation_process.repository_name%]]
+
+    reservations.core.search.bar:
+        class: Reservations\CoreBundle\Search\Bar
+        arguments: [ @doctrine.orm.entity_manager ]
+        calls:
+            - [setRepositoryName, [%reservations.core.search.bar.repository_name%]]

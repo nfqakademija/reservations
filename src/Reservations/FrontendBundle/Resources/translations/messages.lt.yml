@@ -3,3 +3,20 @@ reservations.frontend.password: Slaptažodis
 reservations.frontend.email: El. paštas
 reservations.frontend.login_page: Prisijungimas
 reservations.frontend.for_bussines: Verslui
+
+# Search page
+
+# Reservation
+reservations.frontend.reservation.reservation: Rezervacija
+reservations.frontend.reservation.reserve: Rezervuoti
+reservations.frontend.reservation.people_amount: Žmonių skaičius
+reservations.frontend.reservation.date: Date
+reservations.frontend.reservation.time: Laikas
+reservations.frontend.reservation.hours: Valandos
+reservations.frontend.reservation.minutes: Minutės
+reservations.frontend.reservation.email: El. paštas
+reservations.frontend.reservation.name: Vardas
+reservations.frontend.reservation.close: Uždaryti
+reservations.frontend.reservation.success: Rezervacija sėkminga! El. paštu nusiųstas specialus kodas
+reservations.frontend.reservation.loading: Kraunama...
+reservations.frontend.reservation.choice: - Pasirinkti -

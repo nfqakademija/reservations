@@ -1,0 +1,101 @@
+<form id="reservation-submit" class="form-horizontal" method="post">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ bar.name }} {{ "reservations.frontend.reservation.reservation"|trans }}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger hidden" role="alert"></div>
+        <div class="alert alert-success" role="alert">{{ "reservations.frontend.reservation.success"|trans }}</div>
+        <div class="form-show">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{ "reservations.frontend.reservation.people_amount"|trans }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.peopleAmount, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{ "reservations.frontend.reservation.date"|trans }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.date, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{ "reservations.frontend.reservation.hours"|trans }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.time.hour, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{ "reservations.frontend.reservation.email"|trans }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{ "reservations.frontend.reservation.name"|trans }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+            <div class="form-group">
+                <label class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <button type="submit" class="btn btn-primary">{{ "reservations.frontend.reservation.reserve"|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ "reservations.frontend.reservation.close"|trans }}</button>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.alert-success').hide();
+        $('#reservation-submit').submit(function(e) {
+            e.preventDefault();
+            $('.alert-danger').hide().empty();
+            $.post('{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}', $(this).serialize(), function(data) {
+                if (data.response == true) {
+                    $('.form-show').fadeOut(1000, function(){
+                        $('.alert-success').fadeIn();
+                    });
+                } else {
+                    // display errors
+                }
+            });
+        });
+
+        var array = [
+            {% for reservation in reservationsBusyDays %}
+            "{{ reservation.date|date('Y-m-d') }}",
+            {% endfor %}
+        ]
+        $('#reservations_corebundle_reservations_date').datepicker({
+            firstDay: 1,
+            dateFormat: 'yy-mm-dd',
+            showOtherMonths: true,
+            dayNamesMin: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
+            monthNames: [
+                'Sausis',
+                'Vasaris',
+                'Kovas',
+                'Balandis',
+                'Gegužė',
+                'Birželis',
+                'Liepa',
+                'Rugpjūtis',
+                'Rugsėjis',
+                'Spalis',
+                'Lapkritis',
+                'Gruodis'
+            ],
+            beforeShowDay: function(date){
+                var string = $.datepicker.formatDate('yy-mm-dd', date);
+                return [ array.indexOf(string) == -1 ]
+            }
+        });
+    });
+</script>

@@ -1,10 +1,13 @@
 reservations_core_homepage:
     path:     /
-    defaults: { _controller: ReservationsFrontendBundle:Default:index }
+    defaults: { _controller: ReservationsFrontendBundle:Search:index }
 
-reservations_core_showpage:
-    path:     /show/{id}
-    defaults: { _controller: ReservationsFrontendBundle:Default:show }
+#reservations_core_showpage:
+#    path:     /show/{id}
+#    defaults: { _controller: ReservationsFrontendBundle:Search:show }
 
+reservations_core_ajax_reservation:
+    path:     /ajax-reservation/{id}
+    defaults: { _controller: ReservationsFrontendBundle:Search:ajaxReservation }
 #reservations_core_control_panel:
 #    path:     /control-panel
