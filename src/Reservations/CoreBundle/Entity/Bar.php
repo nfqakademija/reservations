@@ -79,6 +79,13 @@ class Bar
     private $lng;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="tags", type="string", length=255)
+     */
+    private $tags;
+
+    /**
      * Get id
      *
      * @return integer
@@ -270,5 +277,28 @@ class Bar
     public function getLng()
     {
         return $this->lng;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     * @return Bar
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

@@ -1,9 +1,5 @@
-html {
+html, body {
     height: 100%
-}
-
-body {
-    height: 100%;
 }
 
 #container {
@@ -25,4 +21,15 @@ body {
 
 #ui-datepicker-div {
     z-index: 9999;
+}
+
+#about {
+    z-index: 100;
+    position: absolute;
+    top: 10%;
+    right: 0;
+}
+
+.font-size {
+    font-size: 38px;
 }

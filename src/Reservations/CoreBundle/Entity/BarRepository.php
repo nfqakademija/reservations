@@ -13,6 +13,7 @@ class BarRepository extends EntityRepository
             ->createQueryBuilder('b')
             ->where('b.name LIKE :name')
             ->orWhere('b.address LIKE :name')
+            ->orWhere('b.tags LIKE :name')
             ->setParameter('name', '%'.$name.'%')
             ->getQuery()
             ->getResult();
