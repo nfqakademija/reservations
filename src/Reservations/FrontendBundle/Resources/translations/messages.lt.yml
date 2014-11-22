@@ -5,6 +5,7 @@ reservations.frontend.login_page: Prisijungimas
 reservations.frontend.for_bussines: Verslui
 
 # Search page
+#reservations.frontend.search.
 
 # Reservation
 reservations.frontend.reservation.reservation: Rezervacija

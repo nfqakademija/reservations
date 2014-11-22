@@ -6,15 +6,20 @@ use Doctrine\ORM\EntityRepository;
 
 class BarRepository extends EntityRepository
 {
-    public function searchQuery($name)
+    /**
+     * Search bars by name, address, tags
+     * @param $search
+     * @return array
+     */
+    public function searchQuery($search)
     {
         return $this->getEntityManager()
             ->getRepository('ReservationsCoreBundle:Bar')
             ->createQueryBuilder('b')
-            ->where('b.name LIKE :name')
-            ->orWhere('b.address LIKE :name')
-            ->orWhere('b.tags LIKE :name')
-            ->setParameter('name', '%'.$name.'%')
+            ->where('b.name LIKE :search')
+            ->orWhere('b.address LIKE :search')
+            ->orWhere('b.tags LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
             ->getQuery()
             ->getResult();
     }

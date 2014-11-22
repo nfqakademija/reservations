@@ -29,6 +29,11 @@ class Reservation
         $this->repositoryName = $repositoryName;
     }
 
+    /**
+     * Get reservations by bar id
+     * @param $id
+     * @return null|object
+     */
     public function getReservationsByBarId($id)
     {
         $repository = $this->entityManager->getRepository($this->repositoryName);
@@ -36,6 +41,11 @@ class Reservation
         return $reservations;
     }
 
+    /**
+     * Set new reservation and send email
+     * @param Reservations $reservation
+     * @param              $id
+     */
     public function setReservation(Reservations $reservation, $id)
     {
         $reservation->setBarId($id);

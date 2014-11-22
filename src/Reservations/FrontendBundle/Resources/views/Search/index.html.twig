@@ -8,6 +8,11 @@
             <button type="button" class="btn btn-warning btn-lg font-size" data-toggle="modal" data-target="#about-modal">
                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
             </button>
+            <br />
+            <br />
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-warning btn-lg font-size">
+                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+            </a>
         </div>
         <div id="search">
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
