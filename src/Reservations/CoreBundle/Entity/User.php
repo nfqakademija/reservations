@@ -4,6 +4,7 @@ namespace Reservations\CoreBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -44,6 +45,15 @@ class User extends BaseUser
      */
     private $phone;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Reservations\CoreBundle\Entity\Bar", mappedBy="barId")
+     */
+    protected $bars;
+
+    public function __construct()
+    {
+        $this->bars = new ArrayCollection();
+    }
     /**
      * Get id
      *

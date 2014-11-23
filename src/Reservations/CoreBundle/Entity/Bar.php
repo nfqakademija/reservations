@@ -3,6 +3,7 @@
 namespace Reservations\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Bar
@@ -84,6 +85,24 @@ class Bar
      * @ORM\Column(name="tags", type="string", length=255)
      */
     private $tags;
+
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Reservations\CoreBundle\Entity\User", inversedBy="bars")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $userId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Reservations\CoreBundle\Entity\Reservations", mappedBy="barId")
+     */
+    protected $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     /**
      * Get id
