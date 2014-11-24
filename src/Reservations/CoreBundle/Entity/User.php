@@ -46,7 +46,7 @@ class User extends BaseUser
     private $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity="Reservations\CoreBundle\Entity\Bar", mappedBy="barId")
+     * @ORM\OneToMany(targetEntity="Reservations\CoreBundle\Entity\Bar", mappedBy="userId")
      */
     protected $bars;
 

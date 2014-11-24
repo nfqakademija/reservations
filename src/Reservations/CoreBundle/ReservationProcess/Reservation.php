@@ -9,7 +9,7 @@ class Reservation
 {
     private $entityManager;
     private $mailer;
-    protected $repositoryName;
+    private $repositoryName;
 
     /**
      * @param EntityManager $entityManager

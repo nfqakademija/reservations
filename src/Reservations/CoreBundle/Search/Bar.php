@@ -8,7 +8,7 @@ use Reservations\CoreBundle\Entity\BarRepository;
 class Bar
 {
     private $entityManager;
-    protected $repositoryName;
+    private $repositoryName;
 
     /**
      * @param EntityManager $entityManager
