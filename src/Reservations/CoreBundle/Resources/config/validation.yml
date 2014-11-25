@@ -1,151 +1,146 @@
-# Users validation
+# Users validation  
 Reservations\CoreBundle\Entity\User:
     properties:
         email:
             - NotBlank:
-                message: "User.email.NotBlank"
+                message: "user.email.not_blank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
-                minMessage: "User.email.Length.minMessage"
+                minMessage: "user.email.length.min_message"
                 max: 255
-                maxMessage: "User.email.Email.maxMessage"
+                maxMessage: "user.email.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Email:
-                message: "User.email.Email"
+                message: "user.email.email"
                 groups: [ "reservations_registration", "reservations_profile" ]
 
         plainPassword:
             - NotBlank:
-                message: "User.plainPassword.NotBlank"
+                message: "user.plain_password.not_blank"
                 groups: [ "reservations_registration", "ResetPassword", "ChangePassword" ]
             - Length:
                 min: 2
-                minMessage: "User.plainPassword.Length.minMessage"
+                minMessage: "user.plain_password.length.min_message"
                 groups: [ "reservations_registration", "reservations_profile", "ResetPassword", "ChangePassword" ]
 
         firstName:
             - NotBlank:
-                message: "User.firstName.NotBlank"
+                message: "user.first_name.not_blank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
-                minMessage: "User.firstName.Length.minMessage"
+                minMessage: "user.first_name.length.min_message"
                 max: 255
-                maxMessage: "User.firstName.Length.maxMessage"
+                maxMessage: "user.first_name.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
 
         lastName:
             - NotBlank:
-                message: "User.laststName.NotBlank"
+                message: "user.last_name.not_blank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 2
-                minMessage: "User.laststName.Length.minMessage"
+                minMessage: "user.last_name.length.min_message"
                 max: 255
-                maxMessage: "User.laststName.Length.maxMessage"
+                maxMessage: "user.last_name.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
 
         phone:
             - NotBlank:
-                message: "User.phone.NotBlank"
+                message: "user.phone.not_blank"
                 groups: [ "reservations_registration", "reservations_profile" ]
             - Length:
                 min: 6
-                minMessage: "User.phone.Length.minMessage"
+                minMessage: "user.phone.length.min_message"
                 max: 255
-                maxMessage: "User.phone.Length.maxMessage"
+                maxMessage: "user.phone.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Type:
                 type: integer
-                message: "User.phone.Type"
+                message: "user.phone.type"
                 
 # Bar validation
 #Reservations\CoreBundle\Entity\Bar:
-#    properties:
-#       name:
-#           - NotBlank:
-#                message: "Bar.name.NotBlank"
-#            - Length:
-#                min: 6
-#                minMessage: "Bar.name.Length.minMessage"
-#                max: 255
-#                maxMessage: "Bar.name.Length.maxMessage"
-#            - Type:
-#                type: string
-#                message: "Bar.name.Type"
-#
-#
-#       description:
-#           - NotBlank:
-#                message: "Bar.description.NotBlank"
-#            - Length:
-#                min: 6
-#                minMessage: "Bar.description.Length.minMessage"
-#            - Type:
-#                type: string
-#                message: "Bar.description.Type"
-#
-#
-#       address:
-#           - NotBlank:
-#                message: "Bar.address.NotBlank"
-#            - Length:
-#                min: 6
-#                minMessage: "Bar.address.Length.minMessage"
-#                max: 255
-#                maxMessage: "Bar.address.Length.maxMessage"
-#            - Type:
-#                type: string
-#                message: "Bar.address.Type"
-#
-#
-#       city:
-#           - NotBlank:
-#                message: "Bar.city.NotBlank"
-#            - Length:
-#                min: 6
-#                minMessage: "Bar.city.Length.minMessage"
-#                max: 255
-#                maxMessage: "Bar.city.Length.maxMessage"
-#            - Type:
-#                type: string
-#                message: "Bar.city.Type"
-#
-#       seats:
-#           - NotBlank:
-#                message: "Bar.seats.NotBlank"
-#            - Length:
-#                min: 1
-#                minMessage: "Bar.seats.Length"
-#                max: 255
-#                maxMessage: "Bar.seats.Length.maxMessage"
-#            - Type:
-#                type: integer
-#                message: "Bar.seats.Type"
-#
-#       lat:
-#           - NotBlank:
-#                message: "Bar.lat.NotBlank"
-#            - Length:
-#                min: 1
-#                minMessage: "Bar.lat.Length.minMessage"
-#                max: 255
-#                maxMessage: "Bar.lat.Length.maxMessage"
-#            - Type:
-#                type: string
-#                message: "Bar.lat.Type"
-#
-#
-#       lng:
-#           - NotBlank:
-#                message: "Bar.lng.NotBlank"
-#            - Length:
-#                min: 1
-#                minMessage: "Bar.lng.Length.minMessage"
-#                max: 255
-#                maxMessage: "Bar.lng.Length.maxMessage"
-#            - Type:
-#                type: string
-#                message: "Bar.lng.Type"
-#
+   properties:
+      name:
+         - NotBlank:
+      message: "bar.name.not_blank"
+         - Length:
+            min: 6
+            minMessage: "bar.name.length.min_message"
+            max: 255
+            maxMessage: "bar.name.length.max_message"
+         - Type:
+            type: string
+            message: "bar.name.type"
+
+   description:
+         - NotBlank:
+           message: "bar.description.not_blank"
+         - Length:
+           min: 6
+           minMessage: "bar.description.length.min_message"
+         - Type:
+           type: string
+           message: "bar.description.type"
+
+   address:
+         - NotBlank:
+         message: "bar.address.not_blank"
+         - Length:
+         min: 6
+         minMessage: "bar.address.length.min_message"
+         max: 255
+         maxMessage: "bar.address.length.max_message"
+         - Type:
+         type: string
+         message: "bar.address.type"
+
+   city:
+         - NotBlank:
+         message: "bar.city.not_blank"
+         - Length:
+         min: 6
+         minMessage: "bar.city.length.min_message"
+         max: 255
+         maxMessage: "bar.city.length.max_message"
+         - Type:
+         type: string
+         message: "bar.city.type"
+
+   seats:
+         - NotBlank:
+         message: "bar.seats.not_blank"
+         - Length:
+         min: 1
+         minMessage: "bar.seats.length.min_message"
+         max: 255
+         maxMessage: "bar.seats.length.max_message"
+         - Type:
+         type: integer
+         message: "bar.seats.type"
+
+    lat:
+         - NotBlank:
+         message: "bar.lat.not_blank"
+         - Length:
+         min: 1
+         minMessage: "bar.lat.length.min_message"
+         max: 255
+         maxMessage: "bar.lat.length.max_message"
+         - Type:
+         type: string
+         message: "bar.lat.type"
+
+    lng:
+         - NotBlank:
+         message: "bar.lng.not_blank"
+         - Length:
+         min: 1
+         minMessage: "bar.lng.length.min_message"
+         max: 255
+         maxMessage: "bar.lng.length.max_message"
+         - Type:
+         type: string
+         message: "bar.lng.type"

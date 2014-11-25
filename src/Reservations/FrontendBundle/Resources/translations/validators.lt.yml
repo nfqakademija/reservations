@@ -1,54 +1,54 @@
-User.email.NotBlank: Negali būti tuščias laukas.
-User.email.Length.minMessage: Per trumpas el. paštas.
-User.email.Email.maxMessage: Per ilgas el. paštas.
-User.email.Email: Blogai nurodytas el. paštas.
+user.email.not_blank: Negali būti tuščias laukas.
+user.email.length.min_message: Per trumpas el. paštas.
+user.email.length.max_message: Per ilgas el. paštas.
+user.email.email: Blogai nurodytas el. paštas. 
 
-User.plainPassword.NotBlank: Negali būti tuščias laukas.
-User.plainPassword.Length.minMessage: Per trumpas slaptažodis.
+user.plain_password.not_blank: Negali būti tuščias laukas.
+user.plain_password.length.min_message: Per trumpas slaptažodis.
 
-User.firstName.NotBlank: Negali būti tuščias laukas.
-User.firstName.Length.minMessage: Per trumpas vardas.
-User.firstName.Length.maxMessage: Per ilgas vardas.
+user.first_name.not_blank: Negali būti tuščias laukas.
+user.first_name.length.min_message: Per trumpas vardas.
+user.first_name.length.max_message: Per ilgas vardas.
 
-User.laststName.NotBlank: Negali būti tuščias laukas.
-User.laststName.Length.minMessage: Per trumpas vardas.
-User.laststName.Length.maxMessage: Per ilgas vardas.
+user.last_name.not_blank: Negali būti tuščias laukas.
+user.last_name.length.min_message: Per trumpas vardas.
+user.last_name.length.max_message: Per ilgas vardas.
 
-User.phone.NotBlank: Negali būti tuščias laukas.
-User.phone.Length.minMessage: Per trumpas telefono numeris.
-User.phone.Length.maxMessage: Per ilgas telefono numeris.
-User.phone.Type: Ne numeris.
+user.phone.not_blank: Negali būti tuščias laukas.
+user.phone.length.min_message: Per trumpas telefono numeris.
+user.phone.length.max_message: Per ilgas telefono numeris.
+user.phone.type: Ne numeris.
 
-Bar.name.NotBlank: Negali būti tuščias laukas.
-Bar.name.Length.minMessage: Per trumpas baro pavadinimas.
-Bar.name.Length.maxMessage: Per ilgas baro pavadinimas.
-Bar.name.Type: Ne simbolis.
+bar.name.not_blank: Negali būti tuščias laukas.
+bar.name.length.min_message: Per trumpas baro pavadinimas.
+bar.name.length.max_message: Per ilgas baro pavadinimas.
+bar.name.type: Ne simbolis.
 
-Bar.description.NotBlank: Negali būti tuščias laukas.
-Bar.description.Length.minMessage: Per trumpas aprašymas.
-Bar.description.Type: Ne simbolis.
+bar.description.not_blank: Negali būti tuščias laukas.
+bar.description.length.min_message: Per trumpas aprašymas.
+bar.description.type: Ne simbolis.
 
-Bar.address.NotBlank: Negali būti tuščias laukas.
-Bar.address.Length.minMessage: Per trumpas adresas.
-Bar.address.Length.maxMessage: Per ilgas adresas.
-Bar.address.Type: Ne simbolis.
+bar.address.not_blank: Negali būti tuščias laukas.
+bar.address.length.min_message: Per trumpas adresas.
+bar.address.length.max_message: Per ilgas adresas.
+bar.address.type: Ne simbolis.
 
-Bar.city.NotBlank: Negali būti tuščias laukas.
-Bar.city.Length.minMessage: Per trumpas miestas.
-Bar.city.Length.maxMessage: Per ilgas miestas.
-Bar.city.Type: Ne simbolis.
+bar.city.not_blank: Negali būti tuščias laukas.
+bar.city.length.min_message: Per trumpas miestas.
+bar.city.length.max_message: Per ilgas miestas.
+bar.city.type: Ne simbolis.
 
-Bar.seats.NotBlank: Negali būti tuščias laukas.
-Bar.seats.Length.minMessage: Per trumpas.
-Bar.seats.Length.maxMessage: Per ilgas.
-Bar.seats.Type: Ne numeris.
+bar.seats.not_blank: Negali būti tuščias laukas.
+bar.seats.length.min_message: Per trumpas.
+bar.seats.length.max_message: Per ilgas.
+bar.seats.type: Ne numeris.
 
-Bar.lat.NotBlank: Negali būti tuščias laukas.
-Bar.lat.Length.minMessage: Per trumpas.
-Bar.lat.Length.maxMessage: Per ilgas.
-Bar.lat.Type: Ne simbolis.
+bar.lat.not_blank: Negali būti tuščias laukas.
+bar.lat.length.min_message: Per trumpas.
+bar.lat.length.max_message: Per ilgas.
+bar.lat.type: Ne simbolis.
 
-Bar.lng.NotBlank: Negali būti tuščias laukas.
-Bar.lng.Length.minMessage: Per trumpas.
-Bar.lng.Length.maxMessage: Per ilgas.
-Bar.lng.Type: Ne simbolis.
+bar.lng.not_blank: Negali būti tuščias laukas.
+bar.lng.length.min_message: Per trumpas.
+bar.lng.length.max_message: Per ilgas.
+bar.lng.type: Ne simbolis.

@@ -1,11 +1,11 @@
-reservations.frontend.login: Prisijungti
+reservations.frontend.login: Prisijungti 
 reservations.frontend.password: Slaptažodis
 reservations.frontend.email: El. paštas
 reservations.frontend.login_page: Prisijungimas
 reservations.frontend.for_bussines: Verslui
 
 # Search page
-#reservations.frontend.search.
+#reservations.frontend.search: Ieškoti
 
 # Reservation
 reservations.frontend.reservation.reservation: Rezervacija
@@ -21,3 +21,4 @@ reservations.frontend.reservation.close: Uždaryti
 reservations.frontend.reservation.success: Rezervacija sėkminga! El. paštu nusiųstas specialus kodas
 reservations.frontend.reservation.loading: Kraunama...
 reservations.frontend.reservation.choice: - Pasirinkti -
+reservations.frontend.reservation.enter_name_or_address: Įveskite pavadinimą ar adresą
