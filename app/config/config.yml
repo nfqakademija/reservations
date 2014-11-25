@@ -71,8 +71,7 @@ swiftmailer:
 #    username:  "%mailer_user%"
 #    password:  "%mailer_password%"
     transport: gmail
-    host:      ~
-    username:      info.reservations.nfq@gmail.com
+    username:  info.reservations.nfq@gmail.com
     password:  ruduO2014
 #    spool:     { type: memory }
 
