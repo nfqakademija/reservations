@@ -4,6 +4,7 @@ namespace Reservations\CoreBundle\ReservationProcess;
 
 use Doctrine\ORM\EntityManager;
 use Reservations\CoreBundle\Entity\Reservations;
+use Reservations\CoreBundle\Entity\Bar;
 
 class Reservation
 {
@@ -48,7 +49,8 @@ class Reservation
      */
     public function setReservation(Reservations $reservation, $id)
     {
-        $reservation->setBarId($id);
+        $bar = $this->entityManager->getRepository('ReservationsCoreBundle:Bar')->find($id);
+        $reservation->setBarId($bar);
         $reservation->setCode(rand(10000, 99999));
 
         $this->entityManager->persist($reservation);

@@ -22,7 +22,7 @@ class Reservations
     private $id;
 
     /**
-     * @var integer
+     * @var Bar
      *
      * @ORM\ManyToOne(targetEntity="Reservations\CoreBundle\Entity\Bar", inversedBy="reservations")
      * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
