@@ -4,14 +4,7 @@
 
 {% block body %}
 
-    <div class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-            <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a></div>
-
-        <div class="navbar-collapse collapse" style="height: 1px;">
-
-        </div>
-    </div>
+    {% include 'ReservationsFrontendBundle:Reservations:header.html.twig' %}
 
     <div class="dialog">
         <div class="panel panel-default">
@@ -30,6 +23,7 @@
                         <input type="password" id="password" name="_password" required="required" class="form-controlspan1 form-control" />
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <a href="#">{{ "reservations.frontend.register"|trans }}</a>
                     <button type="submit" id="_submit" name="_submit" class="btn btn-primary pull-right">
                         {{ "reservations.frontend.login"|trans }}
                     </button>

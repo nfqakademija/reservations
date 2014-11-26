@@ -71,6 +71,12 @@ class Reservations
      */
     private $code;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status = 0;
 
     /**
      * Get id
@@ -85,7 +91,7 @@ class Reservations
     /**
      * Set barId
      *
-     * @param integer $barId
+     * @param Bar $barId
      * @return Reservation
      */
     public function setBarId($barId)
@@ -241,5 +247,28 @@ class Reservations
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Reservation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -1,6 +1,8 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}translate{% endblock %}
+{% block title %}
+    {{ "reservations.frontend.reservation.map"|trans }}
+{% endblock %}
 
 {% block body %}
     <div id="container">
@@ -10,25 +12,25 @@
             </button>
             <br />
             <br />
-            <a href="{{ path('fos_user_security_login') }}" class="btn btn-warning btn-lg font-size">
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg font-size">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
             </a>
         </div>
         <div id="search">
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
-                    <input type="text" name="name" class="form-control input-lg" placeholder="Įveskite pavadinimą ar adresą" />
+                    <input type="text" name="name" class="form-control input-lg" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search"></span>
-                            Ieškoti
+                            {{ "reservations.frontend.search"|trans }}
                         </button>
                     </span>
                 </div>
             </form>
             {% if bars is empty %}
                 <div class="alert alert-danger" role="alert" data-dismiss="alert">
-                    Nėra
+                    {{ "reservations.frontend.reservation.not_found"|trans }}
                     <button type="button" class="close" data-dismiss="alert">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -58,7 +60,9 @@
         <div class="modal fade" id="reservation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    {{ "reservations.frontend.reservation.loading"|trans }}
+                    <div class="text-center">
+                        <img id="loader" src="{{ asset('bundles/reservationsfrontend/images/loader.gif') }}" alt="" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,7 +86,9 @@
             {% for bar in bars %}
             map.addMarker({ lat: {{ bar.lat }}, lng: {{ bar.lng }}, title: '{{ bar.name }}',
                 infoWindow: {
-                    content: '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary" data-toggle="modal" data-target="#reservation">Rezervuoti</button>'
+                    content: '<div class="text-center"><h2><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></h2>' +
+                             '<div>{{ bar.address }}</div>' +
+                             '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button></div>'
                 }
             });
             {# google.maps.event.trigger(map.markers[{{ bar.id }}-1], 'click');#}

@@ -38,18 +38,17 @@ class Reservation
     public function getReservationsByBarId($id)
     {
         $repository = $this->entityManager->getRepository($this->repositoryName);
-        $reservations = $repository->find($id);
+        $reservations = $repository->findByBarId($id);
         return $reservations;
     }
 
     /**
      * Set new reservation and send email
      * @param Reservations $reservation
-     * @param              $id
+     * @param Bar          $bar
      */
-    public function setReservation(Reservations $reservation, $id)
+    public function setReservation(Reservations $reservation, Bar $bar)
     {
-        $bar = $this->entityManager->getRepository('ReservationsCoreBundle:Bar')->find($id);
         $reservation->setBarId($bar);
         $reservation->setCode(rand(10000, 99999));
 

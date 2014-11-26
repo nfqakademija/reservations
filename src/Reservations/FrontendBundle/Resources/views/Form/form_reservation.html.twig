@@ -41,7 +41,8 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label"></label>
                 <div class="col-sm-8">
-                    <button type="submit" class="btn btn-primary">{{ "reservations.frontend.reservation.reserve"|trans }}</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> {{ "reservations.frontend.reservation.reserve"|trans }}</button>
+                    <img id="loader" src="{{ asset('bundles/reservationsfrontend/images/loader.gif') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -54,9 +55,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.alert-success').hide();
+        $('#loader').hide();
         $('#reservation-submit').submit(function(e) {
             e.preventDefault();
             $('.alert-danger').hide().empty();
+            $('#loader').show();
             $.post('{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}', $(this).serialize(), function(data) {
                 if (data.response == true) {
                     $('.form-show').fadeOut(1000, function(){

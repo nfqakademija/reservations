@@ -1,52 +1,31 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Bar</h1>
+{% block title %}{{ bar.name }}{% endblock %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ entity.photo }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ entity.address }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ entity.city }}</td>
-            </tr>
-            <tr>
-                <th>Seats</th>
-                <td>{{ entity.seats }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block body %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('bar') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('bar_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div id="panorama" style="height: 400px;"></div>
+
+    <div class="dialog" style="max-width: 50%;">
+        <div class="panel panel-default">
+            <p class="panel-heading no-collapse">Sign In</p>
+            <div class="panel-body">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var panorama;
+        $(document).ready(function(){
+            panorama = GMaps.createPanorama({
+                el: '#panorama',
+                lat : {{ bar.lat }},
+                lng : {{ bar.lng }}
+            });
+        });
+    </script>
 {% endblock %}
