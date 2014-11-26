@@ -33,7 +33,7 @@ class Email
                 $this->twig->render('ReservationsFrontendBundle:Mail:send.html.twig', array(
                     'code' => $reservation->getCode(),
                     'name' => $reservation->getName(),
-                ))
+                )), 'text/html'
             )
         ;
 
