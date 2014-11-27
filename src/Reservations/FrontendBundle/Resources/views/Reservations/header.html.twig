@@ -12,10 +12,9 @@
                 {{ "reservations.frontend.for_bussines"|trans }}
             </a>
         </div>
-
-        {% if is_granted("ROLE_USER") %}
             <div class="navbar-collapse collapse" style="height: 1px;">
                 <ul id="main-menu" class="nav navbar-nav navbar-right">
+                    {% if is_granted("ROLE_USER") %}
                     <li class="dropdown hidden-xs">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span>
@@ -35,9 +34,11 @@
                             <li><a tabindex="-1" href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                         </ul>
                     </li>
+                    {% endif %}
+                    <li>
+                        <a href="{{ path('reservations_core_homepage') }}">{{ "reservations.frontend.dashboard.home"|trans }}</a>
+                    </li>
                 </ul>
             </div>
-        {% endif %}
-
     </div>
 </div>

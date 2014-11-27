@@ -59,7 +59,9 @@ Reservations\CoreBundle\Entity\User:
             - Type:
                 type: integer
                 message: "user.phone.type"
-                
+            - GreaterThan:
+                value: 0
+
 # Bar validation
 #Reservations\CoreBundle\Entity\Bar:
 #   properties:

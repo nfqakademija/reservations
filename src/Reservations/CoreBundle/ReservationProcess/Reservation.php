@@ -42,6 +42,16 @@ class Reservation
         return $reservations;
     }
 
+    public function getReservationsByStatus($barId, $status)
+    {
+        $repository = $this->entityManager->getRepository($this->repositoryName);
+        $waiting = $repository->findBy(array(
+            'barId' => $barId,
+            'status' => $status
+        ));
+        return $waiting;
+    }
+
     /**
      * Set new reservation and send email
      * @param Reservations $reservation
@@ -55,6 +65,20 @@ class Reservation
         $this->entityManager->persist($reservation);
         $this->entityManager->flush();
 
-        $this->mailer->sendMail($reservation);
+        $this->mailer->sendMail($reservation, 'Rezervacija', 'new_reservation');
+    }
+
+    /**
+     * Set status reservation
+     * @param $id
+     * @param $status
+     */
+    public function setStatus($id, $status)
+    {
+        $reservation = $this->entityManager->getRepository($this->repositoryName)->find($id);
+        $reservation->setStatus($status);
+        $this->entityManager->flush();
+
+        $this->mailer->sendMail($reservation, 'Rezervacijos patvirtinimas', 'confirm_reservation');
     }
 }

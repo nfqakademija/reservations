@@ -46,12 +46,13 @@ class User extends BaseUser
     private $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity="Reservations\CoreBundle\Entity\Bar", mappedBy="userId")
+     * @ORM\OneToOne(targetEntity="Reservations\CoreBundle\Entity\Bar", mappedBy="userId")
      */
-    protected $bars;
+    private $bars;
 
     public function __construct()
     {
+        parent::__construct();
         $this->bars = new ArrayCollection();
     }
     /**
@@ -143,5 +144,10 @@ class User extends BaseUser
     {
         $this->emailCanonical = $emailCanonical;
         $this->usernameCanonical = $emailCanonical;
+    }
+
+    public function getBars()
+    {
+        return $this->bars;
     }
 }

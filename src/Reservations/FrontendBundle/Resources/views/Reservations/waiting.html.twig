@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ "reservations.frontend.for_bussines"|trans }}{% endblock %}
+
+{% block body %}
+
+    {% include 'ReservationsFrontendBundle:Reservations:header.html.twig' %}
+    {% include 'ReservationsFrontendBundle:Reservations:navigation.html.twig' %}
+
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">{{ "reservations.frontend.dashboard.waiting"|trans }}</h1>
+        </div>
+        <div class="main-content">
+
+            <div class="panel panel-default">
+                <a href="#page-stats" class="panel-heading" data-toggle="collapse"></a>
+                <div id="page-stats" class="panel-collapse panel-body collapse in">
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>Žmonių skaičius</th>
+                            <th>Data</th>
+                            <th>Valanda</th>
+                            <th>Vardas</th>
+                            <th>El. paštas</th>
+                            <th>Kodas</th>
+                            <th></th>
+                        </tr>
+                        {% for reservation in reservations %}
+                            <tr>
+                                <td>{{ reservation.peopleAmount }}</td>
+                                <td>{{ reservation.date|date('Y-m-d') }}</td>
+                                <td>{{ reservation.time|date('H:i:s') }}</td>
+                                <td>{{ reservation.name }}</td>
+                                <td>{{ reservation.email }}</td>
+                                <td>{{ reservation.code }}</td>
+                                <td>
+                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'accept' }) }}"><i class="fa fa-check-square-o"></i> Patvirtinti</a>
+                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'cancel' }) }}" class="pull-right"><i class="fa fa-times"></i> Atšaukti</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

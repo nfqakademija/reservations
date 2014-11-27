@@ -18,10 +18,39 @@ class ReservationsController extends Controller
      */
     public function indexAction()
     {
-        //var_dump($this->getUser());
         return $this->render('ReservationsFrontendBundle:Reservations:index.html.twig', array(
 
         ));
+    }
+
+    /**
+     * Show waiting reservations
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function waitingAction()
+    {
+        $barId = $this->getUser()->getBars()->getId();
+        $reservations = $this->get('reservations.core.reservation_process.reservation');
+        $waitingReservations = $reservations->getReservationsByStatus($barId, 0);
+        return $this->render('ReservationsFrontendBundle:Reservations:waiting.html.twig', array(
+            'reservations' => $waitingReservations
+        ));
+    }
+
+    /**
+     * @param $id
+     * @param $status
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function changeStatusAction($id, $status)
+    {
+        $reservation = $this->get('reservations.core.reservation_process.reservation');
+        if ($status == 'accept') {
+            $reservation->setStatus($id, 2);
+        } elseif ($status == 'cancel') {
+            $reservation->setStatus($id, 1);
+        }
+        return $this->redirect($this->generateUrl('reservations_core_dashboard_reservations_waiting'));
     }
 
     /**
@@ -41,8 +70,10 @@ class ReservationsController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $reservations->setReservation($reservation, $bar);
-            return new JsonResponse(array('response' => true));
+            if ($request->isXmlHttpRequest()) {
+                $reservations->setReservation($reservation, $bar);
+                return new JsonResponse(array('response' => true));
+            }
         }
 
         return $this->render('ReservationsFrontendBundle:Form:form_reservation.html.twig', array(

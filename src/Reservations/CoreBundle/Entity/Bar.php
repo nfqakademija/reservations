@@ -89,7 +89,7 @@ class Bar
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Reservations\CoreBundle\Entity\User", inversedBy="bars")
+     * @ORM\OneToOne(targetEntity="Reservations\CoreBundle\Entity\User", inversedBy="bars")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $userId;

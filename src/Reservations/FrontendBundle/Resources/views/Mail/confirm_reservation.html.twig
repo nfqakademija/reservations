@@ -1,0 +1,21 @@
+<html lang="lt"><head>
+    <title>Email</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<style>
+	  body {background-color:lightgray; font-family: Tahoma, "Times New Roman", Times, serif;}
+	  h2   {color:blue}
+	  p    {color:green}
+	</style>
+</head>
+<body class=" theme-blue">
+    <div>
+        <h2>Sveiki, {{ reservation.name }}</h2>
+
+        <p>Jūsų rezervacija {{ reservation.barId.name }} buvo patvirtinta.</p>
+        <p>Jūsų rezervacijos kodas: <strong>{{ reservation.code }}</strong>.</p>
+
+        <p>Linkime geros dienos!</p>
+    </div>
+</body>
+</html>

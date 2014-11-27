@@ -22,17 +22,18 @@ class Email
     /**
      * Send email
      * @param Reservations $reservation
+     * @param              $subject
+     * @param              $way
      */
-    public function sendMail(Reservations $reservation)
+    public function sendMail(Reservations $reservation, $subject, $way)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
+            ->setSubject($subject)
+            ->setFrom('info.reservations.nfq@gmail.com')
             ->setTo($reservation->getEmail())
             ->setBody(
-                $this->twig->render('ReservationsFrontendBundle:Mail:send.html.twig', array(
-                    'code' => $reservation->getCode(),
-                    'name' => $reservation->getName(),
+                $this->twig->render('ReservationsFrontendBundle:Mail:'.$way.'.html.twig', array(
+                    'reservation' => $reservation
                 )), 'text/html'
             )
         ;

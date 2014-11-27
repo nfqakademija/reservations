@@ -15,7 +15,7 @@
                 {% endif %}
                 <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
                     <div class="form-group">
-                        <label>{{ "reservations.frontend.email"|trans }} </label>
+                        <label>{{ "reservations.frontend.email"|trans }}</label>
                         <input type="text" id="username" name="_username" required="required" class="form-control span12" />
                     </div>
                     <div class="form-group">
@@ -23,7 +23,7 @@
                         <input type="password" id="password" name="_password" required="required" class="form-controlspan1 form-control" />
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                    <a href="#">{{ "reservations.frontend.register"|trans }}</a>
+
                     <button type="submit" id="_submit" name="_submit" class="btn btn-primary pull-right">
                         {{ "reservations.frontend.login"|trans }}
                     </button>
@@ -31,6 +31,7 @@
                 </form>
             </div>
         </div>
+        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-lg btn-block">{{ "reservations.frontend.register"|trans }}</a>
     </div>
 
 

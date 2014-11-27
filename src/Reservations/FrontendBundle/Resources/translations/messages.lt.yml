@@ -1,11 +1,22 @@
 # Dashboard
 reservations.frontend.dashboard.reservations: Rezervacijos
+reservations.frontend.dashboard.waiting: Laukiančios rezervacijos
+reservations.frontend.dashboard.dashboard: Valdymas
+reservations.frontend.dashboard.success: Registracija sėkminga! Dabar galite naudotis mūsų paslauga
+reservations.frontend.dashboard.home: Pagrindinis puslapis
 
+# Login and register
 reservations.frontend.login: Prisijungti
 reservations.frontend.password: Slaptažodis
+reservations.frontend.name: Vardas
+reservations.frontend.last_name: Pavardė
 reservations.frontend.email: El. paštas
+reservations.frontend.phone: Telefonas
+reservations.frontend.password: Slaptažodis
+reservations.frontend.password_repeat: Pakartoti slaptažodį
 reservations.frontend.login_page: Prisijungimas
 reservations.frontend.register: Registracija
+reservations.frontend.register_button: Registracija
 reservations.frontend.for_bussines: Verslui
 
 # Search page
@@ -28,3 +39,5 @@ reservations.frontend.reservation.close: Uždaryti
 reservations.frontend.reservation.success: Rezervacija sėkminga! El. paštu nusiųstas specialus kodas
 reservations.frontend.reservation.loading: Kraunama...
 reservations.frontend.reservation.choice: - Pasirinkti -
+
+#reservations.frontend.reservation.choice: - Pasirinkti -

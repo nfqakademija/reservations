@@ -1,5 +1,17 @@
 <div class="sidebar-nav">
     <ul>
+        <li>
+            <a href="#" data-target=".reservations-menu" class="nav-header collapsed" data-toggle="collapse">
+                <i class="fa fa-glass"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}<i class="fa fa-collapse"></i>
+            </a>
+        </li>
+        <li>
+            <ul class="reservations-menu nav nav-list collapse">
+                <li><a href="{{ path('reservations_core_dashboard_reservations_waiting') }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.waiting"|trans }}</a></li>
+                <li><a href="{{ path('reservations_core_dashboard_reservations_waiting') }}"><span class="fa fa-caret-right"></span> Priimtos rezervacijos</a></li>
+                <li><a href="{{ path('reservations_core_dashboard_reservations_waiting') }}"><span class="fa fa-caret-right"></span> Atšauktos rezervacijos</a></li>
+            </ul>
+        </li>
         <li><a href="" class="nav-header"><i class="fa fa-glass"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}</a></li>
         <li><a href="" class="nav-header"><i class="fa fa-check-square-o"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}</a></li>
     </ul>

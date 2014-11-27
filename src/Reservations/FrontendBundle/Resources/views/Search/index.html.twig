@@ -76,7 +76,7 @@
             $('#reservation-modals').on('hidden.bs.modal', '.modal', function () {
                 $(this).removeData('bs.modal')
                         .find(".modal-content").empty()
-                        .html('{{ "reservations.frontend.reservation.loading"|trans }}');
+                        .html('<div class="text-center"><img id="loader" src="{{ asset('bundles/reservationsfrontend/images/loader.gif') }}" alt="" /></div>');
             });
             map = new GMaps({
                 div: '#map',

@@ -13,3 +13,11 @@ reservations_core_ajax_reservation:
 reservations_core_dashboard:
     path:     /dashboard
     defaults: { _controller: ReservationsFrontendBundle:Reservations:index }
+
+reservations_core_dashboard_reservations_waiting:
+    path:     /reservations/waiting
+    defaults: { _controller: ReservationsFrontendBundle:Reservations:waiting }
+
+reservations_core_dashboard_reservations_status:
+    path:     /reservations/{id}/{status}
+    defaults: { _controller: ReservationsFrontendBundle:Reservations:changeStatus }
