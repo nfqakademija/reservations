@@ -59,6 +59,7 @@ Reservations\CoreBundle\Entity\User:
             - Type:
                 type: integer
                 message: "user.phone.type"
+<<<<<<< HEAD:src/Reservations/FrontendBundle/Resources/config/validation.yml
             - GreaterThan:
                 value: 0
 
@@ -146,3 +147,83 @@ Reservations\CoreBundle\Entity\User:
 #         - Type:
 #         type: string
 #         message: "bar.lng.type"
+=======
+                
+Reservations\CoreBundle\Entity\Bar:
+  properties:
+    name:
+         - NotBlank: 
+             message: "bar.name.not_blank"
+         - Length:
+             min: 6 
+             minMessage: "bar.name.length.min_message"
+             max: 255
+             maxMessage: "bar.name.length.max_message"
+         - Type:
+             type: string
+             message: "bar.name.type"
+    description:
+        - NotBlank:
+           message: "bar.description.not_blank"
+        - Type:
+           type: string
+           message: "bar.description.type"
+        - Length:
+           min: 6
+           minMessage: "bar.description.length.min_message"
+    address:
+        - NotBlank:
+           message: "bar.address.not_blank"
+        - Length:
+           min: 6
+           minMessage: "bar.address.length.min_message"
+           max: 255
+           maxMessage: "bar.address.length.max_message"
+        - Type:
+           type: string
+           message: "bar.address.type"
+    city:
+        - NotBlank:
+           message: "bar.city.not_blank"
+        - Length:
+           min: 6
+           minMessage: "bar.city.length.min_message"
+           max: 255
+           maxMessage: "bar.city.length.max_message"
+        - Type:
+           type: string
+           message: "bar.city.type"
+    seats:
+        - NotBlank:
+           message: "bar.seats.not_blank"
+        - Length:
+           min: 1
+           minMessage: "bar.seats.length.min_message"
+           max: 255
+           maxMessage: "bar.seats.length.max_message"
+        - Type:
+           type: integer
+           message: "bar.seats.type"
+    lat:
+        - NotBlank:
+           message: "bar.lat.not_blank"
+        - Length:
+           min: 1
+           minMessage: "bar.lat.length.min_message"
+           max: 255
+           maxMessage: "bar.lat.length.max_message"
+        - Type:
+           type: string
+           message: "bar.lat.type"
+    lng:
+        - NotBlank:
+           message: "bar.lng.not_blank"
+        - Length:
+           min: 1
+           minMessage: "bar.lng.length.min_message"
+           max: 255
+           maxMessage: "bar.lng.length.max_message"
+        - Type: 
+           type: string
+           message: "bar.lng.type"
+>>>>>>> origin/master:src/Reservations/CoreBundle/Resources/config/validation.yml
