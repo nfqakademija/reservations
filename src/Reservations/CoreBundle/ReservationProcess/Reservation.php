@@ -31,17 +31,10 @@ class Reservation
     }
 
     /**
-     * Get reservations by bar id
-     * @param $id
-     * @return null|object
+     * @param $barId
+     * @param $status
+     * @return array
      */
-    public function getReservationsByBarId($id)
-    {
-        $repository = $this->entityManager->getRepository($this->repositoryName);
-        $reservations = $repository->findByBarId($id);
-        return $reservations;
-    }
-
     public function getReservationsByStatus($barId, $status)
     {
         $repository = $this->entityManager->getRepository($this->repositoryName);
@@ -78,7 +71,25 @@ class Reservation
         $reservation = $this->entityManager->getRepository($this->repositoryName)->find($id);
         $reservation->setStatus($status);
         $this->entityManager->flush();
+        if ($status === 2) {
+            $this->mailer->sendMail($reservation, 'Rezervacijos patvirtinimas', 'confirm_reservation');
+        } elseif ($status === 1) {
+            $this->mailer->sendMail($reservation, 'Rezervacijos atšaukimas', 'cancel_reservation');
+        }
+    }
 
-        $this->mailer->sendMail($reservation, 'Rezervacijos patvirtinimas', 'confirm_reservation');
+    /**
+     * @param $string
+     * @return int
+     */
+    public function getStatusByName($string)
+    {
+        if ($string === 'waiting') {
+            return 0;
+        } elseif ($string === 'cancel') {
+            return 1;
+        } elseif ($string === 'confirmed') {
+            return 2;
+        }
     }
 }

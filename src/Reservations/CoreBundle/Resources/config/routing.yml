@@ -14,9 +14,9 @@ reservations_core_dashboard:
     path:     /dashboard
     defaults: { _controller: ReservationsFrontendBundle:Reservations:index }
 
-reservations_core_dashboard_reservations_waiting:
-    path:     /reservations/waiting
-    defaults: { _controller: ReservationsFrontendBundle:Reservations:waiting }
+reservations_core_dashboard_reservations_page:
+    path:     /reservations/{page}
+    defaults: { _controller: ReservationsFrontendBundle:Reservations:reservations }
 
 reservations_core_dashboard_reservations_status:
     path:     /reservations/{id}/{status}

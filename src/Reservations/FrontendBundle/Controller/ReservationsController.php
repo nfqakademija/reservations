@@ -24,18 +24,32 @@ class ReservationsController extends Controller
     }
 
     /**
-     * Show waiting reservations
+     * Show reservations
+     * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function waitingAction()
+    public function reservationsAction($page)
+    {
+        $reservations = $this->get('reservations.core.reservation_process.reservation');
+
+        $barId = $this->getUser()->getBars()->getId();
+        $status = $reservations->getStatusByName($page);
+        $getReservations = $reservations->getReservationsByStatus($barId, $status);
+
+        return $this->render('ReservationsFrontendBundle:Reservations:'.$page.'.html.twig', array(
+            'reservations' => $getReservations
+        ));
+    }
+
+    /*public function confirmedAction()
     {
         $barId = $this->getUser()->getBars()->getId();
         $reservations = $this->get('reservations.core.reservation_process.reservation');
         $waitingReservations = $reservations->getReservationsByStatus($barId, 0);
         return $this->render('ReservationsFrontendBundle:Reservations:waiting.html.twig', array(
-            'reservations' => $waitingReservations
-        ));
-    }
+                'reservations' => $waitingReservations
+            ));
+    }*/
 
     /**
      * @param $id
@@ -50,7 +64,9 @@ class ReservationsController extends Controller
         } elseif ($status == 'cancel') {
             $reservation->setStatus($id, 1);
         }
-        return $this->redirect($this->generateUrl('reservations_core_dashboard_reservations_waiting'));
+        return $this->redirect($this->generateUrl('reservations_core_dashboard_reservations_page', array(
+            'page' => 'waiting'
+        )));
     }
 
     /**
@@ -63,7 +79,7 @@ class ReservationsController extends Controller
     {
         $bar = $this->get('reservations.core.search.bar')->getBarInfoById($id);
         $reservations = $this->get('reservations.core.reservation_process.reservation');
-        $reservationsBusyDays = $reservations->getReservationsByBarId($id);
+        $reservationsBusyDays = $reservations->getReservationsByStatus($id, 2);
 
         $reservation = new Reservations();
         $form = $this->createForm(new ReservationsType(), $reservation);

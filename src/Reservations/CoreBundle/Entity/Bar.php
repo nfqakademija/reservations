@@ -40,13 +40,6 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
-     */
-    private $photo;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
@@ -158,29 +151,6 @@ class Bar
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     * @return Bar
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
     }
 
     /**

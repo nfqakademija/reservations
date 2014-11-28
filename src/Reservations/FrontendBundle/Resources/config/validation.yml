@@ -139,4 +139,3 @@ Reservations\CoreBundle\Entity\Bar:
         - Type: 
            type: string
            message: "bar.lng.type"
->>>>>>> origin/master:src/Reservations/CoreBundle/Resources/config/validation.yml

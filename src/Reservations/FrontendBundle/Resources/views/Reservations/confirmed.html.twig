@@ -9,7 +9,7 @@
 
     <div class="content">
         <div class="header">
-            <h1 class="page-title">{{ "reservations.frontend.dashboard.waiting"|trans }}</h1>
+            <h1 class="page-title">Patvirtintos rezervacijos</h1>
         </div>
         <div class="main-content">
 
@@ -34,8 +34,7 @@
                                 <td>{{ reservation.name }}</td>
                                 <td>{{ reservation.email }}</td>
                                 <td>{{ reservation.code }}</td>
-                                <td class="text-center">
-                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'accept' }) }}"><i class="fa fa-check-square-o"></i> Patvirtinti</a>
+                                <td>
                                     <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'cancel' }) }}" class="pull-right"><i class="fa fa-times"></i> Atšaukti</a>
                                 </td>
                             </tr>

@@ -12,7 +12,11 @@
             </button>
             <br />
             <br />
+            {% if is_granted("ROLE_USER") %}
+            <a href="{{ path('reservations_core_dashboard') }}" class="btn btn-primary btn-lg font-size">
+            {% else %}
             <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg font-size">
+            {% endif %}
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
             </a>
         </div>
