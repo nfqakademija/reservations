@@ -1,6 +1,7 @@
 <div class="sidebar-nav">
     <ul>
         <li><a href="{{ path('reservations_core_dashboard') }}" class="nav-header"><i class="fa fa-home"></i> {{ "reservations.frontend.dashboard.dashboard"|trans }}</a></li>
+
         <li>
             <a href="#" data-target=".reservations-menu" class="nav-header collapsed" data-toggle="collapse">
                 <i class="fa fa-check-square-o"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}<i class="fa fa-collapse"></i>
@@ -13,7 +14,8 @@
                 <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> Atšauktos rezervacijos</a></li>
             </ul>
         </li>
-        <li><a href="" class="nav-header"><i class="fa fa-glass"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}</a></li>
-        <li><a href="" class="nav-header"><i class="fa fa-check-square-o"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}</a></li>
+
+        <li><a href="{{ path('bar') }}" class="nav-header"><i class="fa fa-glass"></i> Baras / Restoranas</a></li>
+
     </ul>
 </div>

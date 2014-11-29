@@ -21,3 +21,7 @@ reservations_core_dashboard_reservations_page:
 reservations_core_dashboard_reservations_status:
     path:     /reservations/{id}/{status}
     defaults: { _controller: ReservationsFrontendBundle:Reservations:changeStatus }
+
+reservations_frontend_bar:
+    resource: "@ReservationsCoreBundle/Resources/config/routing/bar.yml"
+    prefix:   /bars

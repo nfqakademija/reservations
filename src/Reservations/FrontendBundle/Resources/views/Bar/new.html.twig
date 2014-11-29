@@ -1,15 +1,21 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}{{ "reservations.frontend.for_bussines"|trans }}{% endblock %}
+
 {% block body -%}
-    <h1>Bar creation</h1>
 
-    {{ form(form) }}
+    {% include 'ReservationsFrontendBundle:Reservations:header.html.twig' %}
+    {% include 'ReservationsFrontendBundle:Reservations:navigation.html.twig' %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('bar') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Dashboard</h1>
+        </div>
+        <div class="main-content">
+
+            {{ form(form) }}
+
+        </div>
+    </div>
+
 {% endblock %}

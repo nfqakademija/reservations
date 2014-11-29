@@ -1,8 +1,3 @@
-reservations_frontend_bar:
-    resource: "@ReservationsFrontendBundle/Resources/config/routing/bar.yml"
-    prefix:   /bars
-
-
 reservations_frontend_homepage:
     path:     /hello/{name}
     defaults: { _controller: ReservationsFrontendBundle:Search:index }

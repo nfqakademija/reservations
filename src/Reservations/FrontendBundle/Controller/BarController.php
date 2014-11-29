@@ -22,7 +22,7 @@ class BarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ReservationsCoreBundle:Bar')->findAll();
+        $entities = $em->getRepository('ReservationsCoreBundle:Bar')->findByUserId($this->getUser()->getId());
 
         return $this->render('ReservationsFrontendBundle:Bar:index.html.twig', array(
             'entities' => $entities,

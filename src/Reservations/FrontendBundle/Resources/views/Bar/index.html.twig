@@ -1,51 +1,55 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}{{ "reservations.frontend.for_bussines"|trans }}{% endblock %}
+
 {% block body -%}
-    <h1>Bar list</h1>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Photo</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Seats</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('bar_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.description }}</td>
-                <td>{{ entity.photo }}</td>
-                <td>{{ entity.address }}</td>
-                <td>{{ entity.city }}</td>
-                <td>{{ entity.seats }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('bar_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('bar_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% include 'ReservationsFrontendBundle:Reservations:header.html.twig' %}
+    {% include 'ReservationsFrontendBundle:Reservations:navigation.html.twig' %}
 
-        <ul>
-        <li>
-            <a href="{{ path('bar_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Dashboard</h1>
+        </div>
+        <div class="main-content">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Seats</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.id }}</td>
+                        <td>{{ entity.name }}</td>
+                        <td>{{ entity.description }}</td>
+                        <td>{{ entity.address }}</td>
+                        <td>{{ entity.city }}</td>
+                        <td>{{ entity.seats }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('bar_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('bar_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}
