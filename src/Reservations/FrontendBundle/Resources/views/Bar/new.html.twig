@@ -13,7 +13,48 @@
         </div>
         <div class="main-content">
 
-            {{ form(form) }}
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        <label>Name</label>
+                        {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        {{ form_widget(form.description, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        {{ form_widget(form.address, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.address) }}
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        {{ form_widget(form.city, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.city) }}
+                    </div>
+                    <div class="form-group">
+                        <label>seats</label>
+                        {{ form_widget(form.seats, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.seats) }}
+                    </div>
+                    <div class="form-group">
+                        <label>lat</label>
+                        {{ form_widget(form.lat, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.lat) }}
+                    </div>
+                    <div class="form-group">
+                        <label>lng</label>
+                        {{ form_widget(form.lng, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.lng) }}
+                    </div>
+                    {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary' }}) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
 
         </div>
     </div>

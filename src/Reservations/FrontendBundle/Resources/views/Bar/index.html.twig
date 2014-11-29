@@ -26,7 +26,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for entity in entities %}
+                {% for entity in entities if entities %}
                     <tr>
                         <td>{{ entity.id }}</td>
                         <td>{{ entity.name }}</td>
@@ -35,14 +35,13 @@
                         <td>{{ entity.city }}</td>
                         <td>{{ entity.seats }}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('bar_show', { 'id': entity.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('bar_edit', { 'id': entity.id }) }}">edit</a>
-                                </li>
-                            </ul>
+                            <i class="fa fa-wrench"></i> <a href="{{ path('bar_edit', { 'id': entity.id }) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            Nope <a href="{{ path('bar_new') }}">New bar</a>
                         </td>
                     </tr>
                 {% endfor %}
