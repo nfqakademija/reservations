@@ -8,9 +8,26 @@
 
     <div class="dialog" style="max-width: 50%;">
         <div class="panel panel-default">
-            <p class="panel-heading no-collapse">Sign In</p>
+            <p class="panel-heading no-collapse">{{ bar.name }}</p>
             <div class="panel-body">
+                {{ bar.description }}<br /><br />
+                <strong>{{ bar.address }}</strong><br /><br />
 
+                <button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button></div>
+
+        </div>
+        </div>
+    </div>
+
+    {# reservation window modal #}
+    <div id="reservation-modals">
+        <div class="modal fade" id="reservation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center">
+                        <img id="loader" src="{{ asset('bundles/reservationsfrontend/images/loader.gif') }}" alt="" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -21,6 +38,11 @@
     <script type="text/javascript">
         var panorama;
         $(document).ready(function(){
+            $('#reservation-modals').on('hidden.bs.modal', '.modal', function () {
+                $(this).removeData('bs.modal')
+                        .find(".modal-content").empty()
+                        .html('<div class="text-center"><img id="loader" src="{{ asset('bundles/reservationsfrontend/images/loader.gif') }}" alt="" /></div>');
+            });
             panorama = GMaps.createPanorama({
                 el: '#panorama',
                 lat : {{ bar.lat }},

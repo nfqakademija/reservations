@@ -46,6 +46,17 @@ class Reservation
     }
 
     /**
+     * Get reservations count by status
+     * @param $status
+     * @return mixed
+     */
+    public function getReservationsCount($status)
+    {
+        $repository = $this->entityManager->getRepository($this->repositoryName);
+        return $repository->countByStatus($status);
+    }
+
+    /**
      * Set new reservation and send email
      * @param Reservations $reservation
      * @param Bar          $bar
@@ -53,7 +64,7 @@ class Reservation
     public function setReservation(Reservations $reservation, Bar $bar)
     {
         $reservation->setBarId($bar);
-        $reservation->setCode(rand(10000, 99999));
+        $reservation->setCode($this->uniqueRand());
 
         $this->entityManager->persist($reservation);
         $this->entityManager->flush();
@@ -91,5 +102,17 @@ class Reservation
         } elseif ($string === 'confirmed') {
             return 2;
         }
+    }
+
+    /**
+     * Generate random string
+     * @return string
+     */
+    private function uniqueRand()
+    {
+        $rand = uniqid();
+        $rand = strrev($rand);
+        $rand = substr($rand, 0, 9);
+        return $rand;
     }
 }

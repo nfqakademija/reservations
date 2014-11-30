@@ -18,8 +18,11 @@ class ReservationsController extends Controller
      */
     public function indexAction()
     {
+        $reservations = $this->get('reservations.core.reservation_process.reservation');
         return $this->render('ReservationsFrontendBundle:Reservations:index.html.twig', array(
-
+            'waiting' => $reservations->getReservationsCount(0),
+            'confirmed' => $reservations->getReservationsCount(2),
+            'cancel' => $reservations->getReservationsCount(1)
         ));
     }
 
