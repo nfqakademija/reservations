@@ -77,9 +77,11 @@
             "{{ reservation.date|date('Y-m-d') }}",
             {% endfor %}
         ]
+		var dateToday = new Date(); 
         $('#reservations_corebundle_reservations_date').datepicker({
             firstDay: 1,
             dateFormat: 'yy-mm-dd',
+			minDate: dateToday,
             showOtherMonths: true,
             dayNamesMin: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
             monthNames: [
