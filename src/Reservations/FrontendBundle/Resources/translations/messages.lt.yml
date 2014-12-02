@@ -18,12 +18,13 @@ reservations.frontend.login_page: Prisijungimas
 reservations.frontend.register: Registracija
 reservations.frontend.register_button: Registracija
 reservations.frontend.for_bussines: Verslui
+reservations.frontend.create_new: Pridėti barą / restoraną
 
 # Search page
 reservations.frontend.search: Ieškoti
 reservations.frontend.reservation.enter_name_or_address: Įveskite pavadinimą ar adresą
 reservations.frontend.reservation.map: Žemėlapis
-reservations.frontend.reservation.not_found: Nerasta nieko
+reservations.frontend.reservation.not_found: Pagal įvestus paieškos kriterijus rezultatų nerasta.
 
 # Reservation
 reservations.frontend.reservation.reservation: Rezervacija

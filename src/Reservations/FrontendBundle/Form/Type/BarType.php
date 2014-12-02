@@ -19,6 +19,7 @@ class BarType extends AbstractType
             ->add('description')
             ->add('address')
             ->add('city')
+            ->add('tags')
             ->add('seats')
             ->add('lat')
             ->add('lng')

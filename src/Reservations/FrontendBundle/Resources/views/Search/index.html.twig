@@ -21,6 +21,14 @@
             </a>
         </div>
         <div id="search">
+            {% if bars is empty %}
+                <div class="alert alert-danger" role="alert" data-dismiss="alert">
+                    {{ "reservations.frontend.reservation.not_found"|trans }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
                     <input type="text" name="name" class="form-control input-lg" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
@@ -32,14 +40,6 @@
                     </span>
                 </div>
             </form>
-            {% if bars is empty %}
-                <div class="alert alert-danger" role="alert" data-dismiss="alert">
-                    {{ "reservations.frontend.reservation.not_found"|trans }}
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            {% endif %}
         </div>
         <div id="map"></div>
     </div>

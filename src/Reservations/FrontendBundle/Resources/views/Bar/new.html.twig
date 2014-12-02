@@ -37,6 +37,11 @@
                         {{ form_errors(form.city) }}
                     </div>
                     <div class="form-group">
+                        <label>tags</label>
+                        {{ form_widget(form.tags, { 'attr' : { 'class' : 'form-control' }}) }}
+                        {{ form_errors(form.tags) }}
+                    </div>
+                    <div class="form-group">
                         <label>seats</label>
                         {{ form_widget(form.seats, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.seats) }}
