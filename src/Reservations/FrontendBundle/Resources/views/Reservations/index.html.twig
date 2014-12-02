@@ -21,9 +21,13 @@
                             <div class="knob-container">
                                 <input class="knob" data-width="200" data-min="0" data-max="100" data-displayPrevious="true" value="{{ waiting }}" data-fgColor="#92A3C2" data-readOnly=true;>
                                 <h3 class="text-muted text-center">
+                                    {% if waiting %}
                                     <a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'waiting' }) }}">
                                         {{ "reservations.frontend.dashboard.waiting"|trans }}
                                     </a>
+                                    {% else %}
+                                        {{ "reservations.frontend.dashboard.waiting"|trans }}
+                                    {% endif %}
                                 </h3>
                             </div>
                         </div>

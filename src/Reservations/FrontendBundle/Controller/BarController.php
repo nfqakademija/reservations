@@ -40,6 +40,7 @@ class BarController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setUserId($this->getUser());
             $em->persist($entity);
             $em->flush();
 
