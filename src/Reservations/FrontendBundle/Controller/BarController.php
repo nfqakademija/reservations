@@ -43,7 +43,7 @@ class BarController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bar'));
         }
 
         return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', array(
