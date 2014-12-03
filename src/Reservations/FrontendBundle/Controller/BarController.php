@@ -197,6 +197,8 @@ class BarController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Bar entity.');
             }
+            //$entity->setUserId(null);
+            //$em->flush();
 
             $em->remove($entity);
             $em->flush();
