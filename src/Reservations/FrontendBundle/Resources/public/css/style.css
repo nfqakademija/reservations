@@ -33,3 +33,7 @@ html, body {
 .font-size {
     font-size: 38px;
 }
+
+#map > div > div:nth-child(1) > div > div:nth-child(3) > div:nth-child(3) > div > div.gm-style-iw {
+    overflow: visible !important;
+}

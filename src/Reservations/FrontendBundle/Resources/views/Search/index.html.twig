@@ -21,6 +21,14 @@
             </a>
         </div>
         <div id="search">
+            {% if bars is empty %}
+                <div class="alert alert-danger" role="alert" data-dismiss="alert">
+                    {{ "reservations.frontend.reservation.not_found"|trans }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
                     <input type="text" name="name" class="form-control input-lg" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
@@ -32,14 +40,6 @@
                     </span>
                 </div>
             </form>
-            {% if bars is empty %}
-                <div class="alert alert-danger" role="alert" data-dismiss="alert">
-                    {{ "reservations.frontend.reservation.not_found"|trans }}
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            {% endif %}
         </div>
         <div id="map"></div>
     </div>
@@ -90,9 +90,24 @@
             {% for bar in bars %}
             map.addMarker({ lat: {{ bar.lat }}, lng: {{ bar.lng }}, title: '{{ bar.name }}',
                 infoWindow: {
-                    content: '<div class="text-center"><h2><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></h2>' +
+                    /*content: '<div class="text-center"><h2><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></h2>' +
                              '<div>{{ bar.address }}</div>' +
-                             '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button></div>'
+                             '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button></div>'*/
+					content: '<div style="width: 204px;" jstcache="0" class="gm-iw gm-sm">' +
+                             '<div jstcache="1" class="gm-title" jscontent="i.result.name"><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></div>' +
+                             '<div jstcache="0" class="gm-basicinfo">' +
+                             '<div jstcache="3" class="gm-photos" jsdisplay="i.result.formatted_address" jscontent="i.result.formatted_address">{{ bar.address }}</div>' +
+                             '<div jstcache="5" class="gm-phone" >' +
+                             '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +
+                             '</div>' +
+                             '</div>' +
+                             '<div jstcache="2" class="gm-photos" jsdisplay="svImg">' +
+                             '<a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}"><img src="http://maps.googleapis.com/maps/api/streetview?size=204x50&location={{ bar.lat }},{{ bar.lng }}&fov=100&heading=360&pitch=5&sensor=false" jstcache="11" jsvalues=".src:svImg" height="50" width="204" /></a>' +
+                             '<span style="display: none;" jstcache="7" class="gm-sv" jsdisplay="photoImg" jsvalues=".onclick:svClickFn">' +
+                             '<img jstcache="11" jsvalues=".src:svImg" height="50" width="100">' +
+                             '</span>' +
+                             '</div>' +
+                             '</div>'
                 }
             });
             {# google.maps.event.trigger(map.markers[{{ bar.id }}-1], 'click');#}

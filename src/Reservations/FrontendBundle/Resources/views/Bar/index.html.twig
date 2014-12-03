@@ -16,7 +16,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Address</th>
@@ -28,7 +27,6 @@
                 <tbody>
                 {% for entity in entities if entities %}
                     <tr>
-                        <td>{{ entity.id }}</td>
                         <td>{{ entity.name }}</td>
                         <td>{{ entity.description }}</td>
                         <td>{{ entity.address }}</td>

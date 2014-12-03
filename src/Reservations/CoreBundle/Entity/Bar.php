@@ -85,7 +85,7 @@ class Bar
      * @ORM\OneToOne(targetEntity="Reservations\CoreBundle\Entity\User", inversedBy="bars")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    protected $userId;
+    private $userId;
 
     /**
      * @ORM\OneToMany(targetEntity="Reservations\CoreBundle\Entity\Reservations", mappedBy="barId")
@@ -289,5 +289,28 @@ class Bar
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     * @return Bar
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->userId;
     }
 }

@@ -18,12 +18,12 @@
                 <div id="page-stats" class="panel-collapse panel-body collapse in">
                     <table class="table table-striped table-hover">
                         <tr>
-                            <th>Žmonių skaičius</th>
-                            <th>Data</th>
-                            <th>Valanda</th>
-                            <th>Vardas</th>
-                            <th>El. paštas</th>
-                            <th>Kodas</th>
+                            <th>{{ "reservations.frontend.reservation.people_amount"|trans }}</th>
+                            <th>{{ "reservations.frontend.reservation.date"|trans }}</th>
+                            <th>{{ "reservations.frontend.reservation.hours"|trans }}</th>
+                            <th>{{ "reservations.frontend.reservation.name"|trans }}</th>
+                            <th>{{ "reservations.frontend.reservation.email"|trans }}</th>
+                            <th>{{ "reservations.frontend.reservation.code"|trans }}</th>
                             <th></th>
                         </tr>
                         {% for reservation in reservations %}
@@ -35,8 +35,8 @@
                                 <td>{{ reservation.email }}</td>
                                 <td>{{ reservation.code }}</td>
                                 <td class="text-center">
-                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'accept' }) }}"><i class="fa fa-check-square-o"></i> Patvirtinti</a>
-                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'cancel' }) }}" class="pull-right"><i class="fa fa-times"></i> Atšaukti</a>
+                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'accept' }) }}" class="text-success"><i class="fa fa-check-square-o"></i> {{ "reservations.frontend.dashboard.confirm_this"|trans }}</a>
+                                    <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'cancel' }) }}" class="pull-right text-danger"><i class="fa fa-times"></i> {{ "reservations.frontend.dashboard.cancel_this"|trans }}</a>
                                 </td>
                             </tr>
                         {% endfor %}
