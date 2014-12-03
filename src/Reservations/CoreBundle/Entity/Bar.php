@@ -82,6 +82,13 @@ class Bar
     /**
      * @var integer
      *
+     * @ORM\Column(name="phone", type="integer")
+     */
+    private $phone;
+
+    /**
+     * @var integer
+     *
      * @ORM\OneToOne(targetEntity="Reservations\CoreBundle\Entity\User", inversedBy="bars")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -312,5 +319,28 @@ class Bar
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return Bar
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

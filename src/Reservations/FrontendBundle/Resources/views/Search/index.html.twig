@@ -7,17 +7,17 @@
 {% block body %}
     <div id="container">
         <div id="about">
-            <button type="button" class="btn btn-warning btn-lg font-size" data-toggle="modal" data-target="#about-modal">
+            <button type="button" class="btn btn-warning btn-lg font-size text-center" data-toggle="modal" data-target="#about-modal">
                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
             </button>
             <br />
             <br />
             {% if is_granted("ROLE_USER") %}
-            <a href="{{ path('reservations_core_dashboard') }}" class="btn btn-primary btn-lg font-size">
+            <a href="{{ path('reservations_core_dashboard') }}" class="btn btn-primary btn-lg font-size text-center">
             {% else %}
-            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg font-size">
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg font-size text-center">
             {% endif %}
-                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
             </a>
         </div>
         <div id="search">
@@ -96,7 +96,7 @@
 					content: '<div style="width: 204px;" jstcache="0" class="gm-iw gm-sm">' +
                              '<div jstcache="1" class="gm-title" jscontent="i.result.name"><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></div>' +
                              '<div jstcache="0" class="gm-basicinfo">' +
-                             '<div jstcache="3" class="gm-photos" jsdisplay="i.result.formatted_address" jscontent="i.result.formatted_address">{{ bar.address }}</div>' +
+                             '<div jstcache="3" class="gm-photos" jsdisplay="i.result.formatted_address" jscontent="i.result.formatted_address">{{ bar.address[:20] ~ '...' }} ({{ bar.phone }})</div>' +
                              '<div jstcache="5" class="gm-phone" >' +
                              '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +
                              '</div>' +

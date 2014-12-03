@@ -1,22 +1,25 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 <div class="sidebar-nav">
     <ul>
-        <li><a href="{{ path('reservations_core_dashboard') }}" class="nav-header"><i class="fa fa-home"></i> {{ "reservations.frontend.dashboard.dashboard"|trans }}</a></li>
+        <li><a href="{{ path('reservations_core_dashboard') }}" class="nav-header" {% if app.request.attributes.get('_route') == 'reservations_core_dashboard' %}style="text-decoration:underline;" {% endif %}><i class="fa fa-home"></i> {{ "reservations.frontend.dashboard.dashboard"|trans }}</a></li>
 
         <li>
-            <a href="#" data-target=".reservations-menu" class="nav-header collapsed" data-toggle="collapse">
+            <a href="#" data-target=".reservations-menu" class="nav-header collapsed" data-toggle="collapse" {% if app.request.attributes.get('_route') == 'reservations_core_dashboard_reservations_page' %}style="text-decoration:underline;" {% endif %}>
                 <i class="fa fa-check-square-o"></i> {{ "reservations.frontend.dashboard.reservations"|trans }}<i class="fa fa-collapse"></i>
             </a>
         </li>
         <li>
-            <ul class="reservations-menu nav nav-list collapse">
-                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'waiting' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.waiting"|trans }}</a></li>
-                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'confirmed' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.confirmed"|trans }}</a></li>
-                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.cancel"|trans }}</a></li>
+            <ul class="reservations-menu nav nav-list collapse {% if app.request.attributes.get('_route') == 'reservations_core_dashboard_reservations_page' %}in{% endif %}">
+                <li {% if currentPath == '/symfony/reservations/web/app_dev.php/reservations/waiting' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'waiting' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.waiting"|trans }}</a></li>
+                <li {% if currentPath == '/symfony/reservations/web/app_dev.php/reservations/confirmed' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'confirmed' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.confirmed"|trans }}</a></li>
+                <li {% if currentPath == '/symfony/reservations/web/app_dev.php/reservations/cancel' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.cancel"|trans }}</a></li>
             </ul>
         </li>
 
-        <li><a href="{{ path('bar') }}" class="nav-header"><i class="fa fa-glass"></i> {{ "reservations.frontend.dashboard.bars"|trans }}</a></li>
+        <li><a href="{{ path('bar') }}" class="nav-header" {% if app.request.attributes.get('_route') == 'bar'
+            or app.request.attributes.get('_route') == 'bar_edit'
+            or app.request.attributes.get('_route') == 'bar_new' %}style="text-decoration:underline;" {% endif %}><i class="fa fa-glass"></i> {{ "reservations.frontend.dashboard.bars"|trans }}</a></li>
 
     </ul>
-    {{ app.request.attributes.get('_route') }}
+
 </div>
