@@ -50,10 +50,10 @@ class Reservation
      * @param $status
      * @return mixed
      */
-    public function getReservationsCount($status)
+    public function getReservationsCount($status, $barId)
     {
         $repository = $this->entityManager->getRepository($this->repositoryName);
-        return $repository->countByStatus($status);
+        return $repository->countByStatus($status, $barId);
     }
 
     /**

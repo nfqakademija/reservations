@@ -9,7 +9,7 @@
 
     <div class="content">
         <div class="header">
-            <h1 class="page-title">Dashboard</h1>
+            <h1 class="page-title">{{ "reservations.frontend.dashboard.dashboard"|trans }}</h1>
         </div>
         <div class="main-content">
 
@@ -59,9 +59,30 @@
                     {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary' }}) }}
                     {{ form_end(form) }}
                 </div>
+                <div class="col-md-6">
+                    <div class="alert alert-info" role="alert">{{ "reservations.frontend.dashboard.map_help"|trans }}</div>
+                    <div id="map" style="height: 600px;"></div>
+                </div>
             </div>
 
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var map;
+        $(document).ready(function(){
+            map = new GMaps({
+                div: '#map',
+                lat: 54.9010005,
+                lng: 23.8988132,
+                click: function(e) {
+                    $('#reservations_corebundle_bar_lat').val(e.latLng.lat());
+                    $('#reservations_corebundle_bar_lng').val(e.latLng.lng());
+                }
+            });
+        });
+    </script>
 {% endblock %}

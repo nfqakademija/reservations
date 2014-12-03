@@ -19,10 +19,11 @@ class ReservationsController extends Controller
     public function indexAction()
     {
         $reservations = $this->get('reservations.core.reservation_process.reservation');
+        $barId = $this->getUser()->getBars()->getId();
         return $this->render('ReservationsFrontendBundle:Reservations:index.html.twig', array(
-            'waiting' => $reservations->getReservationsCount(0),
-            'confirmed' => $reservations->getReservationsCount(2),
-            'cancel' => $reservations->getReservationsCount(1)
+            'waiting' => $reservations->getReservationsCount(0, $barId),
+            'confirmed' => $reservations->getReservationsCount(2, $barId),
+            'cancel' => $reservations->getReservationsCount(1, $barId)
         ));
     }
 
@@ -43,16 +44,6 @@ class ReservationsController extends Controller
             'reservations' => $getReservations
         ));
     }
-
-    /*public function confirmedAction()
-    {
-        $barId = $this->getUser()->getBars()->getId();
-        $reservations = $this->get('reservations.core.reservation_process.reservation');
-        $waitingReservations = $reservations->getReservationsByStatus($barId, 0);
-        return $this->render('ReservationsFrontendBundle:Reservations:waiting.html.twig', array(
-                'reservations' => $waitingReservations
-            ));
-    }*/
 
     /**
      * @param $id

@@ -46,4 +46,14 @@ class Bar
         $bar = $this->entityManager->getRepository($this->repositoryName)->find($id);
         return $bar;
     }
+
+    /**
+     * @param $userId
+     * @return mixed
+     */
+    public function getBarByUser($userId)
+    {
+        $bar = $this->entityManager->getRepository($this->repositoryName)->findByUserId($userId);
+        return $bar;
+    }
 }

@@ -1,9 +1,16 @@
 # Dashboard
 reservations.frontend.dashboard.reservations: Rezervacijos
 reservations.frontend.dashboard.waiting: Laukiančios rezervacijos
+reservations.frontend.dashboard.confirmed: Patvirtintos rezervacijos
+reservations.frontend.dashboard.cancel: Atšauktos rezervacijos
 reservations.frontend.dashboard.dashboard: Valdymas
+reservations.frontend.dashboard.statistic: Rezervacijų statistika
+reservations.frontend.dashboard.confirm_this: Patvirtinti
+reservations.frontend.dashboard.cancel_this: Atšaukti
 reservations.frontend.dashboard.success: Registracija sėkminga! Dabar galite naudotis mūsų paslauga
 reservations.frontend.dashboard.home: Pagrindinis puslapis
+reservations.frontend.dashboard.bars: Baras / Restoranas
+reservations.frontend.dashboard.map_help: Pasirinkite žemėlapyje vietą
 
 # Login and register
 reservations.frontend.login: Prisijungti
@@ -19,6 +26,7 @@ reservations.frontend.register: Registracija
 reservations.frontend.register_button: Registracija
 reservations.frontend.for_bussines: Verslui
 reservations.frontend.create_new: Pridėti barą / restoraną
+reservations.frontend.logout: Atsijungti
 
 # Search page
 reservations.frontend.search: Ieškoti
@@ -40,5 +48,7 @@ reservations.frontend.reservation.close: Uždaryti
 reservations.frontend.reservation.success: Rezervacija sėkminga! El. paštu nusiųstas specialus kodas
 reservations.frontend.reservation.loading: Kraunama...
 reservations.frontend.reservation.choice: - Pasirinkti -
+reservations.frontend.reservation.code: Kodas
 
+# About
 #reservations.frontend.reservation.choice: - Pasirinkti -

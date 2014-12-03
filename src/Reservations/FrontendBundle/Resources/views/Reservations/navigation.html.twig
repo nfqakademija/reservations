@@ -10,12 +10,13 @@
         <li>
             <ul class="reservations-menu nav nav-list collapse">
                 <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'waiting' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.waiting"|trans }}</a></li>
-                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'confirmed' }) }}"><span class="fa fa-caret-right"></span> Priimtos rezervacijos</a></li>
-                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> Atšauktos rezervacijos</a></li>
+                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'confirmed' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.confirmed"|trans }}</a></li>
+                <li><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.cancel"|trans }}</a></li>
             </ul>
         </li>
 
-        <li><a href="{{ path('bar') }}" class="nav-header"><i class="fa fa-glass"></i> Baras / Restoranas</a></li>
+        <li><a href="{{ path('bar') }}" class="nav-header"><i class="fa fa-glass"></i> {{ "reservations.frontend.dashboard.bars"|trans }}</a></li>
 
     </ul>
+    {{ app.request.attributes.get('_route') }}
 </div>
