@@ -43,17 +43,17 @@ class Email
     
     public function sendRegistrationMail($subject, $to)
     {
-    	$message = \Swift_Message::newInstance()
-    	->setSubject($subject)
-    	->setFrom('info.reservations.nfq@gmail.com')
-    	->setTo($to)
-    	->setBody(
-    			$this->twig->render('ReservationsFrontendBundle:Mail:Registration.html.twig', array(
-    					
-    			)), 'text/html'
-    	)
-    	;
-    
-    	$this->mailer->send($message);
+        $message = \Swift_Message::newInstance()
+        ->setSubject($subject)
+        ->setFrom('info.reservations.nfq@gmail.com')
+        ->setTo($to)
+        ->setBody(
+            $this->twig->render('ReservationsFrontendBundle:Mail:Registration.html.twig', array(
+
+            )), 'text/html'
+        )
+        ;
+
+        $this->mailer->send($message);
     }
 }
