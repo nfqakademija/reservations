@@ -89,6 +89,13 @@ class Bar
     /**
      * @var integer
      *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status = 1;
+
+    /**
+     * @var integer
+     *
      * @ORM\OneToOne(targetEntity="Reservations\CoreBundle\Entity\User", inversedBy="bars")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -342,5 +349,28 @@ class Bar
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Bar
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -18,24 +18,30 @@
                 <div id="page-stats" class="panel-collapse panel-body collapse in">
                     <table class="table table-striped table-hover">
                         <tr>
-                            <th>{{ "reservations.frontend.reservation.people_amount"|trans }}</th>
-                            <th>{{ "reservations.frontend.reservation.date"|trans }}</th>
-                            <th>{{ "reservations.frontend.reservation.hours"|trans }}</th>
-                            <th>{{ "reservations.frontend.reservation.name"|trans }}</th>
-                            <th>{{ "reservations.frontend.reservation.email"|trans }}</th>
-                            <th>{{ "reservations.frontend.reservation.code"|trans }}</th>
+                            <th class="text-center">{{ "reservations.frontend.reservation.date"|trans }}</th>
+                            <th class="text-center">{{ "reservations.frontend.reservation.hours"|trans }}</th>
+                            <th class="text-center">{{ "reservations.frontend.reservation.people_amount"|trans }}</th>
+                            <th class="text-center">{{ "reservations.frontend.reservation.name"|trans }}</th>
+                            <th class="text-center">{{ "reservations.frontend.reservation.email"|trans }}</th>
+                            <th class="text-center">{{ "reservations.frontend.reservation.code"|trans }}</th>
                             <th></th>
                         </tr>
-                        {% for reservation in reservations %}
+                        {% for reservation in reservations if reservations %}
                             <tr>
-                                <td>{{ reservation.peopleAmount }}</td>
-                                <td>{{ reservation.date|date('Y-m-d') }}</td>
-                                <td>{{ reservation.time|date('H:i:s') }}</td>
-                                <td>{{ reservation.name }}</td>
-                                <td>{{ reservation.email }}</td>
-                                <td>{{ reservation.code }}</td>
+                                <td class="text-center">{{ reservation.date|date('Y-m-d') }}</td>
+                                <td class="text-center">{{ reservation.time|date('H:i:s') }}</td>
+                                <td class="text-center">{{ reservation.peopleAmount }}</td>
+                                <td class="text-center">{{ reservation.name }}</td>
+                                <td class="text-center">{{ reservation.email }}</td>
+                                <td class="text-center">{{ reservation.code }}</td>
                                 <td>
                                     <a href="{{ path('reservations_core_dashboard_reservations_status', { 'id' : reservation.id, 'status' : 'cancel' }) }}" class="pull-right text-danger"><i class="fa fa-times"></i> Atšaukti</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <div class="alert alert-warning" role="alert">{{ "reservations.frontend.dashboard.no_reservations"|trans }}</div>
                                 </td>
                             </tr>
                         {% endfor %}

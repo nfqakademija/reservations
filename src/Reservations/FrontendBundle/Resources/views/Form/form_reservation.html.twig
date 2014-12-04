@@ -73,6 +73,7 @@
         });
 
         var array = [
+            "{{ 'now'|date('Y-m-d') }}"
             {% for reservation in reservationsBusyDays %}
             "{{ reservation.date|date('Y-m-d') }}",
             {% endfor %}

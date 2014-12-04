@@ -24,6 +24,10 @@ class BarController extends Controller
 
         $entities = $em->getRepository('ReservationsCoreBundle:Bar')->findByUserId($this->getUser()->getId());
 
+        if (!$entities) {
+            return $this->redirect($this->generateUrl('bar_new'));
+        }
+
         return $this->render('ReservationsFrontendBundle:Bar:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -67,7 +71,9 @@ class BarController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array(
+            'label' => $this->get('translator')->trans('reservations.frontend.dashboard.add')
+        ));
 
         return $form;
     }
@@ -147,7 +153,9 @@ class BarController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array(
+                'label' => $this->get('translator')->trans('reservations.frontend.dashboard.edit')
+        ));
 
         return $form;
     }
@@ -200,8 +208,8 @@ class BarController extends Controller
             //$entity->setUserId(null);
             //$em->flush();
 
-            $em->remove($entity);
-            $em->flush();
+            //$em->remove($entity);
+            //$em->flush();
         }
 
         return $this->redirect($this->generateUrl('bar'));

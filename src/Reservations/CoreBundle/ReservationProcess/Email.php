@@ -3,20 +3,21 @@
 namespace Reservations\CoreBundle\ReservationProcess;
 
 use Reservations\CoreBundle\Entity\Reservations;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class Email
 {
     private $mailer;
-    private $twig;
+    private $container;
 
     /**
-     * @param \Swift_Mailer     $mailer
-     * @param \Twig_Environment $twig
+     * @param \Swift_Mailer $mailer
+     * @param Container     $container
      */
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig)
+    public function __construct(\Swift_Mailer $mailer, Container $container)
     {
         $this->mailer = $mailer;
-        $this->twig = $twig;
+        $this->container = $container;
     }
 
     /**
@@ -29,10 +30,10 @@ class Email
     {
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
-            ->setFrom('info.reservations.nfq@gmail.com')
+            ->setFrom($this->container->getParameter('mailer_user'))
             ->setTo($reservation->getEmail())
             ->setBody(
-                $this->twig->render('ReservationsFrontendBundle:Mail:'.$way.'.html.twig', array(
+                $this->container->get('twig')->render('ReservationsFrontendBundle:Mail:'.$way.'.html.twig', array(
                     'reservation' => $reservation
                 )),
                 'text/html'
@@ -45,11 +46,10 @@ class Email
     {
         $message = \Swift_Message::newInstance()
         ->setSubject($subject)
-        ->setFrom('info.reservations.nfq@gmail.com')
+        ->setFrom($this->container->getParameter('mailer_user'))
         ->setTo($sendTo)
         ->setBody(
-            $this->twig->render('ReservationsFrontendBundle:Mail:registration.html.twig', array(
-
+            $this->container->get('twig')->render('ReservationsFrontendBundle:Mail:registration.html.twig', array(
             )),
             'text/html'
         );

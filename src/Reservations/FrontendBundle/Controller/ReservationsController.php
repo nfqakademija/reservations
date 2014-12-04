@@ -19,6 +19,9 @@ class ReservationsController extends Controller
     public function indexAction()
     {
         $reservations = $this->get('reservations.core.reservation_process.reservation');
+        if (!$this->getUser()->getBars()) {
+            return $this->redirect($this->generateUrl('bar_new'));
+        }
         $barId = $this->getUser()->getBars()->getId();
         return $this->render('ReservationsFrontendBundle:Reservations:index.html.twig', array(
             'waiting' => $reservations->getReservationsCount(0, $barId),
@@ -35,7 +38,9 @@ class ReservationsController extends Controller
     public function reservationsAction($page)
     {
         $reservations = $this->get('reservations.core.reservation_process.reservation');
-
+        if (!$this->getUser()->getBars()) {
+            return $this->redirect($this->generateUrl('bar_new'));
+        }
         $barId = $this->getUser()->getBars()->getId();
         $status = $reservations->getStatusByName($page);
         $getReservations = $reservations->getReservationsByStatus($barId, $status);

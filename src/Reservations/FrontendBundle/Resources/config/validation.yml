@@ -1,5 +1,7 @@
 # Users validation  
 Reservations\CoreBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
     properties:
         email:
             - NotBlank:
@@ -53,7 +55,7 @@ Reservations\CoreBundle\Entity\User:
             - Length:
                 min: 6
                 minMessage: "user.phone.length.min_message"
-                max: 255
+                max: 12
                 maxMessage: "user.phone.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Type:
@@ -64,78 +66,93 @@ Reservations\CoreBundle\Entity\User:
                 
 Reservations\CoreBundle\Entity\Bar:
   properties:
-    name:
-         - NotBlank: 
-             message: "bar.name.not_blank"
-         - Length:
-             min: 6 
-             minMessage: "bar.name.length.min_message"
-             max: 255
-             maxMessage: "bar.name.length.max_message"
-         - Type:
-             type: string
-             message: "bar.name.type"
-    description:
-        - NotBlank:
-           message: "bar.description.not_blank"
-        - Type:
-           type: string
-           message: "bar.description.type"
-        - Length:
-           min: 6
-           minMessage: "bar.description.length.min_message"
-    address:
-        - NotBlank:
-           message: "bar.address.not_blank"
-        - Length:
-           min: 6
-           minMessage: "bar.address.length.min_message"
-           max: 255
-           maxMessage: "bar.address.length.max_message"
-        - Type:
-           type: string
-           message: "bar.address.type"
-    city:
-        - NotBlank:
-           message: "bar.city.not_blank"
-        - Length:
-           min: 6
-           minMessage: "bar.city.length.min_message"
-           max: 255
-           maxMessage: "bar.city.length.max_message"
-        - Type:
-           type: string
-           message: "bar.city.type"
-    seats:
-        - NotBlank:
-           message: "bar.seats.not_blank"
-        - Length:
-           min: 1
-           minMessage: "bar.seats.length.min_message"
-           max: 255
-           maxMessage: "bar.seats.length.max_message"
-        - Type:
-           type: integer
-           message: "bar.seats.type"
-    lat:
-        - NotBlank:
-           message: "bar.lat.not_blank"
-        - Length:
-           min: 1
-           minMessage: "bar.lat.length.min_message"
-           max: 255
-           maxMessage: "bar.lat.length.max_message"
-        - Type:
-           type: string
-           message: "bar.lat.type"
-    lng:
-        - NotBlank:
-           message: "bar.lng.not_blank"
-        - Length:
-           min: 1
-           minMessage: "bar.lng.length.min_message"
-           max: 255
-           maxMessage: "bar.lng.length.max_message"
-        - Type: 
-           type: string
-           message: "bar.lng.type"
+      name:
+          - NotBlank:
+               message: "bar.name.not_blank"
+          - Length:
+               min: 2
+               minMessage: "bar.name.length.min_message"
+               max: 255
+               maxMessage: "bar.name.length.max_message"
+          - Type:
+              type: string
+              message: "bar.name.type"
+      description:
+          - NotBlank:
+              message: "bar.description.not_blank"
+          - Type:
+              type: string
+              message: "bar.description.type"
+          - Length:
+              min: 6
+              minMessage: "bar.description.length.min_message"
+      address:
+          - NotBlank:
+              message: "bar.address.not_blank"
+          - Length:
+              min: 2
+              minMessage: "bar.address.length.min_message"
+              max: 255
+              maxMessage: "bar.address.length.max_message"
+          - Type:
+              type: string
+              message: "bar.address.type"
+      city:
+          - NotBlank:
+              message: "bar.city.not_blank"
+          - Length:
+              min: 2
+              minMessage: "bar.city.length.min_message"
+              max: 255
+              maxMessage: "bar.city.length.max_message"
+          - Type:
+              type: string
+              message: "bar.city.type"
+      seats:
+          - NotBlank:
+              message: "bar.seats.not_blank"
+          - Length:
+              min: 1
+              minMessage: "bar.seats.length.min_message"
+              max: 255
+              maxMessage: "bar.seats.length.max_message"
+          - Type:
+              type: integer
+              message: "bar.seats.type"
+      lat:
+          - NotBlank:
+              message: "bar.lat.not_blank"
+          - Length:
+              min: 1
+              minMessage: "bar.lat.length.min_message"
+              max: 255
+              maxMessage: "bar.lat.length.max_message"
+          - Type:
+              type: string
+              message: "bar.lat.type"
+      lng:
+          - NotBlank:
+              message: "bar.lng.not_blank"
+          - Length:
+              min: 1
+              minMessage: "bar.lng.length.min_message"
+              max: 255
+              maxMessage: "bar.lng.length.max_message"
+          - Type:
+              type: string
+              message: "bar.lng.type"
+      phone:
+          - NotBlank:
+              message: "user.phone.not_blank"
+              groups: [ "reservations_registration", "reservations_profile" ]
+          - Length:
+              min: 6
+              minMessage: "user.phone.length.min_message"
+              max: 12
+              maxMessage: "user.phone.length.max_message"
+              groups: [ "reservations_registration", "ResetPassword" ]
+          - Type:
+              type: integer
+              message: "user.phone.type"
+          - GreaterThan:
+              value: 0

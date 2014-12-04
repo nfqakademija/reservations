@@ -14,6 +14,7 @@
 
         <p>Jūsų rezervacija {{ reservation.barId.name }} buvo patvirtinta.</p>
         <p>Jūsų rezervacijos kodas: <strong>{{ reservation.code }}</strong></p>
+        <p>Jūs rezervavote: <strong>{{ reservation.date|date('Y-m-d') }}</strong> dieną. {{ reservation.time|date('H:i') }} val</p>
 
         <p>Linkime geros dienos!</p>
     </div>

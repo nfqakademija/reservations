@@ -19,6 +19,7 @@ class BarRepository extends EntityRepository
             ->where('b.name LIKE :search')
             ->orWhere('b.address LIKE :search')
             ->orWhere('b.tags LIKE :search')
+            ->andWhere('b.status = 1')
             ->setParameter('search', '%'.$search.'%')
             ->getQuery()
             ->getResult();

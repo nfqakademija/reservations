@@ -11,9 +11,30 @@ reservations.frontend.dashboard.success: Registracija sėkminga! Dabar galite na
 reservations.frontend.dashboard.home: Pagrindinis puslapis
 reservations.frontend.dashboard.bars: Baras / Restoranas
 reservations.frontend.dashboard.map_help: Pasirinkite žemėlapyje vietą
+reservations.frontend.dashboard.no_reservations: Nėra rezervacijų
+
+reservations.frontend.dashboard.name: Pavadinimas
+reservations.frontend.dashboard.desc: Aprašymas
+reservations.frontend.dashboard.address: Adresas
+reservations.frontend.dashboard.city: Miestas
+reservations.frontend.dashboard.phone: Telefonas
+reservations.frontend.dashboard.tags: Žymės
+reservations.frontend.dashboard.tags_help: Žymės atskirti tarpais, pvz: (krepšinis alus pica)
+reservations.frontend.dashboard.seats: Vietos
+reservations.frontend.dashboard.lat: Platuma
+reservations.frontend.dashboard.lng: Ilguma
+reservations.frontend.dashboard.edit: Redaguoti
+reservations.frontend.dashboard.add: Pridėti
+reservations.frontend.dashboard.hide_search: Slėpti nuo paieškos?
+reservations.frontend.dashboard.hide_search_help: Pažymėjus taip, baro / restorano nerodys pagrindiniam puslapyje
+reservations.frontend.dashboard.no_results: Nepavyko rasti koordinačiu
+reservations.frontend.dashboard.get_coordinates: Gauti koordinates pagal adresą
+
+
 
 # Login and register
 reservations.frontend.login: Prisijungti
+reservations.frontend.back_login: Atgal į prisijungimą
 reservations.frontend.password: Slaptažodis
 reservations.frontend.name: Vardas
 reservations.frontend.last_name: Pavardė

@@ -24,6 +24,9 @@ class BarType extends AbstractType
             ->add('seats')
             ->add('lat')
             ->add('lng')
+            ->add('status', 'choice', array(
+                    'choices'   => array('1' => 'Ne', '0' => 'Taip')
+                ))
         ;
     }
 

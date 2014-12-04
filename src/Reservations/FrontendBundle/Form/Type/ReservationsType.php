@@ -23,6 +23,7 @@ class ReservationsType extends AbstractType
                     'widget' => 'single_text'
                 ))
             ->add('time', 'time', array(
+                    'hours' => array(24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10),
                     'with_minutes' => false,
                     'empty_value' => 'reservations.frontend.reservation.choice'
                 ))
@@ -56,7 +57,7 @@ class ReservationsType extends AbstractType
     private function getChoices()
     {
         $choices = array();
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $choices[$i] = $i;
         }
         return $choices;

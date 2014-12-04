@@ -17,56 +17,59 @@
                 <div class="col-md-4">
                     {{ form_start(form) }}
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>{{ "reservations.frontend.dashboard.name"|trans }}</label>
                         {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.name) }}
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
+                        <label>{{ "reservations.frontend.dashboard.desc"|trans }}</label>
                         {{ form_widget(form.description, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.description) }}
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>{{ "reservations.frontend.dashboard.address"|trans }}</label>
                         {{ form_widget(form.address, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.address) }}
+                        <button id="address" class="btn btn-primary">{{ "reservations.frontend.dashboard.get_coordinates"|trans }}</button>
                     </div>
                     <div class="form-group">
-                        <label>City</label>
+                        <label>{{ "reservations.frontend.dashboard.city"|trans }}</label>
                         {{ form_widget(form.city, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.city) }}
                     </div>
                     <div class="form-group">
-                        <label>City</label>
+                        <label>{{ "reservations.frontend.dashboard.phone"|trans }}</label>
                         {{ form_widget(form.phone, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.phone) }}
                     </div>
                     <div class="form-group">
-                        <label>tags</label>
+                        <label>{{ "reservations.frontend.dashboard.tags"|trans }}</label>
                         {{ form_widget(form.tags, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.tags) }}
+                        <span id="helpBlock" class="help-block">{{ "reservations.frontend.dashboard.tags_help"|trans }}</span>
                     </div>
                     <div class="form-group">
-                        <label>seats</label>
+                        <label>{{ "reservations.frontend.dashboard.seats"|trans }}</label>
                         {{ form_widget(form.seats, { 'attr' : { 'class' : 'form-control' }}) }}
                         {{ form_errors(form.seats) }}
                     </div>
                     <div class="form-group">
-                        <label>lat</label>
-                        {{ form_widget(form.lat, { 'attr' : { 'class' : 'form-control' }}) }}
+                        <label>{{ "reservations.frontend.dashboard.lat"|trans }}</label>
+                        {{ form_widget(form.lat, { 'attr' : { 'class' : 'form-control', 'disabled' : 'disabled' }}) }}
                         {{ form_errors(form.lat) }}
                     </div>
                     <div class="form-group">
-                        <label>lng</label>
-                        {{ form_widget(form.lng, { 'attr' : { 'class' : 'form-control' }}) }}
+                        <label>{{ "reservations.frontend.dashboard.lng"|trans }}</label>
+                        {{ form_widget(form.lng, { 'attr' : { 'class' : 'form-control', 'disabled' : 'disabled' }}) }}
                         {{ form_errors(form.lng) }}
                     </div>
                     {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary' }}) }}
+                    {{ form_widget(form.status, { 'attr' : { 'class' : 'form-control', 'style' : 'display:none' }}) }}
                     {{ form_end(form) }}
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-info" role="alert">{{ "reservations.frontend.dashboard.map_help"|trans }}</div>
-                    <div id="map" style="height: 600px;"></div>
+                    <div id="map" style="height: 700px;"></div>
                 </div>
             </div>
 
@@ -79,6 +82,17 @@
     <script type="text/javascript">
         var map;
         $(document).ready(function(){
+            $('#address').click(function () {
+                var address = $('#reservations_corebundle_bar_address').val();
+                $.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +'&sensor=true', function(data){
+                    if (data.status == 'OK') {
+                        $('#reservations_corebundle_bar_lat').val(data.results[0].geometry.location.lat);
+                        $('#reservations_corebundle_bar_lng').val(data.results[0].geometry.location.lng);
+                    } else {
+                        alert('{{ "reservations.frontend.dashboard.no_results"|trans }}');
+                    }
+                });
+            });
             map = new GMaps({
                 div: '#map',
                 lat: 54.9010005,

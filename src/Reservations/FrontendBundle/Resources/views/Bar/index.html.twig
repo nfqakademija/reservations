@@ -7,46 +7,28 @@
     {% include 'ReservationsFrontendBundle:Reservations:header.html.twig' %}
     {% include 'ReservationsFrontendBundle:Reservations:navigation.html.twig' %}
 
-    <div class="content">
-        <div class="header">
-            <h1 class="page-title">Dashboard</h1>
-        </div>
-        <div class="main-content">
 
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>Seats</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for entity in entities if entities %}
-                    <tr>
-                        <td>{{ entity.name }}</td>
-                        <td>{{ entity.description }}</td>
-                        <td>{{ entity.address }}</td>
-                        <td>{{ entity.city }}</td>
-                        <td>{{ entity.seats }}</td>
-                        <td>
-                            <i class="fa fa-wrench"></i> <a href="{{ path('bar_edit', { 'id': entity.id }) }}">edit</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="7" class="text-center">
-                            Nope <a href="{{ path('bar_new') }}">New bar</a>
-                        </td>
-                    </tr>
+        <div class="content">
+            <div class="header">
+                <h1 class="page-title">{{ "reservations.frontend.dashboard.bars"|trans }}</h1>
+            </div>
+            <div class="main-content">
+
+                {% for entity in entities %}
+                <li class="list-group-item">
+                    <i class="fa-2x padding-top-small padding-bottom padding-right-small fa fa-leaf pull-left text-info"></i>
+                    <h4>{{ entity.name }}</h4>
+                    <p class="info small">{{ "reservations.frontend.dashboard.name"|trans }}</p>
+                </li>
+                <li class="list-group-item clearfix">
+                    <i class="fa-2x padding-top-small padding-bottom padding-right-small fa fa-wrench pull-left text-info"></i>
+                    <h4><a href="{{ path('bar_edit', { 'id': entity.id }) }}">{{ "reservations.frontend.dashboard.edit"|trans }}</a></h4>
+                </li>
                 {% endfor %}
-                </tbody>
-            </table>
 
+            </div>
         </div>
-    </div>
+
+
 
 {% endblock %}

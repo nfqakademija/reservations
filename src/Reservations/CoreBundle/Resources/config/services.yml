@@ -5,7 +5,7 @@ parameters:
 services:
     reservations.core.reservation_process.email:
         class: Reservations\CoreBundle\ReservationProcess\Email
-        arguments: [ @mailer, @twig ]
+        arguments: [ @mailer, @service_container ]
 
     reservations.core.reservation_process.reservation:
         class: Reservations\CoreBundle\ReservationProcess\Reservation
