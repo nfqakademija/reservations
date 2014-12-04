@@ -3,25 +3,16 @@ parameters:
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     reservations
-    database_user:     root
-    database_password: 123
-
-    # You should uncomment this if you want use pdo_sqlite
-    # database_path: "%kernel.root_dir%/data.db3"
-
-    # mailer_transport:  smtp
-    # mailer_host:       127.0.0.1
-    # mailer_user:       ~
-    # mailer_password:   ~
+    database_user:     kaunas3
+    database_password: beisiekailiequae
 
     locale:            lt
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    debug_toolbar:          true
+    debug_toolbar:          false
     debug_redirects:        false
     use_assetic_controller: true
 
     mailer_transport: gmail
-    mailer_host: ~
     mailer_user: info.reservations.nfq
     mailer_password: ruduO2014

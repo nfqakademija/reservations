@@ -34,25 +34,25 @@ class Email
             ->setBody(
                 $this->twig->render('ReservationsFrontendBundle:Mail:'.$way.'.html.twig', array(
                     'reservation' => $reservation
-                )), 'text/html'
-            )
-        ;
+                )),
+                'text/html'
+            );
 
         $this->mailer->send($message);
     }
-    
-    public function sendRegistrationMail($subject, $to)
+
+    public function sendRegistrationMail($subject, $sendTo)
     {
         $message = \Swift_Message::newInstance()
         ->setSubject($subject)
         ->setFrom('info.reservations.nfq@gmail.com')
-        ->setTo($to)
+        ->setTo($sendTo)
         ->setBody(
-            $this->twig->render('ReservationsFrontendBundle:Mail:Registration.html.twig', array(
+            $this->twig->render('ReservationsFrontendBundle:Mail:registration.html.twig', array(
 
-            )), 'text/html'
-        )
-        ;
+            )),
+            'text/html'
+        );
 
         $this->mailer->send($message);
     }
