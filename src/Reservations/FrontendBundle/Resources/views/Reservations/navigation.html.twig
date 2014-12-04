@@ -10,9 +10,9 @@
         </li>
         <li>
             <ul class="reservations-menu nav nav-list collapse {% if app.request.attributes.get('_route') == 'reservations_core_dashboard_reservations_page' %}in{% endif %}">
-                <li {% if currentPath == '/symfony/reservations/web/app_dev.php/reservations/waiting' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'waiting' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.waiting"|trans }}</a></li>
-                <li {% if currentPath == '/symfony/reservations/web/app_dev.php/reservations/confirmed' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'confirmed' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.confirmed"|trans }}</a></li>
-                <li {% if currentPath == '/symfony/reservations/web/app_dev.php/reservations/cancel' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.cancel"|trans }}</a></li>
+                <li {% if currentPath == '/reservations/waiting' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'waiting' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.waiting"|trans }}</a></li>
+                <li {% if currentPath == '/reservations/confirmed' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'confirmed' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.confirmed"|trans }}</a></li>
+                <li {% if currentPath == '/reservations/cancel' %}class="active"{% endif %}><a href="{{ path('reservations_core_dashboard_reservations_page', { 'page' : 'cancel' }) }}"><span class="fa fa-caret-right"></span> {{ "reservations.frontend.dashboard.cancel"|trans }}</a></li>
             </ul>
         </li>
 
