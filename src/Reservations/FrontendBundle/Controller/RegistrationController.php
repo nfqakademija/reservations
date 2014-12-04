@@ -14,7 +14,6 @@ class RegistrationController extends BaseController
         if ($this->getUser()) {
             $this->get('reservations.core.reservation_process.email')
                 ->sendRegistrationMail("Nauja registracija.", $this->getUser()->getEmail());
-
         }
         return $return;
     }
