@@ -10,7 +10,7 @@ Reservations\CoreBundle\Entity\User:
             - Length:
                 min: 2
                 minMessage: "user.email.length.min_message"
-                max: 255
+                max: 100
                 maxMessage: "user.email.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
             - Email:
@@ -33,7 +33,7 @@ Reservations\CoreBundle\Entity\User:
             - Length:
                 min: 2
                 minMessage: "user.first_name.length.min_message"
-                max: 255
+                max: 100
                 maxMessage: "user.first_name.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
 
@@ -44,7 +44,7 @@ Reservations\CoreBundle\Entity\User:
             - Length:
                 min: 2
                 minMessage: "user.last_name.length.min_message"
-                max: 255
+                max: 100
                 maxMessage: "user.last_name.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
 
@@ -58,8 +58,10 @@ Reservations\CoreBundle\Entity\User:
                 max: 12
                 maxMessage: "user.phone.length.max_message"
                 groups: [ "reservations_registration", "ResetPassword" ]
-            - Type:
-                type: integer
+#            - Type:
+#                type: integer
+            - Regex:
+                pattern: '/\d/'
                 message: "user.phone.type"
             - GreaterThan:
                 value: 0
@@ -114,11 +116,11 @@ Reservations\CoreBundle\Entity\Bar:
           - Length:
               min: 1
               minMessage: "bar.seats.length.min_message"
-              max: 255
+              max: 100
               maxMessage: "bar.seats.length.max_message"
-          - Type:
-              type: integer
-              message: "bar.seats.type"
+          - Regex:
+              pattern: '/\d/'
+              message: "user.phone.type"
       lat:
           - NotBlank:
               message: "bar.lat.not_blank"
@@ -151,8 +153,8 @@ Reservations\CoreBundle\Entity\Bar:
               max: 12
               maxMessage: "user.phone.length.max_message"
               groups: [ "reservations_registration", "ResetPassword" ]
-          - Type:
-              type: integer
+          - Regex:
+              pattern: '/\d/'
               message: "user.phone.type"
           - GreaterThan:
               value: 0
