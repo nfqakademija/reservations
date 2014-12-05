@@ -72,4 +72,5 @@ reservations.frontend.reservation.choice: - Pasirinkti -
 reservations.frontend.reservation.code: Kodas
 
 # About
-#reservations.frontend.reservation.choice: - Pasirinkti -
+reservations.frontend.reservation.are_we: Kas mes?
+reservations.frontend.reservation.search: Paieška
