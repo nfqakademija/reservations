@@ -1,7 +1,9 @@
 # Users validation  
 Reservations\CoreBundle\Entity\User:
     constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            groups: [ "reservations_registration" ]
     properties:
         email:
             - NotBlank:
