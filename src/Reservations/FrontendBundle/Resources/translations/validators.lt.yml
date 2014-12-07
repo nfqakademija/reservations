@@ -54,3 +54,16 @@ bar.lng.not_blank: Negali būti tuščias laukas.
 bar.lng.length.min_message: Per trumpas.
 bar.lng.length.max_message: Per ilgas.
 bar.lng.type: Ne simbolis.
+
+# Reservations
+reservation.email.not_blank: Laukas el.paštas negali būti tuščias
+reservation.email.min_message: Laukas el.paštas per trumpas
+reservation.email.max_message: Laukas el.paštas per ilgas
+reservation.email.email: Laukas el.paštas neteisingas
+
+reservation.name.not_blank: Laukas vardas negali būti tuščias
+reservation.name.min_message: Laukas vardas per trumpas
+reservation.name.max_message: Laukas vardas per ilgas
+reservation.name.alpha: Laukas vardas gali susidėti tik iš raidžių
+
+reservation.date.not_blank: Laukas data negali būti tuščias

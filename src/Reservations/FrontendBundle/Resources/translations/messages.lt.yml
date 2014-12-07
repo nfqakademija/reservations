@@ -20,7 +20,7 @@ reservations.frontend.dashboard.city: Miestas
 reservations.frontend.dashboard.phone: Telefonas
 reservations.frontend.dashboard.tags: Žymės
 reservations.frontend.dashboard.tags_help: Žymės atskirti tarpais, pvz: (krepšinis alus pica)
-reservations.frontend.dashboard.seats: Vietos
+reservations.frontend.dashboard.seats: Maksimalus vietų skaičius bare
 reservations.frontend.dashboard.lat: Platuma
 reservations.frontend.dashboard.lng: Ilguma
 reservations.frontend.dashboard.edit: Redaguoti

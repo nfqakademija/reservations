@@ -102,28 +102,6 @@ Reservations\CoreBundle\Entity\Bar:
           - Type:
               type: string
               message: "bar.address.type"
-      city:
-          - NotBlank:
-              message: "bar.city.not_blank"
-          - Length:
-              min: 2
-              minMessage: "bar.city.length.min_message"
-              max: 255
-              maxMessage: "bar.city.length.max_message"
-          - Type:
-              type: string
-              message: "bar.city.type"
-      seats:
-          - NotBlank:
-              message: "bar.seats.not_blank"
-          - Length:
-              min: 1
-              minMessage: "bar.seats.length.min_message"
-              max: 100
-              maxMessage: "bar.seats.length.max_message"
-          - Regex:
-              pattern: '/\d/'
-              message: "user.phone.type"
       lat:
           - NotBlank:
               message: "bar.lat.not_blank"
@@ -165,14 +143,14 @@ Reservations\CoreBundle\Entity\Reservations:
     properties:
         email:
             - NotBlank:
-                message: "user.email.not_blank"
+                message: "reservation.email.not_blank"
             - Length:
                 min: 2
-                minMessage: "user.email.length.min_message"
+                minMessage: "reservation.email.min_message"
                 max: 100
-                maxMessage: "user.email.length.max_message"
+                maxMessage: "reservation.email.max_message"
             - Email:
-                message: "user.email.email"
+                message: "reservation.email.email"
         peopleAmount:
             - NotBlank:
                 message: "user.email.not_blank"
@@ -185,16 +163,16 @@ Reservations\CoreBundle\Entity\Reservations:
                 value: 10
         date:
             - NotBlank:
-                message: "user.email.not_blank"
+                message: "reservation.date.not_blank"
             - Date: ~
         name:
             - NotBlank:
-                message: "user.email.not_blank"
+                message: "reservation.name.not_blank"
             - Length:
                 min: 2
-                minMessage: "user.email.length.min_message"
+                minMessage: "reservation.name.min_message"
                 max: 100
-                maxMessage: "user.email.length.max_message"
+                maxMessage: "reservation.name.max_message"
             - Type:
                 type: alpha
-                message: "user.first_name.length.string"
+                message: "reservation.name.alpha"

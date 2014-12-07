@@ -47,20 +47,6 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
-     */
-    private $city;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="seats", type="integer")
-     */
-    private $seats;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="lat", type="string", length=255)
      */
     private $lat;
@@ -188,52 +174,6 @@ class Bar
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     * @return Bar
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set seats
-     *
-     * @param integer $seats
-     * @return Bar
-     */
-    public function setSeats($seats)
-    {
-        $this->seats = $seats;
-
-        return $this;
-    }
-
-    /**
-     * Get seats
-     *
-     * @return integer
-     */
-    public function getSeats()
-    {
-        return $this->seats;
     }
 
     /**
