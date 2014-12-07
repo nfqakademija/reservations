@@ -8,6 +8,10 @@ use Reservations\CoreBundle\Entity\Bar;
 
 class Reservation
 {
+    const RESERVATION_WAITING = 0;
+    const RESERVATION_CANCEL = 1;
+    const RESERVATION_CONFIRMED = 2;
+
     private $entityManager;
     private $mailer;
     private $repositoryName;
@@ -43,6 +47,20 @@ class Reservation
             'status' => $status
         ));
         return $waiting;
+    }
+
+    /**
+     * Get reservations
+     * @param $barId
+     * @return array
+     */
+    public function getReservations($barId)
+    {
+        return array(
+            'waiting' => $this->getReservationsCount(self::RESERVATION_WAITING, $barId),
+            'cancel' => $this->getReservationsCount(self::RESERVATION_CANCEL, $barId),
+            'confirmed' => $this->getReservationsCount(self::RESERVATION_CONFIRMED, $barId)
+        );
     }
 
     /**

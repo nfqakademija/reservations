@@ -22,12 +22,10 @@ class ReservationsController extends Controller
         if (!$this->getUser()->getBars()) {
             return $this->redirect($this->generateUrl('bar_new'));
         }
-        $barId = $this->getUser()->getBars()->getId();
-        return $this->render('ReservationsFrontendBundle:Reservations:index.html.twig', array(
-            'waiting' => $reservations->getReservationsCount(0, $barId),
-            'confirmed' => $reservations->getReservationsCount(2, $barId),
-            'cancel' => $reservations->getReservationsCount(1, $barId)
-        ));
+        return $this->render(
+            'ReservationsFrontendBundle:Reservations:index.html.twig',
+            $reservations->getReservations($this->getUser()->getBars()->getId())
+        );
     }
 
     /**
