@@ -39,7 +39,12 @@ class BarController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Bar();
-        $form = $this->createCreateForm($entity);
+        $form = $this->getCreateForm(
+            $entity,
+            $this->generateUrl('bar_create'),
+            'POST',
+            $this->get('translator')->trans('reservations.frontend.dashboard.add')
+        );
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -58,60 +63,22 @@ class BarController extends Controller
     }
 
     /**
-     * Creates a form to create a Bar entity.
-     *
-     * @param Bar $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Bar $entity)
-    {
-        $form = $this->createForm(new BarType(), $entity, array(
-            'action' => $this->generateUrl('bar_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array(
-            'label' => $this->get('translator')->trans('reservations.frontend.dashboard.add')
-        ));
-
-        return $form;
-    }
-
-    /**
      * Displays a form to create a new Bar entity.
      *
      */
     public function newAction()
     {
         $entity = new Bar();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->getCreateForm(
+            $entity,
+            $this->generateUrl('bar_create'),
+            'POST',
+            $this->get('translator')->trans('reservations.frontend.dashboard.add')
+        );
 
         return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Bar entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bar entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('ReservationsFrontendBundle:Bar:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -121,15 +88,18 @@ class BarController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
+        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Bar entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->getCreateForm(
+            $entity,
+            $this->generateUrl('bar_update', array('id' => $entity->getId())),
+            'PUT',
+            $this->get('translator')->trans('reservations.frontend.dashboard.edit')
+        );
 
         return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
             'entity'      => $entity,
@@ -137,26 +107,6 @@ class BarController extends Controller
         ));
     }
 
-    /**
-    * Creates a form to edit a Bar entity.
-    *
-    * @param Bar $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Bar $entity)
-    {
-        $form = $this->createForm(new BarType(), $entity, array(
-            'action' => $this->generateUrl('bar_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array(
-                'label' => $this->get('translator')->trans('reservations.frontend.dashboard.edit')
-        ));
-
-        return $form;
-    }
     /**
      * Edits an existing Bar entity.
      *
@@ -171,7 +121,12 @@ class BarController extends Controller
             throw $this->createNotFoundException('Unable to find Bar entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->getCreateForm(
+            $entity,
+            $this->generateUrl('bar_update', array('id' => $entity->getId())),
+            'PUT',
+            $this->get('translator')->trans('reservations.frontend.dashboard.edit')
+        );
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -184,5 +139,27 @@ class BarController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView()
         ));
+    }
+
+    /**
+     * Create form
+     * @param Bar $entity
+     * @param     $action
+     * @param     $method
+     * @param     $label
+     * @return \Symfony\Component\Form\Form
+     */
+    private function getCreateForm(Bar $entity, $action, $method, $label)
+    {
+        $form = $this->createForm(new BarType(), $entity, array(
+                'action' => $action,
+                'method' => $method,
+            ));
+
+        $form->add('submit', 'submit', array(
+                'label' => $label
+            ));
+
+        return $form;
     }
 }
