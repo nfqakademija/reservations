@@ -59,7 +59,6 @@
         $('#loader').hide();
         $('#reservation-submit').submit(function(e) {
             e.preventDefault();
-            //$('.alert-danger').hide().empty();
             $('#loader').show();
             $('#button').attr('disabled', true);
             $.post('{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}', $(this).serialize(), function(data) {
@@ -68,7 +67,6 @@
                         $('.alert-success').fadeIn();
                     });
                 } else {
-                    //$('.alert-danger').fadeIn().text('Įsivėlė klaida, bandyti dar kartą');
                     $('.form-show').fadeOut(1000, function(){
                         $('.alert-danger').fadeIn();
                     });
