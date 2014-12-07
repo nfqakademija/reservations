@@ -130,12 +130,10 @@ class BarController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -173,7 +171,6 @@ class BarController extends Controller
             throw $this->createNotFoundException('Unable to find Bar entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -185,50 +182,7 @@ class BarController extends Controller
 
         return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'edit_form'   => $editForm->createView()
         ));
-    }
-    /**
-     * Deletes a Bar entity.
-     *
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Bar entity.');
-            }
-            //$entity->setUserId(null);
-            //$em->flush();
-
-            //$em->remove($entity);
-            //$em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('bar'));
-    }
-
-    /**
-     * Creates a form to delete a Bar entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('bar_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
     }
 }

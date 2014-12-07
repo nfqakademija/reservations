@@ -4,7 +4,7 @@
         <h4 class="modal-title" id="myModalLabel">{{ bar.name }} {{ "reservations.frontend.reservation.reservation"|trans }}</h4>
     </div>
     <div class="modal-body">
-        <div class="alert alert-danger" role="alert">{{ "reservations.frontend.reservation.error"|trans }}</div>
+        <div class="alert alert-danger" role="alert"></div>
         <div class="alert alert-success" role="alert">{{ "reservations.frontend.reservation.success"|trans }}</div>
         <div class="form-show">
             <div class="form-group">
@@ -57,8 +57,16 @@
         $('.alert-success').hide();
         $('.alert-danger').hide();
         $('#loader').hide();
+        $('#reservation-submit').on("keyup keypress", function(e) {
+            var code = e.keyCode || e.which;
+            if (code  == 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
         $('#reservation-submit').submit(function(e) {
             e.preventDefault();
+            $('.alert-danger').hide().empty();
             $('#loader').show();
             $('#button').attr('disabled', true);
             $.post('{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}', $(this).serialize(), function(data) {
@@ -67,8 +75,14 @@
                         $('.alert-success').fadeIn();
                     });
                 } else {
-                    $('.form-show').fadeOut(1000, function(){
+                    /*$('.form-show').fadeOut(1000, function(){
                         $('.alert-danger').fadeIn();
+                    });*/
+                    console.log(data.errors);
+                    $('#loader').hide();
+                    $('#button').attr('disabled', false);
+                    $.each(data.errors, function(index, val) {
+                        $('.alert-danger').fadeIn().append('<div class="error">' + val + '</div>');
                     });
                 }
             });

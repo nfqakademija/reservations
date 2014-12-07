@@ -84,21 +84,40 @@ class ReservationsController extends Controller
         $form = $this->createForm(new ReservationsType(), $reservation);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            if ($request->isXmlHttpRequest()) {
-                $reservations->setReservation($reservation, $bar);
-                return new JsonResponse(array('response' => true));
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                if ($request->isXmlHttpRequest()) {
+                    $reservations->setReservation($reservation, $bar);
+                    return new JsonResponse(array('response' => true));
+                }
+            } else {
+                //if ($request->isXmlHttpRequest()) {
+                    return new JsonResponse(array('errors' => $this->getErrorMessages($form)));
+                //}
             }
-        } /*else {
-            if ($request->isXmlHttpRequest()) {
-                return new JsonResponse(array('errors' => $form->getErrors()));
-            }
-        }*/
+        }
 
         return $this->render('ReservationsFrontendBundle:Form:form_reservation.html.twig', array(
             'bar' => $bar,
             'reservationsBusyDays' => $reservationsBusyDays,
             'form' => $form->createView()
         ));
+    }
+
+    private function getErrorMessages(\Symfony\Component\Form\Form $form)
+    {
+        $errors = array();
+
+        foreach ($form->getErrors() as $key => $error) {
+            $errors[] = $error->getMessage();
+        }
+
+        foreach ($form->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = $this->getErrorMessages($child);
+            }
+        }
+
+        return $errors;
     }
 }
