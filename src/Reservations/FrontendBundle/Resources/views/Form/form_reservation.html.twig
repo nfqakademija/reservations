@@ -75,10 +75,6 @@
                         $('.alert-success').fadeIn();
                     });
                 } else {
-                    /*$('.form-show').fadeOut(1000, function(){
-                        $('.alert-danger').fadeIn();
-                    });*/
-                    console.log(data.errors);
                     $('#loader').hide();
                     $('#button').attr('disabled', false);
                     $.each(data.errors, function(index, val) {

@@ -84,16 +84,20 @@ class ReservationsController extends Controller
         $form = $this->createForm(new ReservationsType(), $reservation);
         $form->handleRequest($request);
 
+        /*if ($form->isValid()) {
+            //if ($request->isXmlHttpRequest()) {
+                $reservations->setReservation($reservation, $bar);
+                return new JsonResponse(array('response' => true));
+            //}
+        }*/
         if ($form->isSubmitted()) {
-            if ($form->isValid()) {
-                if ($request->isXmlHttpRequest()) {
+            if ($request->isXmlHttpRequest()) {
+                if ($form->isValid()) {
                     $reservations->setReservation($reservation, $bar);
                     return new JsonResponse(array('response' => true));
-                }
-            } else {
-                //if ($request->isXmlHttpRequest()) {
+                } else {
                     return new JsonResponse(array('errors' => $this->getErrorMessages($form)));
-                //}
+                }
             }
         }
 
