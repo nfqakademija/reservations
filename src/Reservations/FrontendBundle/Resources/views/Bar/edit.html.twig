@@ -28,7 +28,12 @@
                     </div>
                     <div class="form-group">
                         <label>{{ "reservations.frontend.dashboard.address"|trans }}</label>
-                        {{ form_widget(edit_form.address, { 'attr' : { 'class' : 'form-control' }}) }}
+                        <div class="row">
+                            <div class="col-md-7">{{ form_widget(edit_form.address, { 'attr' : { 'class' : 'form-control' }}) }}</div>
+                            <div class="col-md-5">
+                                <button id="address" class="btn btn-primary btn-sm">{{ "reservations.frontend.dashboard.get_coordinates"|trans }}</button>
+                            </div>
+                        </div>
                         {{ form_errors(edit_form.address) }}
                     </div>
                     <div class="form-group">
@@ -87,11 +92,28 @@
     <script type="text/javascript">
         var map;
         $(document).ready(function(){
+            $('#address').click(function (e) {
+                e.preventDefault();
+                var address = $('#reservations_corebundle_bar_address').val();
+                $.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +' Kaunas&sensor=true', function(data){
+                    if (data.status == 'OK') {
+                        $('#reservations_corebundle_bar_lat').val(data.results[0].geometry.location.lat);
+                        $('#reservations_corebundle_bar_lng').val(data.results[0].geometry.location.lng);
+                        map.addMarker({
+                            lat: data.results[0].geometry.location.lat,
+                            lng: data.results[0].geometry.location.lng,
+                            title: ''
+                        });
+                    } else {
+                        alert('{{ "reservations.frontend.dashboard.no_results"|trans }}');
+                    }
+                });
+            });
             map = new GMaps({
                 div: '#map',
                 lat: 54.9010623,
                 lng: 23.9249206,
-                zoom: 14,
+                zoom: 13,
                 click: function(e) {
                     $('#reservations_corebundle_bar_lat').val(e.latLng.lat());
                     $('#reservations_corebundle_bar_lng').val(e.latLng.lng());

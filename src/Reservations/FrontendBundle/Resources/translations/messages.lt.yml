@@ -28,7 +28,7 @@ reservations.frontend.dashboard.add: Pridėti
 reservations.frontend.dashboard.hide_search:  Nerodyti paieškoje
 reservations.frontend.dashboard.hide_search_help: Pažymėjus taip, baras bus neaktyvus
 reservations.frontend.dashboard.no_results: Nepavyko rasti koordinačiu
-reservations.frontend.dashboard.get_coordinates: Gauti koordinates pagal adresą
+reservations.frontend.dashboard.get_coordinates: Gauti koordinates
 
 
 

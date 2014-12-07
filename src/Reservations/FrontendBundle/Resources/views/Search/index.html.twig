@@ -31,7 +31,7 @@
             {% endif %}
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
-                    <input type="text" name="name" class="form-control input-lg" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
+                    <input type="text" name="name" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search"></span>
@@ -98,7 +98,7 @@
                 div: '#map',
                 lat: 54.9010623,
                 lng: 23.9249206,
-                zoom: 15
+                zoom: 13
             });
             {% for bar in bars %}
             map.addMarker({ lat: {{ bar.lat }}, lng: {{ bar.lng }}, title: '{{ bar.name }}',
