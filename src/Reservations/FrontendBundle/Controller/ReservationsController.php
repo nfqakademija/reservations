@@ -85,11 +85,15 @@ class ReservationsController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            if ($request->isXmlHttpRequest()) {
+            //if ($request->isXmlHttpRequest()) {
                 $reservations->setReservation($reservation, $bar);
                 return new JsonResponse(array('response' => true));
+            //}
+        } /*else {
+            if ($request->isXmlHttpRequest()) {
+                return new JsonResponse(array('errors' => $form->getErrors()));
             }
-        }
+        }*/
 
         return $this->render('ReservationsFrontendBundle:Form:form_reservation.html.twig', array(
             'bar' => $bar,

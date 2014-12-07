@@ -4,20 +4,32 @@
 
 {% block body %}
 
-    <div class="dialog" style="max-width: 50%;">
+    <div class="dialog" style="max-width: 70%; margin-top: 10px;">
         <div class="panel panel-default">
             <p class="panel-heading no-collapse">{{ bar.name }}</p>
             <div class="panel-body">
                 {{ bar.description }}<br /><br />
                 <strong>{{ bar.address }}</strong><br /><br />
 
-                <button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation"><i class="fa fa-check-square-o"></i> Rezervuoti</button>
+                <button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation">
+                    <i class="fa fa-check-square-o"></i> {{ "reservations.frontend.reservation.reserve"|trans }}
+                </button>
             </div>
         </div>
         </div>
     </div>
 
-    <div id="panorama" style="height: 400px;"></div>
+    <div class="dialog" style="max-width: 70%; margin-top: 10px;">
+        <div class="panel panel-default">
+            <p class="panel-heading no-collapse">{{ bar.name }}</p>
+            <div class="panel-body">
+                <div id="panorama" style="height: 600px;"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
 
     {# reservation window modal #}
     <div id="reservation-modals">

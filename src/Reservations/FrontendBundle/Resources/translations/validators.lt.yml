@@ -2,6 +2,7 @@ user.email.not_blank: Negali būti tuščias laukas.
 user.email.length.min_message: Per trumpas el. paštas.
 user.email.length.max_message: Per ilgas el. paštas.
 user.email.email: Blogai nurodytas el. paštas. 
+user.email.unique: Toks el. paštas jau užregistruotas.
 
 user.plain_password.not_blank: Negali būti tuščias laukas.
 user.plain_password.length.min_message: Per trumpas slaptažodis.
@@ -9,6 +10,7 @@ user.plain_password.length.min_message: Per trumpas slaptažodis.
 user.first_name.not_blank: Negali būti tuščias laukas.
 user.first_name.length.min_message: Per trumpas vardas.
 user.first_name.length.max_message: Per ilgas vardas.
+user.first_name.length.string: Ne tekstas.
 
 user.last_name.not_blank: Negali būti tuščias laukas.
 user.last_name.length.min_message: Per trumpas vardas.

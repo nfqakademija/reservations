@@ -4,6 +4,7 @@ Reservations\CoreBundle\Entity\User:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [email]
             groups: [ "reservations_registration" ]
+            message: "user.email.unique"
     properties:
         email:
             - NotBlank:
@@ -148,15 +149,52 @@ Reservations\CoreBundle\Entity\Bar:
       phone:
           - NotBlank:
               message: "user.phone.not_blank"
-              groups: [ "reservations_registration", "reservations_profile" ]
           - Length:
               min: 6
               minMessage: "user.phone.length.min_message"
               max: 12
               maxMessage: "user.phone.length.max_message"
-              groups: [ "reservations_registration", "ResetPassword" ]
           - Regex:
               pattern: '/\d/'
               message: "user.phone.type"
           - GreaterThan:
               value: 0
+
+# Reservations validation
+Reservations\CoreBundle\Entity\Reservations:
+    properties:
+        email:
+            - NotBlank:
+                message: "user.email.not_blank"
+            - Length:
+                min: 2
+                minMessage: "user.email.length.min_message"
+                max: 100
+                maxMessage: "user.email.length.max_message"
+            - Email:
+                message: "user.email.email"
+        peopleAmount:
+            - NotBlank:
+                message: "user.email.not_blank"
+            - Regex:
+                pattern: '/\d/'
+                message: "user.phone.type"
+            - GreaterThan:
+                value: 0
+            - LessThanOrEqual:
+                value: 10
+        date:
+            - NotBlank:
+                message: "user.email.not_blank"
+            - Date: ~
+        name:
+            - NotBlank:
+                message: "user.email.not_blank"
+            - Length:
+                min: 2
+                minMessage: "user.email.length.min_message"
+                max: 100
+                maxMessage: "user.email.length.max_message"
+            - Type:
+                type: alpha
+                message: "user.first_name.length.string"

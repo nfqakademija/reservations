@@ -25,8 +25,8 @@ reservations.frontend.dashboard.lat: Platuma
 reservations.frontend.dashboard.lng: Ilguma
 reservations.frontend.dashboard.edit: Redaguoti
 reservations.frontend.dashboard.add: Pridėti
-reservations.frontend.dashboard.hide_search: Slėpti nuo paieškos?
-reservations.frontend.dashboard.hide_search_help: Pažymėjus taip, baro / restorano nerodys pagrindiniam puslapyje
+reservations.frontend.dashboard.hide_search:  Nerodyti paieškoje
+reservations.frontend.dashboard.hide_search_help: Pažymėjus taip, baras bus neaktyvus
 reservations.frontend.dashboard.no_results: Nepavyko rasti koordinačiu
 reservations.frontend.dashboard.get_coordinates: Gauti koordinates pagal adresą
 
@@ -49,6 +49,12 @@ reservations.frontend.for_bussines: Verslui
 reservations.frontend.create_new: Pridėti barą / restoraną
 reservations.frontend.logout: Atsijungti
 
+reservations.frontend.reset.password_reset: Slaptažodžio priminimas
+reservations.frontend.reset.send: Siųsti
+reservations.frontend.reset.bad_email: Blogai nurodytas el. paštas
+reservations.frontend.reset.change: Pakeisti slaptažodį
+
+
 # Search page
 reservations.frontend.search: Ieškoti
 reservations.frontend.reservation.enter_name_or_address: Įveskite pavadinimą ar adresą
@@ -67,6 +73,7 @@ reservations.frontend.reservation.email: El. paštas
 reservations.frontend.reservation.name: Vardas
 reservations.frontend.reservation.close: Uždaryti
 reservations.frontend.reservation.success: Rezervacija sėkminga! El. paštu nusiųstas specialus kodas
+reservations.frontend.reservation.error: Įsivėlė klaida, bandykite uždaryti langą ir užrezervuoti per naujo
 reservations.frontend.reservation.loading: Kraunama...
 reservations.frontend.reservation.choice: - Pasirinkti -
 reservations.frontend.reservation.code: Kodas

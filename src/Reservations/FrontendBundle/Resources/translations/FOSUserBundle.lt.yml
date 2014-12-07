@@ -55,25 +55,23 @@ registration:
 
 # Password resetting
 resetting:
+    reservations_password_reset: Slaptažodžio priminimas
     password_already_requested: The password for this user has already been requested within the last 24 hours.
-    check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
+    check_email: El. laiškas buvo išsųstas %email%. Jame rasite nuorodą, su kuria galėsite pasikeisti slaptažodį.
     request:
         invalid_username: The username or email address "%username%" does not exist.
         username: "Username or email address:"
         submit: Reset password
     reset:
-        submit: Change password
+        submit: Keisti slaptažodį
     flash:
         success: The password has been reset successfully
     email:
         subject: Reset Password
         message: |
-            Hello %username%!
+            Sveiki, %username%!
 
-            To reset your password - please visit %confirmationUrl%
-
-            Regards,
-            the Team.
+            Kad pasikeisti slaptažodį užeikite %confirmationUrl%
 
 # Global strings
 layout:

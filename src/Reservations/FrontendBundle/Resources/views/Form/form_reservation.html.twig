@@ -4,7 +4,7 @@
         <h4 class="modal-title" id="myModalLabel">{{ bar.name }} {{ "reservations.frontend.reservation.reservation"|trans }}</h4>
     </div>
     <div class="modal-body">
-        <div class="alert alert-danger hidden" role="alert"></div>
+        <div class="alert alert-danger" role="alert">{{ "reservations.frontend.reservation.error"|trans }}</div>
         <div class="alert alert-success" role="alert">{{ "reservations.frontend.reservation.success"|trans }}</div>
         <div class="form-show">
             <div class="form-group">
@@ -55,10 +55,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.alert-success').hide();
+        $('.alert-danger').hide();
         $('#loader').hide();
         $('#reservation-submit').submit(function(e) {
             e.preventDefault();
-            $('.alert-danger').hide().empty();
+            //$('.alert-danger').hide().empty();
             $('#loader').show();
             $('#button').attr('disabled', true);
             $.post('{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}', $(this).serialize(), function(data) {
@@ -67,13 +68,16 @@
                         $('.alert-success').fadeIn();
                     });
                 } else {
-                    // display errors
+                    //$('.alert-danger').fadeIn().text('Įsivėlė klaida, bandyti dar kartą');
+                    $('.form-show').fadeOut(1000, function(){
+                        $('.alert-danger').fadeIn();
+                    });
                 }
             });
         });
 
         var array = [
-            "{{ 'now'|date('Y-m-d') }}"
+            "{{ 'now'|date('Y-m-d') }}",
             {% for reservation in reservationsBusyDays %}
             "{{ reservation.date|date('Y-m-d') }}",
             {% endfor %}

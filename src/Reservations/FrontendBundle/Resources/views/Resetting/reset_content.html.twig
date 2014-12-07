@@ -1,0 +1,27 @@
+{% include 'ReservationsFrontendBundle:Reservations:header.html.twig' %}
+
+<div class="dialog">
+    <div class="panel panel-default">
+        <p class="panel-heading no-collapse">{{ "reservations.frontend.reset.password_reset"|trans }}</p>
+        <div class="panel-body">
+            <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+                <div class="form-group">
+                    {#{{ form_widget(form) }}#}
+                </div>
+                <div class="form-group">
+                    <label>{{ "reservations.frontend.password"|trans }}</label>
+                    {{ form_widget(form.plainPassword.first, { 'attr' : { 'class' : 'form-control' }}) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+                <div class="form-group">
+                    <label>{{ "reservations.frontend.password_repeat"|trans }}</label>
+                    {{ form_widget(form.plainPassword.second, { 'attr' : { 'class' : 'form-control' }}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form._token) }}
+                    <input type="submit" value="{{ 'reservations.frontend.reset.change'|trans }}" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

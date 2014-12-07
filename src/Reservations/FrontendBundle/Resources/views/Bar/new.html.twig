@@ -28,9 +28,13 @@
                     </div>
                     <div class="form-group">
                         <label>{{ "reservations.frontend.dashboard.address"|trans }}</label>
-                        {{ form_widget(form.address, { 'attr' : { 'class' : 'form-control' }}) }}
+                        <div class="row">
+                            <div class="col-md-7">{{ form_widget(form.address, { 'attr' : { 'class' : 'form-control' }}) }}</div>
+                            <div class="col-md-5">
+                                <button id="address" class="btn btn-primary btn-sm">{{ "reservations.frontend.dashboard.get_coordinates"|trans }}</button>
+                            </div>
+                        </div>
                         {{ form_errors(form.address) }}
-                        <button id="address" class="btn btn-primary">{{ "reservations.frontend.dashboard.get_coordinates"|trans }}</button>
                     </div>
                     <div class="form-group">
                         <label>{{ "reservations.frontend.dashboard.city"|trans }}</label>
@@ -89,6 +93,11 @@
                     if (data.status == 'OK') {
                         $('#reservations_corebundle_bar_lat').val(data.results[0].geometry.location.lat);
                         $('#reservations_corebundle_bar_lng').val(data.results[0].geometry.location.lng);
+                        map.addMarker({
+                            lat: data.results[0].geometry.location.lat,
+                            lng: data.results[0].geometry.location.lng,
+                            title: ''
+                        });
                     } else {
                         alert('{{ "reservations.frontend.dashboard.no_results"|trans }}');
                     }
@@ -96,13 +105,15 @@
             });
             map = new GMaps({
                 div: '#map',
-                lat: 54.9010005,
-                lng: 23.8988132,
+                lat: 54.9010623,
+                lng: 23.9249206,
+                zoom: 14,
                 click: function(e) {
                     $('#reservations_corebundle_bar_lat').val(e.latLng.lat());
                     $('#reservations_corebundle_bar_lng').val(e.latLng.lng());
                 }
             });
+            map.setOptions({draggable: false});
         });
     </script>
 {% endblock %}
