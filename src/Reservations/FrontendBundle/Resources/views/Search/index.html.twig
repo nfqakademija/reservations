@@ -31,7 +31,7 @@
             {% endif %}
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
-                    <input type="text" name="name" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
+                    <input type="text" name="name" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" data-toggle="popover" data-placement="left" data-content="Įveskite pvz: restoranas" />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search"></span>
@@ -89,6 +89,7 @@
     <script type="text/javascript">
         var map;
         $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({'placement': 'left'});
             $('#reservation-modals').on('hidden.bs.modal', '.modal', function () {
                 $(this).removeData('bs.modal')
                         .find(".modal-content").empty()
