@@ -41,10 +41,9 @@ class ReservationsController extends Controller
         }
         $barId = $this->getUser()->getBars()->getId();
         $status = $reservations->getStatusByName($page);
-        $getReservations = $reservations->getReservationsByStatus($barId, $status);
 
         return $this->render('ReservationsFrontendBundle:Reservations:'.$page.'.html.twig', array(
-            'reservations' => $getReservations
+            'reservations' => $reservations->getReservationsByStatus($barId, $status)
         ));
     }
 
@@ -56,11 +55,8 @@ class ReservationsController extends Controller
     public function changeStatusAction($id, $status)
     {
         $reservation = $this->get('reservations.core.reservation_process.reservation');
-        if ($status == 'accept') {
-            $reservation->setStatus($id, 2);
-        } elseif ($status == 'cancel') {
-            $reservation->setStatus($id, 1);
-        }
+        $reservation->changeStatus($id, $status);
+
         return $this->redirect($this->generateUrl('reservations_core_dashboard_reservations_page', array(
             'page' => 'waiting'
         )));
@@ -82,12 +78,6 @@ class ReservationsController extends Controller
         $form = $this->createForm(new ReservationsType(), $reservation);
         $form->handleRequest($request);
 
-        /*if ($form->isValid()) {
-            //if ($request->isXmlHttpRequest()) {
-                $reservations->setReservation($reservation, $bar);
-                return new JsonResponse(array('response' => true));
-            //}
-        }*/
         if ($form->isSubmitted()) {
             if ($request->isXmlHttpRequest()) {
                 if ($form->isValid()) {

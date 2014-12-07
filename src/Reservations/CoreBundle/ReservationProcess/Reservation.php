@@ -91,11 +91,24 @@ class Reservation
     }
 
     /**
+     * Change reservation status
+     * @param $id
+     * @param $status
+     */
+    public function changeStatus($id, $status)
+    {
+        if ($status == 'accept') {
+            $this->setStatus($id, 2);
+        } elseif ($status == 'cancel') {
+            $this->setStatus($id, 1);
+        }
+    }
+    /**
      * Set status reservation
      * @param $id
      * @param $status
      */
-    public function setStatus($id, $status)
+    private function setStatus($id, $status)
     {
         $reservation = $this->entityManager->getRepository($this->repositoryName)->find($id);
         $reservation->setStatus($status);
@@ -114,11 +127,11 @@ class Reservation
     public function getStatusByName($string)
     {
         if ($string === 'waiting') {
-            return 0;
+            return self::RESERVATION_WAITING;
         } elseif ($string === 'cancel') {
-            return 1;
+            return self::RESERVATION_CANCEL;
         } elseif ($string === 'confirmed') {
-            return 2;
+            return self::RESERVATION_CONFIRMED;
         }
     }
 
