@@ -20,16 +20,8 @@ class BarController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('ReservationsCoreBundle:Bar')->findByUserId($this->getUser()->getId());
-
-        if (!$entities) {
-            return $this->redirect($this->generateUrl('bar_new'));
-        }
-
         return $this->render('ReservationsFrontendBundle:Bar:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->get('reservations.core.search.bar')->getBarByUser($this->getUser()->getId()),
         ));
     }
     /**
@@ -86,9 +78,9 @@ class BarController extends Controller
      * Displays a form to edit an existing Bar entity.
      *
      */
-    public function editAction($barId)
+    public function editAction($id)
     {
-        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($barId);
+        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Bar entity.');
@@ -111,11 +103,11 @@ class BarController extends Controller
      * Edits an existing Bar entity.
      *
      */
-    public function updateAction(Request $request, $barId)
+    public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($barId);
+        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Bar entity.');
@@ -132,7 +124,7 @@ class BarController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bar_edit', array('id' => $barId)));
+            return $this->redirect($this->generateUrl('bar_edit', array('id' => $id)));
         }
 
         return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
@@ -152,13 +144,13 @@ class BarController extends Controller
     private function getCreateForm(Bar $entity, $action, $method, $label)
     {
         $form = $this->createForm(new BarType(), $entity, array(
-                'action' => $action,
-                'method' => $method,
-            ));
+            'action' => $action,
+            'method' => $method,
+        ));
 
         $form->add('submit', 'submit', array(
-                'label' => $label
-            ));
+            'label' => $label
+        ));
 
         return $form;
     }

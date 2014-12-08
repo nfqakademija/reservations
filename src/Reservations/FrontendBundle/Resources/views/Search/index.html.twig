@@ -11,22 +11,23 @@
     <div id="container">
         <div id="search">
             {% if app.request.get('search') %}
+                {% if bars is empty %}
+                    <div class="alert alert-danger" role="alert" data-dismiss="alert">
+                        {{ "reservations.frontend.reservation.not_found"|trans }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% else %}
                 <div class="alert alert-success" role="alert" data-dismiss="alert">
                     Pagal paieškos kriterijus radome restoranų: <strong>{{ bars|length }} </strong>. Pasirinkite norimą restoraną iš žemėlapio.
                     <button type="button" class="close" data-dismiss="alert">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                {% endif %}
             {% endif %}
 
-            {% if bars is empty %}
-                <div class="alert alert-danger" role="alert" data-dismiss="alert">
-                    {{ "reservations.frontend.reservation.not_found"|trans }}
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            {% endif %}
             <div id="white">
                 <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="get">
                     <div class="input-group">
