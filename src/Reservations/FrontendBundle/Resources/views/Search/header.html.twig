@@ -18,3 +18,31 @@
             </a>
     </div>
 </div>
+
+
+{# about info modal #}
+<div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ "reservations.frontend.reservation.are_we"|trans }}</h4>
+            </div>
+            <div class="modal-body">
+                <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ "reservations.frontend.reservation.reservation"|trans }}</h3>
+                Mūsų projektas siūlo greitą ir patogia barų ar restoranų rezervaciją. Jums tereikia paspausti ant
+                žymeklio žemėlapyje ir pasirinkti "rezervacija" ir suvesti duomenis. Specialus kodas
+                bus atsiųstas el. paštu.
+
+                <h3><span class="glyphicon glyphicon-search" aria-hidden="true"></span> {{ "reservations.frontend.reservation.search"|trans }}</h3>
+                Ieškodami norimo baro ar restorano užtenka suvesti raktinius žodžius, pagal kuriuos bus atrinkti
+                jums tinkami barai ar restoranai. Taip pat galite suvesti adresą ir rasti jums tinkančias vietas
+                jūsų norimoje gatvėje.
+
+                <h3><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{ "reservations.frontend.for_bussines"|trans }}</h3>
+                Verslininkams siūlom galimybę lengvai ir paprastai administruoti rezervacijas, jas patvirtinti ar
+                atšauktti.
+            </div>
+        </div>
+    </div>
+</div>
