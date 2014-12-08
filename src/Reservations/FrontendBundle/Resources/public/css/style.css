@@ -4,14 +4,19 @@ html, body {
 
 #container {
     width: 100%;
-    height: 100%;
+    height: 90%;
 }
 
 #search {
     z-index: 100;
     position: absolute;
-    margin: 10% 0 0 25%;
+    margin: 4% 0 0 25%;
     width: 50%;
+    background: #FFFFFF;
+    padding: 10px 10px 5px 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #map {
@@ -36,4 +41,48 @@ html, body {
 
 #map > div > div:nth-child(1) > div > div:nth-child(3) > div:nth-child(3) > div > div.gm-style-iw {
     overflow: visible !important;
+}
+
+#header {
+    position: relative;
+    height: 70px;
+    background-color: #414959;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4c5568), to(#414959));
+    border: 1px solid #363d4a;
+}
+
+    #header h1 {
+        font-weight: bold;
+        font-size: 20px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        position: absolute;
+        left: 55px;
+        top: -10px;
+    }
+
+    #header h6 {
+        font-size: 14px;
+        color: #FFFFFF;
+        position: absolute;
+        left: 55px;
+        top: 30px;
+    }
+
+    #header #icon {
+        font-size: 38px;
+        color: #FFFFFF;
+        position: absolute;
+        top: 11px;
+        left: 10px;
+    }
+
+    #header #info {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+    }
+
+.pointer {
+    cursor: pointer;
 }

@@ -5,21 +5,11 @@
 {% endblock %}
 
 {% block body %}
+
+    {% include 'ReservationsFrontendBundle:Search:header.html.twig' %}
+
     <div id="container">
-        <div id="about">
-            <button type="button" class="btn btn-default btn-lg font-size text-center" data-toggle="modal" data-target="#about-modal">
-                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-            </button>
-            <br />
-            <br />
-            {% if is_granted("ROLE_USER") %}
-            <a href="{{ path('reservations_core_dashboard') }}" class="btn btn-primary btn-lg font-size text-center">
-            {% else %}
-            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg font-size text-center">
-            {% endif %}
-                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-            </a>
-        </div>
+
         <div id="search">
             {% if bars is empty %}
                 <div class="alert alert-danger" role="alert" data-dismiss="alert">
@@ -31,13 +21,24 @@
             {% endif %}
             <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
                 <div class="input-group">
-                    <input type="text" name="name" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" data-toggle="popover" data-placement="left" data-content="Įveskite pvz: restoranas" />
+                    <input type="text" name="name" id="search-input" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search"></span>
                             {{ "reservations.frontend.search"|trans }}
                         </button>
                     </span>
+                </div>
+                <div class="input-group">
+                    <h5>
+                        Populiariausios paieškos:
+                        <small>
+                            <span class="pointer">#krepšinis</span>
+                            <span class="pointer">#restoranas</span>
+                            <span class="pointer">#pietūs</span>
+                            <span class="pointer">#laisvės alėja</span>
+                        </small>
+                    </h5>
                 </div>
             </form>
         </div>
@@ -89,6 +90,12 @@
     <script type="text/javascript">
         var map;
         $(document).ready(function(){
+            $('.pointer').click(function () {
+                var value = $('#search-input').val();
+                var tag = $(this).text();
+                tag = tag.split('#')[1];
+                $('#search-input').val(value + tag + ' ');
+            });
             $('[data-toggle="popover"]').popover({'placement': 'left'});
             $('#reservation-modals').on('hidden.bs.modal', '.modal', function () {
                 $(this).removeData('bs.modal')
@@ -97,8 +104,8 @@
             });
             map = new GMaps({
                 div: '#map',
-                lat: 54.914311,
-                lng: 23.9408851,
+                lat: 54.9088344,
+                lng: 23.922517,
                 zoom: 13
             });
             {% for bar in bars %}

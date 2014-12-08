@@ -1,0 +1,20 @@
+<div id="header">
+    <div id="icon">
+        <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+    </div>
+    <h1>Rezervacijos</h1>
+    <h6><em>Jei nenori kovoti dėl laisvo staliuko, rezervuok vietą iš anksto viename iš barų apačioje !</em></h6>
+
+    <div id="info">
+        <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#about-modal">
+            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Kaip tai veikia?
+        </button>
+        {% if is_granted("ROLE_USER") %}
+            <a href="{{ path('reservations_core_dashboard') }}" class="btn btn-primary text-center">
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary text-center">
+        {% endif %}
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Partneriams
+            </a>
+    </div>
+</div>
