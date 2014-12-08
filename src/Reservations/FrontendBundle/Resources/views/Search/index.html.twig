@@ -19,9 +19,9 @@
                     </button>
                 </div>
             {% endif %}
-            <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="post">
+            <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="get">
                 <div class="input-group">
-                    <input type="text" name="name" id="search-input" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
+                    <input type="text" name="search" id="search-input" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search"></span>
@@ -33,10 +33,10 @@
                     <h5>
                         Populiariausios paieškos:
                         <small>
-                            <span class="pointer">#krepšinis</span>
-                            <span class="pointer">#restoranas</span>
-                            <span class="pointer">#pietūs</span>
-                            <span class="pointer">#laisvės alėja</span>
+                            <a href="?search=krepsinis">#krepšinis</a>
+                            <a href="?search=restoranas">#restoranas</a>
+                            <a href="?search=pietus">#pietūs</a>
+                            <a href="?search=laisves+aleja">#laisvės alėja</a>
                         </small>
                     </h5>
                 </div>
@@ -95,6 +95,7 @@
                 var tag = $(this).text();
                 tag = tag.split('#')[1];
                 $('#search-input').val(value + tag + ' ');
+                $('.form-horizontal').submit();
             });
             $('[data-toggle="popover"]').popover({'placement': 'left'});
             $('#reservation-modals').on('hidden.bs.modal', '.modal', function () {
@@ -115,16 +116,22 @@
                              '<div jstcache="1" class="gm-title" jscontent="i.result.name"><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></div>' +
                              '<div jstcache="0" class="gm-basicinfo">' +
                              '<div jstcache="3" class="gm-photos" jsdisplay="i.result.formatted_address" jscontent="i.result.formatted_address">{{ bar.address|length > 18 ? bar.address|slice(0, 18) ~ '...' : bar.address }} ({{ bar.phone }})</div>' +
-                             '<div jstcache="5" class="gm-phone" >' +
-                             '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target="#reservation" data-backdrop="static"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +
-                             '</div>' +
+                                {#'<div jstcache="5" class="gm-phone" >' +#}
+                                {#'<a href="{{ path('reservations_core_showpage', {'id': bar.id}) }}" class="btn btn-primary btn-xs btn-block" style="color:white">Plačiau apie barą</a>' +#}
+                                {#'</div>' +#}
+                                    '<div jstcache="5" class="gm-phone" >' +
+                                        //'<div class="btn-group" role="group" aria-label="...">' +
+                                            '<a href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs" style="background:#0A5A36;color:white;padding:1px 8px;"> Plačiau apie barą</a>' +
+                                            '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs pull-right" style="padding:1px 8px;" data-toggle="modal" data-target="#reservation" data-backdrop="static"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +
+                                        //'</div>' +
+                                    '</div>' +
                              '</div>' +
                              '<div jstcache="2" class="gm-photos" jsdisplay="svImg">' +
                              '<a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}"><img src="http://maps.googleapis.com/maps/api/streetview?size=204x50&location={{ bar.lat }},{{ bar.lng }}&fov=100&heading=360&pitch=5&sensor=false" jstcache="11" jsvalues=".src:svImg" height="50" width="204" /></a>' +
-                             '<span style="display: none;" jstcache="7" class="gm-sv" jsdisplay="photoImg" jsvalues=".onclick:svClickFn">' +
-                             '<img jstcache="11" jsvalues=".src:svImg" height="50" width="100">' +
-                             '</span>' +
                              '</div>' +
+                                {#'<div jstcache="5" class="gm-phone" >' +#}
+                                {#'<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target="#reservation" data-backdrop="static"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +#}
+                                {#'</div>' +#}
                              '</div>'
                 }
             });

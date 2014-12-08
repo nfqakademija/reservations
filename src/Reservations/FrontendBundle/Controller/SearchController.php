@@ -14,13 +14,13 @@ class SearchController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $search = $request->request->get('name');
-        $session = $this->get('session');
-        $session->set('value', $search);
+        $search = $request->query->get('search');
+        //$session = $this->get('session');
+        //$session->set('value', $search);
         $bars = $this->get('reservations.core.search.bar')->getBars($search);
         return $this->render('ReservationsFrontendBundle:Search:index.html.twig', array(
             'bars' => $bars,
-            'value' => $session->get('value')
+            'value' => $search
         ));
     }
 
