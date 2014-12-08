@@ -65,14 +65,14 @@ class ReservationsController extends Controller
     /**
      * Show form and process reservation
      * @param Request $request
-     * @param         $id
+     * @param         $barId
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxReservationAction(Request $request, $id)
+    public function ajaxReservationAction(Request $request, $barId)
     {
-        $bar = $this->get('reservations.core.search.bar')->getBarInfoById($id);
+        $bar = $this->get('reservations.core.search.bar')->getBarInfoById($barId);
         $reservations = $this->get('reservations.core.reservation_process.reservation');
-        $reservationsBusyDays = $reservations->getReservationsByStatus($id, 2);
+        $reservationsBusyDays = $reservations->getReservationsByStatus($barId, 2);
 
         $reservation = new Reservations();
         $form = $this->createForm(new ReservationsType(), $reservation);
@@ -100,7 +100,7 @@ class ReservationsController extends Controller
     {
         $errors = array();
 
-        foreach ($form->getErrors() as $key => $error) {
+        foreach ($form->getErrors() as $error) {
             $errors[] = $error->getMessage();
         }
 

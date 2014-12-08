@@ -9,8 +9,16 @@
     {% include 'ReservationsFrontendBundle:Search:header.html.twig' %}
 
     <div id="container">
-
         <div id="search">
+            {% if app.request.get('search') %}
+                <div class="alert alert-success" role="alert" data-dismiss="alert">
+                    Pagal paieškos kriterijus radome restoranų: <strong>{{ bars|length }} </strong>. Pasirinkite norimą restoraną iš žemėlapio.
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+
             {% if bars is empty %}
                 <div class="alert alert-danger" role="alert" data-dismiss="alert">
                     {{ "reservations.frontend.reservation.not_found"|trans }}
@@ -19,28 +27,30 @@
                     </button>
                 </div>
             {% endif %}
-            <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="get">
-                <div class="input-group">
-                    <input type="text" name="search" id="search-input" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <span class="glyphicon glyphicon-search"></span>
-                            {{ "reservations.frontend.search"|trans }}
-                        </button>
-                    </span>
-                </div>
-                <div class="input-group">
-                    <h5>
-                        Populiariausios paieškos:
-                        <small>
-                            <a href="?search=krepsinis">#krepšinis</a>
-                            <a href="?search=restoranas">#restoranas</a>
-                            <a href="?search=pietus">#pietūs</a>
-                            <a href="?search=laisves+aleja">#laisvės alėja</a>
-                        </small>
-                    </h5>
-                </div>
-            </form>
+            <div id="white">
+                <form class="form-horizontal" action="{{ path('reservations_core_homepage') }}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="search" id="search-input" class="form-control input-lg" value="{{ value }}" placeholder="{{ "reservations.frontend.reservation.enter_name_or_address"|trans }}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <span class="glyphicon glyphicon-search"></span>
+                                {{ "reservations.frontend.search"|trans }}
+                            </button>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <h5>
+                            Populiariausios paieškos:
+                            <small>
+                                <a href="?search=krepsinis">#krepšinis</a>
+                                <a href="?search=restoranas">#restoranas</a>
+                                <a href="?search=pietus">#pietūs</a>
+                                <a href="?search=laisves+aleja">#laisvės alėja</a>
+                            </small>
+                        </h5>
+                    </div>
+                </form>
+            </div>
         </div>
         <div id="map"></div>
     </div>
@@ -95,7 +105,7 @@
                                 {#'</div>' +#}
                                     '<div jstcache="5" class="gm-phone" >' +
                                         //'<div class="btn-group" role="group" aria-label="...">' +
-                                            '<a href="{{ path('reservations_core_showpage', {'id': bar.id}) }}" class="btn btn-primary btn-xs" style="background:#0A5A36;color:white;padding:1px 8px;"> Plačiau apie barą</a>' +
+                                            '<a href="{{ path('reservations_core_showpage', {'id': bar.id}) }}" class="btn btn-primary btn-xs" style="background:#0A5A36;color:white;padding:1px 8px;text-decoration:none;"> Plačiau apie barą</a>' +
                                             '<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs pull-right" style="padding:1px 8px;" data-toggle="modal" data-target="#reservation" data-backdrop="static"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +
                                         //'</div>' +
                                     '</div>' +
@@ -112,6 +122,9 @@
             {# google.maps.event.trigger(map.markers[{{ bar.id }}-1], 'click');#}
             {% endfor %}
 
+            /*google.maps.event.addListener(marker, 'mouseover', function() {
+                infowindow.open(map, this);
+            });*/
         });
     </script>
 {% endblock %}

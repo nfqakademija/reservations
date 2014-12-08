@@ -17,7 +17,8 @@ class ReservationsType extends AbstractType
         $builder
             ->add('peopleAmount', 'choice', array(
                     'choices' => $this->getChoices(),
-                    'empty_value' => 'reservations.frontend.reservation.choice'
+                    'empty_value' => 'reservations.frontend.reservation.choice',
+                    'data' => 2
                 ))
             ->add('date', 'date', array(
                     'widget' => 'single_text'

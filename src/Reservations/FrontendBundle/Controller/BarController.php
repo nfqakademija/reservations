@@ -86,9 +86,9 @@ class BarController extends Controller
      * Displays a form to edit an existing Bar entity.
      *
      */
-    public function editAction($id)
+    public function editAction($barId)
     {
-        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
+        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($barId);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Bar entity.');
@@ -111,11 +111,11 @@ class BarController extends Controller
      * Edits an existing Bar entity.
      *
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $barId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
+        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($barId);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Bar entity.');
@@ -132,7 +132,7 @@ class BarController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bar_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('bar_edit', array('id' => $barId)));
         }
 
         return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(

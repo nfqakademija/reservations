@@ -4,20 +4,23 @@ html, body {
 
 #container {
     width: 100%;
-    height: 85%;
+    height: 90%;
 }
 
 #search {
     z-index: 100;
     position: absolute;
-    margin: 4% 0 0 25%;
+    margin: 1% 0 0 25%;
     width: 50%;
-    background: #FFFFFF;
-    padding: 10px 10px 5px 10px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
 }
+
+    #search #white {
+        background: #FFFFFF;
+        padding: 10px 10px 5px 10px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
 
 #map {
     width: 100%;

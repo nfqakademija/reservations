@@ -15,8 +15,6 @@ class SearchController extends Controller
     public function indexAction(Request $request)
     {
         $search = $request->query->get('search');
-        //$session = $this->get('session');
-        //$session->set('value', $search);
         $bars = $this->get('reservations.core.search.bar')->getBars($search);
         return $this->render('ReservationsFrontendBundle:Search:index.html.twig', array(
             'bars' => $bars,
