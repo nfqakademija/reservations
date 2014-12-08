@@ -47,6 +47,7 @@
                                 <a href="?search=restoranas">#restoranas</a>
                                 <a href="?search=pietus">#pietūs</a>
                                 <a href="?search=laisves+aleja">#laisvės alėja</a>
+                                <a href="?search=vakariene">#vakarienė</a>
                             </small>
                         </h5>
                     </div>
@@ -95,7 +96,10 @@
                 zoom: 13
             });
             {% for bar in bars %}
-            map.addMarker({ lat: {{ bar.lat }}, lng: {{ bar.lng }}, title: '{{ bar.name }}',
+            map.addMarker({
+                lat: {{ bar.lat }},
+                lng: {{ bar.lng }},
+                title: '{{ bar.name }}',
                 infoWindow: {
 					content: '<div style="width: 204px;" jstcache="0" class="gm-iw gm-sm">' +
                              '<div jstcache="1" class="gm-title" jscontent="i.result.name"><a href="{{ path('reservations_core_showpage', { 'id' : bar.id }) }}">{{ bar.name }}</a></div>' +
@@ -118,6 +122,13 @@
                                 {#'<button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target="#reservation" data-backdrop="static"><i class="fa fa-check-square-o"></i> Rezervuoti</button>' +#}
                                 {#'</div>' +#}
                              '</div>'
+                },
+                mouseover: function(e){
+                    this.infoWindow.open(this.map, this);
+                },
+                mouseout: function(e){
+                    if(this.infoWindow)
+                        this.infoWindow.close();
                 }
             });
             {# google.maps.event.trigger(map.markers[{{ bar.id }}-1], 'click');#}
