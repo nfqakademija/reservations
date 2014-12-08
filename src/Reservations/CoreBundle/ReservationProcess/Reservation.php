@@ -110,12 +110,13 @@ class Reservation
      */
     private function setStatus($id, $status)
     {
+        /** @var Reservations $reservation */
         $reservation = $this->entityManager->getRepository($this->repositoryName)->find($id);
         $reservation->setStatus($status);
         $this->entityManager->flush();
-        if ($status === 2) {
+        if ($status === self::RESERVATION_CONFIRMED) {
             $this->mailer->sendMail($reservation, 'Rezervacijos patvirtinimas', 'confirm_reservation');
-        } elseif ($status === 1) {
+        } elseif ($status === self::RESERVATION_CANCEL) {
             $this->mailer->sendMail($reservation, 'Rezervacijos atšaukimas', 'cancel_reservation');
         }
     }

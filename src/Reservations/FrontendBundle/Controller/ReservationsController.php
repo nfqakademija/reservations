@@ -96,7 +96,7 @@ class ReservationsController extends Controller
         ));
     }
 
-    private function getErrorMessages(\Symfony\Component\Form\Form $form)
+    private function getErrorMessages(\Symfony\Component\Form\FormInterface $form)
     {
         $errors = array();
 
