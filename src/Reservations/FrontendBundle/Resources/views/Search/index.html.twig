@@ -75,6 +75,7 @@
 {% block javascripts %}
     <script type="text/javascript">
         var map;
+        var openedInfoWindow = null;
         $(document).ready(function(){
             $('.pointer').click(function () {
                 var value = $('#search-input').val();
@@ -124,19 +125,14 @@
                              '</div>'
                 },
                 mouseover: function(e){
+                    if (openedInfoWindow != null)
+                        openedInfoWindow.close();
                     this.infoWindow.open(this.map, this);
-                },
-                mouseout: function(e){
-                    if(this.infoWindow)
-                        this.infoWindow.close();
+                    openedInfoWindow = this.infoWindow;
                 }
             });
             {# google.maps.event.trigger(map.markers[{{ bar.id }}-1], 'click');#}
             {% endfor %}
-
-            /*google.maps.event.addListener(marker, 'mouseover', function() {
-                infowindow.open(map, this);
-            });*/
         });
     </script>
 {% endblock %}
