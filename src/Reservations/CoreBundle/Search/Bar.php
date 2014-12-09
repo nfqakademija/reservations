@@ -3,8 +3,12 @@
 namespace Reservations\CoreBundle\Search;
 
 use Doctrine\ORM\EntityManager;
-use Reservations\CoreBundle\Entity\BarRepository;
 
+/**
+ * Class is userd for a search
+ * Class Bar
+ * @package Reservations\CoreBundle\Search
+ */
 class Bar
 {
     private $entityManager;
@@ -39,7 +43,8 @@ class Bar
 
     /**
      * @param $id
-     * @return null|object
+     * @return \Reservations\CoreBundle\Entity\Bar
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function getBarInfoById($id)
     {

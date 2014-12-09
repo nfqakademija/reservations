@@ -51,6 +51,7 @@ class ReservationsController extends Controller
      * @param $id
      * @param $status
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function changeStatusAction($id, $status)
     {
@@ -65,8 +66,9 @@ class ReservationsController extends Controller
     /**
      * Show form and process reservation
      * @param Request $request
-     * @param         $barId
+     * @param         $id
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function ajaxReservationAction(Request $request, $id)
     {

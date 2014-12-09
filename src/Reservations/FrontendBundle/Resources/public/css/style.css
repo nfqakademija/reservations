@@ -94,3 +94,7 @@ h5 small {
     font-size: 13px;
     color: #616D84;
 }
+
+.alert-success {
+    color: #000000;
+}

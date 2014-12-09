@@ -7,6 +7,9 @@ use Reservations\CoreBundle\Entity\Reservations;
 use Reservations\CoreBundle\Entity\Bar;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
+/**
+ * Class is responsible for reservations manage
+ */
 class Reservation
 {
     const RESERVATION_WAITING = 0;
@@ -45,10 +48,10 @@ class Reservation
     public function getReservationsByStatus($barId, $status)
     {
         $repository = $this->entityManager->getRepository($this->repositoryName);
-        $waiting = $repository->findBy(array(
+        $waiting = $repository->findBy([
             'barId' => $barId,
             'status' => $status
-        ));
+        ]);
         return $waiting;
     }
 
@@ -59,16 +62,17 @@ class Reservation
      */
     public function getReservations($barId)
     {
-        return array(
+        return [
             'waiting' => $this->getReservationsCount(self::RESERVATION_WAITING, $barId),
             'cancel' => $this->getReservationsCount(self::RESERVATION_CANCEL, $barId),
             'confirmed' => $this->getReservationsCount(self::RESERVATION_CONFIRMED, $barId)
-        );
+        ];
     }
 
     /**
      * Get reservations count by status
      * @param $status
+     * @param $barId
      * @return mixed
      */
     public function getReservationsCount($status, $barId)
@@ -101,6 +105,7 @@ class Reservation
      * Change reservation status
      * @param $id
      * @param $status
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function changeStatus($id, $status)
     {
@@ -114,6 +119,7 @@ class Reservation
      * Set status reservation
      * @param $id
      * @param $status
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     private function setStatus($id, $status)
     {

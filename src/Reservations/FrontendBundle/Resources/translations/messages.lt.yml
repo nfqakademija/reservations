@@ -58,7 +58,7 @@ reservations.frontend.reset.change: Pakeisti slaptažodį
 # Search page
 reservations.frontend.search: Ieškoti
 reservations.frontend.search.reservations: Rezervacijos
-reservations.frontend.search.slogan: Jei nenori kovoti dėl laisvo staliuko, rezervuok vietą iš anksto viename iš barų žemėlapyje!
+reservations.frontend.search.slogan: Jei nenori kovoti dėl laisvo staliuko, rezervuok vietą iš anksto viename iš barų PAŽYMĖTŲ žemėlapyje!
 reservations.frontend.reservation.enter_name_or_address: Įveskite pavadinimą ar adresą
 reservations.frontend.reservation.map: Žemėlapis
 reservations.frontend.reservation.not_found: Pagal paieškos kriterijus rezultatų nerasta.

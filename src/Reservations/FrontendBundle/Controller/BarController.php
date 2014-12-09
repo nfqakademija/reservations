@@ -16,143 +16,133 @@ class BarController extends Controller
 
     /**
      * Lists all Bar entities.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-        return $this->render('ReservationsFrontendBundle:Bar:index.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:index.html.twig', [
             'entities' => $this->get('reservations.core.search.bar')->getBarByUser($this->getUser()->getId()),
-        ));
+        ]);
     }
+
     /**
      * Creates a new Bar entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
         $entity = new Bar();
-        $form = $this->getCreateForm(
-            $entity,
-            $this->generateUrl('bar_create'),
-            'POST',
-            $this->get('translator')->trans('reservations.frontend.dashboard.add')
-        );
+        $form = $this->getBarCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $entity->setUserId($this->getUser());
-            $em->persist($entity);
-            $em->flush();
+            $entityManager->persist($entity);
+            $entityManager->flush();
 
             return $this->redirect($this->generateUrl('bar'));
         }
 
-        return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', [
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        ]);
     }
 
     /**
      * Displays a form to create a new Bar entity.
      *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
         $entity = new Bar();
-        $form   = $this->getCreateForm(
-            $entity,
-            $this->generateUrl('bar_create'),
-            'POST',
-            $this->get('translator')->trans('reservations.frontend.dashboard.add')
-        );
-
-        return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', array(
+        $form = $this->getBarCreateForm($entity);
+        return $this->render('ReservationsFrontendBundle:Bar:new.html.twig', [
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        ]);
     }
 
     /**
-     * Displays a form to edit an existing Bar entity.
-     *
+     * Displays a form to edit an existing Bar entity
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function editAction($id)
     {
         $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bar entity.');
-        }
+        $editForm = $this->getBarUpdateForm($entity);
 
-        $editForm = $this->getCreateForm(
-            $entity,
-            $this->generateUrl('bar_update', array('id' => $entity->getId())),
-            'PUT',
-            $this->get('translator')->trans('reservations.frontend.dashboard.edit')
-        );
-
-        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', [
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-        ));
+        ]);
     }
 
     /**
      * Edits an existing Bar entity.
-     *
+     * @param Request $request
+     * @param         $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ReservationsCoreBundle:Bar')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bar entity.');
-        }
-
-        $editForm = $this->getCreateForm(
-            $entity,
-            $this->generateUrl('bar_update', array('id' => $entity->getId())),
-            'PUT',
-            $this->get('translator')->trans('reservations.frontend.dashboard.edit')
-        );
+        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
+        $editForm = $this->getBarUpdateForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add('success', 'Sėkmingai redaguota');
-            return $this->redirect($this->generateUrl('bar_edit', array('id' => $id)));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($entity);
+            $entityManager->flush();
+            return $this->redirect($this->generateUrl('bar_edit', ['id' => $id]));
         }
 
-        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', array(
+        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', [
             'entity'      => $entity,
             'edit_form'   => $editForm->createView()
-        ));
+        ]);
+    }
+
+     /**
+     * @param $entity
+     * @return \Symfony\Component\Form\Form
+     */
+    private function getBarCreateForm($entity)
+    {
+        $form = $this->createForm(new BarType(), $entity, [
+            'action' => $this->generateUrl('bar_create'),
+            'method' =>'POST',
+        ]);
+
+        $form->add('submit', 'submit', [
+            'label' => $this->get('translator')->trans('reservations.frontend.dashboard.add')
+        ]);
+
+        return $form;
     }
 
     /**
-     * Create form
      * @param Bar $entity
-     * @param     $action
-     * @param     $method
-     * @param     $label
      * @return \Symfony\Component\Form\Form
      */
-    private function getCreateForm(Bar $entity, $action, $method, $label)
+    private function getBarUpdateForm($entity)
     {
-        $form = $this->createForm(new BarType(), $entity, array(
-            'action' => $action,
-            'method' => $method,
-        ));
+        $editForm = $this->createForm(new BarType(), $entity, [
+            'action' => $this->generateUrl('bar_update', ['id' => $entity->getId()]),
+            'method' =>'PUT',
+        ]);
 
-        $form->add('submit', 'submit', array(
-            'label' => $label
-        ));
+        $editForm->add('submit', 'submit', [
+            'label' => $this->get('translator')->trans('reservations.frontend.dashboard.edit')
+        ]);
 
-        return $form;
+        return $editForm;
     }
 }
