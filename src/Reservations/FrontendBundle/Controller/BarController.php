@@ -124,6 +124,7 @@ class BarController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'Sėkmingai redaguota');
             return $this->redirect($this->generateUrl('bar_edit', array('id' => $id)));
         }
 

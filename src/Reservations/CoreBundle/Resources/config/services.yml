@@ -9,7 +9,7 @@ services:
 
     reservations.core.reservation_process.reservation:
         class: Reservations\CoreBundle\ReservationProcess\Reservation
-        arguments: [ @doctrine.orm.entity_manager, @reservations.core.reservation_process.email ]
+        arguments: [ @doctrine.orm.entity_manager, @reservations.core.reservation_process.email, @service_container ]
         calls:
             - [setRepositoryName, [%reservations.core.reservation_process.repository_name%]]
 

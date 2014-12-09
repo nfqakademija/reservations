@@ -13,13 +13,18 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reservation">
+                        <button href="{{ path('reservations_core_ajax_reservation', {'id': bar.id}) }}" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#reservation">
                             <i class="fa fa-check-square-o"></i> {{ "reservations.frontend.reservation.reserve"|trans }}
                         </button>
                         <br />
                         <br />
                         {{ bar.description }}<br /><br />
-                        <strong>{{ bar.address }}</strong><br /><br />
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Adresas</strong></li>
+                            <li class="list-group-item">{{ bar.address }}</li>
+                            <li class="list-group-item"><strong>Telefonas</strong></li>
+                            <li class="list-group-item">{{ bar.phone }}</li>
+                        </ul>
                     </div>
                     <div class="col-md-7">
                         <div id="panorama" style="height: 400px;"></div>

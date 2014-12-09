@@ -57,9 +57,15 @@ reservations.frontend.reset.change: Pakeisti slaptažodį
 
 # Search page
 reservations.frontend.search: Ieškoti
+reservations.frontend.search.reservations: Rezervacijos
+reservations.frontend.search.slogan: Jei nenori kovoti dėl laisvo staliuko, rezervuok vietą iš anksto viename iš barų žemėlapyje!
 reservations.frontend.reservation.enter_name_or_address: Įveskite pavadinimą ar adresą
 reservations.frontend.reservation.map: Žemėlapis
-reservations.frontend.reservation.not_found: Pagal įvestus paieškos kriterijus rezultatų nerasta.
+reservations.frontend.reservation.not_found: Pagal paieškos kriterijus rezultatų nerasta.
+reservations.frontend.reservation.all: Rodyti visus barus.
+reservations.frontend.reservation.found: Pagal paieškos kriterijus radome restoranų:
+reservations.frontend.reservation.select: Pasirinkite norimą restoraną iš žemėlapio.
+reservations.frontend.reservation.phrases: Populiariausios paieškos:
 
 # Reservation
 reservations.frontend.reservation.reservation: Rezervacija
@@ -78,6 +84,10 @@ reservations.frontend.reservation.loading: Kraunama...
 reservations.frontend.reservation.choice: - Pasirinkti -
 reservations.frontend.reservation.code: Kodas
 
+reservations.frontend.reservation.confirm_reservation: Rezervacijos patvirtinimas
+reservations.frontend.reservation.cancel_reservation: Rezervacijos atšaukimas
+
 # About
 reservations.frontend.reservation.are_we: Kas mes?
+reservations.frontend.reservation.partners: Partneriams
 reservations.frontend.reservation.search: Paieška

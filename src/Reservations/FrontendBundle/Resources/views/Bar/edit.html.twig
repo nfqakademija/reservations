@@ -12,7 +12,11 @@
             <h1 class="page-title">{{ "reservations.frontend.dashboard.dashboard"|trans }}</h1>
         </div>
         <div class="main-content">
-
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
             <div class="row">
                 <div class="col-md-4">
                     {{ form_start(edit_form) }}
@@ -86,20 +90,24 @@
             $('#address').click(function (e) {
                 e.preventDefault();
                 var address = $('#reservations_corebundle_bar_address').val();
-                $.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +' Kaunas&sensor=true', function(data){
-                    if (data.status == 'OK') {
-                        $('#reservations_corebundle_bar_lat').val(data.results[0].geometry.location.lat);
-                        $('#reservations_corebundle_bar_lng').val(data.results[0].geometry.location.lng);
-                        map.removeMarkers();
-                        map.addMarker({
-                            lat: data.results[0].geometry.location.lat,
-                            lng: data.results[0].geometry.location.lng,
-                            title: ''
-                        });
-                    } else {
-                        alert('{{ "reservations.frontend.dashboard.no_results"|trans }}');
-                    }
-                });
+                if (address.length === 0 ) {
+                    alert('Įveskite adresą');
+                } else {
+                    $.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + ' Kaunas&sensor=true', function (data) {
+                        if (data.status == 'OK') {
+                            $('#reservations_corebundle_bar_lat').val(data.results[0].geometry.location.lat);
+                            $('#reservations_corebundle_bar_lng').val(data.results[0].geometry.location.lng);
+                            map.removeMarkers();
+                            map.addMarker({
+                                lat: data.results[0].geometry.location.lat,
+                                lng: data.results[0].geometry.location.lng,
+                                title: ''
+                            });
+                        } else {
+                            alert('{{ "reservations.frontend.dashboard.no_results"|trans }}');
+                        }
+                    });
+                }
             });
             map = new GMaps({
                 div: '#map',

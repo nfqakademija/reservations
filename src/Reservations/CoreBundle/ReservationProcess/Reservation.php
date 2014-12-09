@@ -5,6 +5,7 @@ namespace Reservations\CoreBundle\ReservationProcess;
 use Doctrine\ORM\EntityManager;
 use Reservations\CoreBundle\Entity\Reservations;
 use Reservations\CoreBundle\Entity\Bar;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class Reservation
 {
@@ -14,16 +15,18 @@ class Reservation
 
     private $entityManager;
     private $mailer;
+    private $container;
     private $repositoryName;
 
     /**
      * @param EntityManager $entityManager
      * @param Email         $mailer
      */
-    public function __construct(EntityManager $entityManager, Email $mailer)
+    public function __construct(EntityManager $entityManager, Email $mailer, Container $container)
     {
         $this->entityManager = $entityManager;
         $this->mailer = $mailer;
+        $this->container = $container;
     }
 
     /**
@@ -87,7 +90,11 @@ class Reservation
         $this->entityManager->persist($reservation);
         $this->entityManager->flush();
 
-        $this->mailer->sendMail($reservation, 'Rezervacija', 'new_reservation');
+        $this->mailer->sendMail(
+            $reservation,
+            $this->container->get('translator')->trans('reservations.frontend.reservation.reservation'),
+            'new_reservation'
+        );
     }
 
     /**
@@ -115,9 +122,17 @@ class Reservation
         $reservation->setStatus($status);
         $this->entityManager->flush();
         if ($status === self::RESERVATION_CONFIRMED) {
-            $this->mailer->sendMail($reservation, 'Rezervacijos patvirtinimas', 'confirm_reservation');
+            $this->mailer->sendMail(
+                $reservation,
+                $this->container->get('translator')->trans('reservations.frontend.reservation.confirm_reservation'),
+                'confirm_reservation'
+            );
         } elseif ($status === self::RESERVATION_CANCEL) {
-            $this->mailer->sendMail($reservation, 'Rezervacijos atšaukimas', 'cancel_reservation');
+            $this->mailer->sendMail(
+                $reservation,
+                $this->container->get('translator')->trans('reservations.frontend.reservation.cancel_reservation'),
+                'cancel_reservation'
+            );
         }
     }
 
