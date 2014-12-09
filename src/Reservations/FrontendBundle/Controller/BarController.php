@@ -41,7 +41,6 @@ class BarController extends Controller
             $entity->setUserId($this->getUser());
             $entityManager->persist($entity);
             $entityManager->flush();
-
             return $this->redirect($this->generateUrl('bar'));
         }
 
@@ -74,13 +73,10 @@ class BarController extends Controller
      */
     public function editAction($id)
     {
-        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
-
-        $editForm = $this->getBarUpdateForm($entity);
-
+        list($entity, $editForm) = $this->getBarUpdateForm($id);
         return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', [
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity'    => $entity,
+            'edit_form' => $editForm->createView(),
         ]);
     }
 
@@ -93,8 +89,7 @@ class BarController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
-        $editForm = $this->getBarUpdateForm($entity);
+        list($entity, $editForm) = $this->getBarUpdateForm($id);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -103,46 +98,57 @@ class BarController extends Controller
             $entityManager->flush();
             return $this->redirect($this->generateUrl('bar_edit', ['id' => $id]));
         }
-
-        return $this->render('ReservationsFrontendBundle:Bar:edit.html.twig', [
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView()
-        ]);
+        return $this->render(
+            'ReservationsFrontendBundle:Bar:edit.html.twig',
+            ['entity'    => $entity, 'edit_form' => $editForm->createView()]
+        );
     }
 
-     /**
-     * @param $entity
+    /**
      * @return \Symfony\Component\Form\Form
      */
     private function getBarCreateForm($entity)
     {
-        $form = $this->createForm(new BarType(), $entity, [
-            'action' => $this->generateUrl('bar_create'),
-            'method' =>'POST',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => $this->get('translator')->trans('reservations.frontend.dashboard.add')
-        ]);
-
+        $action = $this->generateUrl('bar_create');
+        $label = $this->get('translator')->trans('reservations.frontend.dashboard.add');
+        $form = $this->getForm($entity, $action, 'POST', $label);
         return $form;
     }
 
     /**
+     * @param $id
+     * @internal param Bar $entity
+     * @return \Symfony\Component\Form\Form
+     * @SuppressWarnings(PHPMD.ShortVariable)
+     */
+    private function getBarUpdateForm($id)
+    {
+        $entity = $this->get('reservations.core.search.bar')->getBarInfoById($id);
+        $action = $this->generateUrl('bar_update', ['id' => $entity->getId()]);
+        $label = $this->get('translator')->trans('reservations.frontend.dashboard.edit');
+        $editForm = $this->getForm($entity, $action, 'PUT', $label);
+        return [$entity, $editForm];
+    }
+
+    /**
+     * Create form
      * @param Bar $entity
+     * @param     $action
+     * @param     $method
+     * @param     $label
      * @return \Symfony\Component\Form\Form
      */
-    private function getBarUpdateForm($entity)
+    private function getForm(Bar $entity, $action, $method, $label)
     {
-        $editForm = $this->createForm(new BarType(), $entity, [
-            'action' => $this->generateUrl('bar_update', ['id' => $entity->getId()]),
-            'method' =>'PUT',
+        $form = $this->createForm(new BarType(), $entity, [
+            'action' => $action,
+            'method' => $method,
         ]);
 
-        $editForm->add('submit', 'submit', [
-            'label' => $this->get('translator')->trans('reservations.frontend.dashboard.edit')
+        $form->add('submit', 'submit', [
+            'label' => $label
         ]);
 
-        return $editForm;
+        return $form;
     }
 }
